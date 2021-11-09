@@ -24,3 +24,4 @@ pip 21.2.4 from [...]/d4/lib/python3.10/site-packages/pip (python 3.10)
 project_name [Base Project]:
 project_slug [base-project]:
 ```
+

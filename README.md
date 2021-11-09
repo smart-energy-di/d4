@@ -1,5 +1,7 @@
 # d4 - Base Project Generator
 
+[![build](https://github.com/mleist/d4/actions/workflows/config.yml/badge.svg)](https://github.com/mleist/d4/actions/workflows/config.yml)
+
 Generate a backend and frontend stack using Python and json-ld, including interactive API documentation.
 
 ## How to use it

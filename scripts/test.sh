@@ -14,6 +14,8 @@ cd ./testing-project
 ls -l ./
 ls -l ./backend
 
+source .env
+
 pip install -r ./backend/requirements_dev.txt
 
 pytest .

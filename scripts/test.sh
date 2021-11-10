@@ -11,8 +11,8 @@ cookiecutter --no-input -f ./ project_name="Testing Project"
 
 cd ./testing-project
 
-ls -l ./
-ls -l ./backend
+ls -la ./
+ls -la ./backend
 
 source .env
 

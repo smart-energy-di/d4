@@ -26,3 +26,7 @@ $ cookiecutter .
 project_name [Base Project]:
 project_slug [base-project]:
 ```
+
+# See more
+
+see documentation [here]({{cookiecutter.project_slug}}/docs)

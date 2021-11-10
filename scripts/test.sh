@@ -7,15 +7,22 @@ set -e
 
 rm -rf ./testing-project
 
+echo "ls -la ./ [in root]"
+ls -la ./
+
 cookiecutter --no-input -f ./ project_name="Testing Project"
+
+echo "ls -la ./ [in testing-project]"
+ls -la ./testing-project/
 
 cd ./testing-project
 
 echo "cookiecutter --version"
 cookiecutter --version
 
+
+echo "ls -la ./ [in testing-project]"
 ls -la ./
-ls -la ./backend
 
 pip install -r ./backend/requirements_dev.txt
 

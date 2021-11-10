@@ -14,6 +14,9 @@ cd ./testing-project
 ls -l ./
 ls -l ./backend
 
+pip install -r ./backend/requirements_dev.txt
+
+pytest .
 
 bash ./scripts/test.sh "$@"
 

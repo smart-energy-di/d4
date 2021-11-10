@@ -1,4 +1,7 @@
 {
     "project_name": "Base Project",
-    "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}"
+    "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+    "docker_image_prefix": "",
+    "docker_image_backend": "{{cookiecutter.docker_image_prefix}}backend",
+    "docker_image_frontend": "{{cookiecutter.docker_image_prefix}}frontend"
 }

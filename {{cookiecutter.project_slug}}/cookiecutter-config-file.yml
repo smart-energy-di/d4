@@ -1,0 +1,6 @@
+default_context:
+  project_name: '{{ cookiecutter.project_name }}'
+  project_slug: '{{ cookiecutter.project_slug }}'
+  docker_image_prefix: '{{ cookiecutter.docker_image_prefix }}'
+  docker_image_backend: '{{ cookiecutter.docker_image_backend }}'
+  docker_image_frontend: '{{ cookiecutter.docker_image_frontend }}'

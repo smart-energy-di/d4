@@ -1,0 +1,38 @@
+version: "3.3"
+services:
+
+  backend:
+    image: '${DOCKER_IMAGE_BACKEND?Variable not set}:${TAG-latest}'
+    env_file:
+      - .env
+    environment:
+      - SERVER_NAME=${DOMAIN?Variable not set}
+      - SERVER_HOST=https://${DOMAIN?Variable not set}
+      # Allow explicit env var override for tests
+    build:
+      context: ./backend
+      dockerfile: python3.9-slim.dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
+    ports:
+      - "9010:80"
+
+
+  frontend:
+    image: '${DOCKER_IMAGE_FRONTEND?Variable not set}:${TAG-latest}'
+    env_file:
+      - .env
+    environment:
+      - SERVER_NAME=${DOMAIN?Variable not set}
+      - SERVER_HOST=https://${DOMAIN?Variable not set}
+      # Allow explicit env var override for tests
+    build:
+      context: ./frontend
+      dockerfile: python3.9-slim.dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
+    ports:
+      - "9020:80"
+
+volumes:
+  app-db-data:

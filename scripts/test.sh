@@ -11,10 +11,11 @@ cookiecutter --no-input -f ./ project_name="Testing Project"
 
 cd ./testing-project
 
+echo "cookiecutter --version"
+cookiecutter --version
+
 ls -la ./
 ls -la ./backend
-
-source .env
 
 pip install -r ./backend/requirements_dev.txt
 

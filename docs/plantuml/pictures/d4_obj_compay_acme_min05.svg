@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="556px" preserveAspectRatio="none" style="width:616px;height:556px;background:#FFFFFF;" version="1.1" viewBox="0 0 616 556" width="616px" zoomAndPan="magnify"><defs><filter height="300%" id="f91uf9aapa2y4" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[1035137668336d8ecd6582f6df806ab3]
+cluster ca--><polygon fill="#FFFFFF" filter="url(#f91uf9aapa2y4)" points="16,6,135,6,142,28.4883,599,28.4883,599,549,16,549,16,6" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="16" x2="142" y1="28.4883" y2="28.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="113" x="20" y="21.5352">Company ACME</text><!--MD5=[dea034dd557578f17a57532622942fa0]
+cluster ca_scp1--><polygon fill="#FFFFFF" filter="url(#f91uf9aapa2y4)" points="40,49,200,49,207,71.4883,575,71.4883,575,525,40,525,40,49" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="40" x2="207" y1="71.4883" y2="71.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="154" x="44" y="64.5352">Networking (Scope 1)</text><!--MD5=[a172b5daa5e9006c18af5cf4701e7a0c]
+cluster ca_scp1_d4_cache--><rect fill="#FFFFFF" filter="url(#f91uf9aapa2y4)" height="123" style="stroke:#000000;stroke-width:1.5;" width="219" x="289" y="264"/><line style="stroke:#000000;stroke-width:1.5;" x1="289" x2="508" y1="284.4883" y2="284.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="62" x="367.5" y="279.5352">d4 cache</text><!--MD5=[693e33cdd78bcd323bc2a981fb44285c]
+cluster ca_scp1_d4_ui--><rect fill="#FFFFFF" filter="url(#f91uf9aapa2y4)" height="123" style="stroke:#000000;stroke-width:1.5;" width="94" x="365" y="92"/><line style="stroke:#000000;stroke-width:1.5;" x1="365" x2="459" y1="112.4883" y2="112.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="38" x="393" y="107.5352">d4 UI</text><!--MD5=[fabf52ac740be3bee4e1c249ef44a8fc]
+cluster ca_scp1_d4_adpt--><rect fill="#FFFFFF" filter="url(#f91uf9aapa2y4)" height="118" style="stroke:#000000;stroke-width:1.5;" width="189" x="64" y="266.5"/><line style="stroke:#000000;stroke-width:1.5;" x1="64" x2="253" y1="286.9883" y2="286.9883"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="77" x="120" y="282.0352">d4 adapter</text><!--MD5=[5a96453d9da75a3ce2c408dca49ca6c1]
+entity ca_scp1_ds1--><polygon fill="#FEFECE" filter="url(#f91uf9aapa2y4)" points="89.5,456,99.5,446,218.5,446,218.5,498.9766,208.5,508.9766,89.5,508.9766,89.5,456" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="208.5" x2="218.5" y1="456" y2="446"/><line style="stroke:#000000;stroke-width:1.5;" x1="89.5" x2="208.5" y1="456" y2="456"/><line style="stroke:#000000;stroke-width:1.5;" x1="208.5" x2="208.5" y1="456" y2="508.9766"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="104.5" y="479.5352">(foreign)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="104.5" y="496.0234">datasource 1</text><!--MD5=[494834349b401b36fa832acd8798cb44]
+entity ca_scp1_ds2--><polygon fill="#FEFECE" filter="url(#f91uf9aapa2y4)" points="253.5,456,263.5,446,382.5,446,382.5,498.9766,372.5,508.9766,253.5,508.9766,253.5,456" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="372.5" x2="382.5" y1="456" y2="446"/><line style="stroke:#000000;stroke-width:1.5;" x1="253.5" x2="372.5" y1="456" y2="456"/><line style="stroke:#000000;stroke-width:1.5;" x1="372.5" x2="372.5" y1="456" y2="508.9766"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="268.5" y="479.5352">(foreign)</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="89" x="268.5" y="496.0234">datasource 2</text><!--MD5=[d6572d05bae0b45f86894e05bbb0566c]
+entity ca_scp1_d4_actor_ui--><ellipse cx="543" cy="313.5" fill="#FEFECE" filter="url(#f91uf9aapa2y4)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M543,321.5 L543,348.5 M530,329.5 L556,329.5 M543,348.5 L530,363.5 M543,348.5 L556,363.5 " fill="none" filter="url(#f91uf9aapa2y4)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31" x="527.5" y="382.5352">User</text><!--MD5=[e1dbf49cf27afbeba64e24a0ce70e6ae]
+entity ca_scp1_d4_cache_rest--><rect fill="#FEFECE" filter="url(#f91uf9aapa2y4)" height="52.9766" style="stroke:#000000;stroke-width:1.5;" width="80" x="305" y="318"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="315" y="341.5352">REST-</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="315" y="358.0234">interface</text><!--MD5=[e1975c8101ca07b4f270cc47b82c0507]
+entity ca_scp1_d4_cache_store--><rect fill="#FEFECE" filter="url(#f91uf9aapa2y4)" height="52.9766" rx="35" ry="35" style="stroke:#000000;stroke-width:1.5;" width="72" x="420" y="318"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="49" x="430" y="341.5352">volatile</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="52" x="430" y="358.0234">storage</text><!--MD5=[5989dfe0837aa72763db7b4609e408c6]
+entity ca_scp1_d4_ui_srv--><rect fill="#FEFECE" filter="url(#f91uf9aapa2y4)" height="52.9766" style="stroke:#000000;stroke-width:1.5;" width="62" x="381" y="146"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="14" x="391" y="169.5352">UI</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="391" y="186.0234">server</text><!--MD5=[99ca27a3366a70301b91daf5299cc400]
+entity ca_scp1_d4_adpt_timer--><ellipse cx="98" cy="336.5" fill="#FEFECE" filter="url(#f91uf9aapa2y4)" rx="12" ry="12" style="stroke:#A80036;stroke-width:1.5;"/><polygon fill="#A80036" points="94,324.5,100,319.5,98,324.5,100,329.5,94,324.5" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="36" x="80" y="366.0352">timer</text><!--MD5=[22101d0641ed2f80e49c63bcd53fe6bb]
+entity ca_scp1_d4_adpt_conv--><rect fill="#FEFECE" filter="url(#f91uf9aapa2y4)" height="36.4883" style="stroke:#000000;stroke-width:1.5;" width="85" x="151.5" y="326.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="161.5" y="350.0352">converter</text><!--MD5=[4f8664ab5dc667180f9cba4786c5fbf7]
+link ca_scp1_d4_cache_rest to ca_scp1_d4_cache_store--><path d="M390.45,344.5 C398.56,344.5 406.67,344.5 414.78,344.5 " fill="none" id="ca_scp1_d4_cache_rest-ca_scp1_d4_cache_store" style="stroke:#008000;stroke-width:1.0;"/><polygon fill="#008000" points="419.83,344.5,410.83,340.5,414.83,344.5,410.83,348.5,419.83,344.5" style="stroke:#008000;stroke-width:1.0;"/><polygon fill="#008000" points="385.32,344.5,394.32,348.5,390.32,344.5,394.32,340.5,385.32,344.5" style="stroke:#008000;stroke-width:1.0;"/><!--MD5=[b559d16a1afa1d8882db837bc2226fdb]
+reverse link ca_scp1_d4_ui_srv to ca_scp1_d4_actor_ui--><path d="M447.34,197.3 C467.33,212.22 491.53,232.97 508,256 C518.28,270.37 526.11,288.19 531.74,303.99 " fill="none" id="ca_scp1_d4_ui_srv-backto-ca_scp1_d4_actor_ui" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="443.14,194.2,448.0086,202.7614,447.1638,197.1679,452.7573,196.3232,443.14,194.2" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="24" x="502" y="244.5684">GET</text><!--MD5=[1f6dc1d2a6a79b65dd140f087e1b8aac]
+reverse link ca_scp1_d4_cache_rest to ca_scp1_d4_actor_ui--><path d="M355.34,312.85 C364.46,291.06 380.23,264.26 405,254 C415.68,249.58 419.45,253.85 431,254 C465.23,254.44 479.94,236.39 508,256 C523.71,266.98 532.37,286.18 537.14,303.9 " fill="none" id="ca_scp1_d4_cache_rest-backto-ca_scp1_d4_actor_ui" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="353.38,317.7,360.4546,310.848,355.2492,313.0626,353.0347,307.8572,353.38,317.7" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="24" x="406" y="244.5684">GET</text><!--MD5=[4b5965c76b5b5f656aeae5e76be5074b]
+link ca_scp1_d4_adpt_timer to ca_scp1_d4_adpt_conv--><path d="M116.38,344.5 C128,344.5 139.62,344.5 151.25,344.5 " fill="none" id="ca_scp1_d4_adpt_timer-ca_scp1_d4_adpt_conv" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[3637ca738a5c7b0320b423c41ff7e0a5]
+link ca_scp1_d4_adpt_conv to ca_scp1_ds1--><path d="M188.77,362.63 C182.33,383.71 171.28,419.9 163.37,445.83 " fill="none" id="ca_scp1_d4_adpt_conv-ca_scp1_ds1" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[294e57bf6f39a09d9b12b04ec6d40614]
+link ca_scp1_d4_adpt_conv to ca_scp1_ds2--><path d="M210.21,362.63 C230.17,383.71 264.43,419.9 288.97,445.83 " fill="none" id="ca_scp1_d4_adpt_conv-ca_scp1_ds2" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><!--MD5=[1635e604997374ea39dbea3fd2780885]
+link ca_scp1_d4_adpt_conv to ca_scp1_d4_cache_rest--><path d="M236.87,344.5 C256.48,344.5 279.72,344.5 299.63,344.5 " fill="none" id="ca_scp1_d4_adpt_conv-to-ca_scp1_d4_cache_rest" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="304.88,344.5,295.88,340.5,299.88,344.5,295.88,348.5,304.88,344.5" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="32" x="254.75" y="338.0684">POST</text><!--MD5=[f8db02ad10b224b6486600b7aa8dd634]
+link ca_scp1_d4_ui_srv to ca_scp1_d4_cache_rest--><path d="M380.99,190.59 C366.59,200.36 350.94,214.05 343,231 C331.06,256.49 333.2,288.93 337.34,312.42 " fill="none" id="ca_scp1_d4_ui_srv-to-ca_scp1_d4_cache_rest" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="338.31,317.59,340.5694,308.0038,337.3817,312.6769,332.7085,309.4892,338.31,317.59" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="24" x="344" y="244.5684">GET</text><!--MD5=[44aa690317b48c318802daa3d4a7cfff]
+@startuml
+!include include/d4_inc_scope.puml
+
+package ca as "Company ACME" {
+    $d4scope(ca, scp1, "Networking (Scope 1)", $show_ds1=true, $show_ds2=true, $show_ds3=false, $show_rproxy=false, $show_cache=true, $show_ui=true, $show_adpt=true)
+}
+
+
+
+@enduml
+
+@startuml
+
+skinparam LegendFontSize 8
+
+
+
+
+
+
+
+
+
+
+package ca as "Company ACME" {
+        package ca_scp1 as "Networking (Scope 1)" {
+
+            node ca_scp1_ds1 as "(foreign)\ndatasource 1"
+
+            node ca_scp1_ds2 as "(foreign)\ndatasource 2"
+
+
+
+                card ca_scp1_d4_cache as "d4 cache" {
+        rectangle ca_scp1_d4_cache_rest as "REST-\ninterface"
+        storage ca_scp1_d4_cache_store as "volatile\nstorage"
+        ca_scp1_d4_cache_store <-l-> ca_scp1_d4_cache_rest #green
+    }
+
+                card ca_scp1_d4_ui as "d4 UI" {
+        rectangle ca_scp1_d4_ui_srv as "UI\nserver"
+    }
+
+            actor ca_scp1_d4_actor_ui as "User"
+            ca_scp1_d4_actor_ui -l-> ca_scp1_d4_ui_srv : GET
+
+            ca_scp1_d4_cache_rest <- ca_scp1_d4_actor_ui : GET
+
+                card ca_scp1_d4_adpt as "d4 adapter" {
+        control ca_scp1_d4_adpt_timer as "timer"
+        rectangle ca_scp1_d4_adpt_conv as "converter"
+        ca_scp1_d4_adpt_timer -r- ca_scp1_d4_adpt_conv
+    }
+
+
+            ca_scp1_ds1 .u. ca_scp1_d4_adpt_conv
+
+            ca_scp1_ds2 .u. ca_scp1_d4_adpt_conv
+
+            ca_scp1_d4_adpt_conv -r-> ca_scp1_d4_cache_rest : POST
+
+
+            ca_scp1_d4_ui_srv -d-> ca_scp1_d4_cache_rest : GET
+
+    }
+}
+
+
+
+@enduml
+
+PlantUML version 1.2021.14(Fri Nov 12 17:46:50 CET 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: de
+Country: DE
+--></g></svg>

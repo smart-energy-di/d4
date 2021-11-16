@@ -1,0 +1,9 @@
+@startuml
+!include include/d4_inc_scope.puml
+
+package cb as "Company B" {
+    $d4scope(cb, scp1, "Scope 1", $show_ds1=true, $show_ds2=true, $show_ds3=true, $show_rproxy=true, $show_cache=true, $show_ui=true, $show_adpt=true)
+    $d4scope(cb, scp2, "Scope 2", $show_ds1=true, $show_ds2=true, $show_ds3=true, $show_rproxy=true, $show_cache=true, $show_ui=true, $show_adpt=true)
+}
+
+@enduml

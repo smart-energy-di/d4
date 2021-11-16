@@ -30,3 +30,5 @@ project_slug [base-project]:
 # See more
 
 see documentation [here]({{cookiecutter.project_slug}}/docs)
+
+see a very first intro [here](./docs/intro.md)

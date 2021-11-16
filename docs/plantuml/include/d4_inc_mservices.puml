@@ -1,0 +1,40 @@
+@startuml
+!include d4_inc_base.puml
+
+!procedure $d4rproxy($company, $scope)
+    card %string($company+"_"+$scope+"_d4_prxy") as "d4 proxy" {
+        rectangle %string($company+"_"+$scope+"_d4_prxy_conv") as "reverse\nproxy"
+    }
+!endprocedure
+
+!procedure $d4cache($company, $scope)
+    card %string($company+"_"+$scope+"_d4_cache") as "d4 cache" {
+        rectangle %string($company+"_"+$scope+"_d4_cache_rest") as "REST-\ninterface"
+        storage %string($company+"_"+$scope+"_d4_cache_store") as "volatile\nstorage"
+        %string($company+"_"+$scope+"_d4_cache_store") <-l-> %string($company+"_"+$scope+"_d4_cache_rest") #green
+    }
+!endprocedure
+
+!procedure $d4ui($company, $scope)
+    card %string($company+"_"+$scope+"_d4_ui") as "d4 UI" {
+        rectangle %string($company+"_"+$scope+"_d4_ui_srv") as "UI\nserver"
+    }
+!endprocedure
+
+!procedure $d4adpt($company, $scope)
+    card %string($company+"_"+$scope+"_d4_adpt") as "d4 adapter" {
+        control %string($company+"_"+$scope+"_d4_adpt_timer") as "timer"
+        rectangle %string($company+"_"+$scope+"_d4_adpt_conv") as "converter"
+        %string($company+"_"+$scope+"_d4_adpt_timer") -r- %string($company+"_"+$scope+"_d4_adpt_conv")
+    }
+!endprocedure
+
+!procedure $d4spot($company, $scope)
+    card %string($company+"_"+$scope+"_d4_spot") as "d4 spot" {
+        storage %string($company+"_"+$scope+"_d4_spot_store") as "reliable\nstorage"
+        rectangle %string($company+"_"+$scope+"_d4_spot_webio") as "UI-Form &\nUI-Im-/Export &\nREST-Interface"
+        %string($company+"_"+$scope+"_d4_spot_store") <-[#green]> %string($company+"_"+$scope+"_d4_spot_webio")
+        }
+!endprocedure
+
+@enduml

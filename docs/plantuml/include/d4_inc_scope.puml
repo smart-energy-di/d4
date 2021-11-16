@@ -1,0 +1,72 @@
+@startuml
+!include d4_inc_mservices.puml
+!procedure $d4scope($company, $scope, $scope_name, $show_ds1=true, $show_ds2=true, $show_ds3=true, $show_rproxy=true, $show_cache=true, $show_ui=true, $show_ui_user=true, $show_adpt=true)
+    package %string($company+"_"+$scope) as "$scope_name" {
+
+        !if ($show_ds1==true)
+            node %string($company+"_"+$scope+"_ds1") as "(foreign)\ndatasource 1"
+        !endif
+
+        !if ($show_ds2==true)
+            node %string($company+"_"+$scope+"_ds2") as "(foreign)\ndatasource 2"
+        !endif
+
+        !if ($show_ds3==true)
+            node %string($company+"_"+$scope+"_ds3") as "(own) datasource 3"{
+                $d4spot($company, $scope)
+            }
+        !endif
+
+        !if ($show_rproxy==true)
+            $d4rproxy($company, $scope)
+        !endif
+
+        !if ($show_cache==true)
+            $d4cache($company, $scope)
+        !endif
+
+        !if ($show_ui==true)
+            $d4ui($company, $scope)
+        !endif
+
+        !if ($show_ui==true) && ($show_ui_user==true)
+            actor %string($company+"_"+$scope+"_d4_actor_ui") as "User"
+            %string($company+"_"+$scope+"_d4_actor_ui") -l-> %string($company+"_"+$scope+"_d4_ui_srv") : GET
+        !endif
+
+        !if ($show_ui==true) && ($show_ui_user==true) && ($show_cache==true)
+            %string($company+"_"+$scope+"_d4_cache_rest") <- %string($company+"_"+$scope+"_d4_actor_ui") : GET
+        !endif
+
+        !if ($show_adpt==true)
+            $d4adpt($company, $scope)
+        !endif
+
+'        Connections
+        !if ($show_ds3==true) && ($show_adpt==true)
+            %string($company+"_"+$scope+"_d4_spot_webio") <-u- %string($company+"_"+$scope+"_d4_adpt_conv") : GET
+        !endif
+
+        !if ($show_ds1==true) && ($show_adpt==true)
+            %string($company+"_"+$scope+"_ds1") .u. %string($company+"_"+$scope+"_d4_adpt_conv")
+        !endif
+
+        !if ($show_ds2==true) && ($show_adpt==true)
+            %string($company+"_"+$scope+"_ds2") .u. %string($company+"_"+$scope+"_d4_adpt_conv")
+        !endif
+
+        !if ($show_adpt==true) && ($show_cache==true)
+            %string($company+"_"+$scope+"_d4_adpt_conv") -r-> %string($company+"_"+$scope+"_d4_cache_rest") : POST
+        !endif
+
+        !if ($show_rproxy==true) && ($show_cache==true)
+            %string($company+"_"+$scope+"_d4_prxy_conv") -d-> %string($company+"_"+$scope+"_d4_cache_rest") : GET
+        !endif
+
+        !if ($show_ui==true) && ($show_cache==true)
+            %string($company+"_"+$scope+"_d4_ui_srv") -d-> %string($company+"_"+$scope+"_d4_cache_rest") : GET
+        !endif
+
+    }
+!endprocedure
+@enduml

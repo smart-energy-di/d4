@@ -1,0 +1,8 @@
+@startuml
+!include include/d4_inc_scope.puml
+
+package co as "Company Oceanic Airlines" {
+    $d4scope(co, scp1, "Booking system (Scope 1)", $show_ds1=true, $show_ds2=false, $show_ds3=false, $show_rproxy=false, $show_cache=true, $show_ui=true, $show_ui_user=true, $show_adpt=true)
+}
+
+@enduml

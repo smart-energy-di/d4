@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="203px" preserveAspectRatio="none" style="width:241px;height:203px;background:#FFFFFF;" version="1.1" viewBox="0 0 241 203" width="241px" zoomAndPan="magnify"><defs/><g><rect fill="#FEFECE" height="40.9766" rx="5" ry="5" style="stroke:#FEFECE;stroke-width:1.5;" width="22" x="10" y="80.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="27" y="96.0352"/><line style="stroke:#A80036;stroke-width:1.0;" x1="10" x2="32" y1="100.9883" y2="100.9883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="27" y="116.5234"/><rect fill="none" height="40.9766" rx="5" ry="5" style="stroke:#A80036;stroke-width:1.5;" width="22" x="10" y="80.5"/><rect fill="#FEFECE" height="81.9531" rx="5" ry="5" style="stroke:#FEFECE;stroke-width:1.5;" width="140" x="80" y="10"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="13" x="85" y="25.5352">id</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="45" x="133" y="25.5352">37814</text><line style="stroke:#A80036;stroke-width:1.0;" x1="128" x2="128" y1="10" y2="30.4883"/><line style="stroke:#A80036;stroke-width:1.0;" x1="80" x2="220" y1="30.4883" y2="30.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="85" y="46.0234">name</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60" x="133" y="46.0234">dmz-net</text><line style="stroke:#A80036;stroke-width:1.0;" x1="128" x2="128" y1="30.4883" y2="50.9766"/><line style="stroke:#A80036;stroke-width:1.0;" x1="80" x2="220" y1="50.9766" y2="50.9766"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="85" y="66.5117">type</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="133" y="66.5117">dmz</text><line style="stroke:#A80036;stroke-width:1.0;" x1="128" x2="128" y1="50.9766" y2="71.4648"/><line style="stroke:#A80036;stroke-width:1.0;" x1="80" x2="220" y1="71.4648" y2="71.4648"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="13" x="85" y="87">ip</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="82" x="133" y="87">10.1.2.0/24</text><line style="stroke:#A80036;stroke-width:1.0;" x1="128" x2="128" y1="71.4648" y2="91.9531"/><rect fill="none" height="81.9531" rx="5" ry="5" style="stroke:#A80036;stroke-width:1.5;" width="140" x="80" y="10"/><rect fill="#FEFECE" height="81.9531" rx="5" ry="5" style="stroke:#FEFECE;stroke-width:1.5;" width="158" x="71" y="110"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="13" x="76" y="125.5352">id</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="45" x="124" y="125.5352">72458</text><line style="stroke:#A80036;stroke-width:1.0;" x1="119" x2="119" y1="110" y2="130.4883"/><line style="stroke:#A80036;stroke-width:1.0;" x1="71" x2="229" y1="130.4883" y2="130.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="76" y="146.0234">name</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="124" y="146.0234">webserver-net</text><line style="stroke:#A80036;stroke-width:1.0;" x1="119" x2="119" y1="130.4883" y2="150.9766"/><line style="stroke:#A80036;stroke-width:1.0;" x1="71" x2="229" y1="150.9766" y2="150.9766"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="76" y="166.5117">type</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="124" y="166.5117">public</text><line style="stroke:#A80036;stroke-width:1.0;" x1="119" x2="119" y1="150.9766" y2="171.4648"/><line style="stroke:#A80036;stroke-width:1.0;" x1="71" x2="229" y1="171.4648" y2="171.4648"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="13" x="76" y="187">ip</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="124" y="187">172.16.1.0/24</text><line style="stroke:#A80036;stroke-width:1.0;" x1="119" x2="119" y1="171.4648" y2="191.9531"/><rect fill="none" height="81.9531" rx="5" ry="5" style="stroke:#A80036;stroke-width:1.5;" width="158" x="71" y="110"/><path d="M22,90 L35,90 C47.5516,90 60.4836,87.8741 72.9343,84.615 " fill="none" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:3.0,3.0;"/><path d="M73.7513,87.5224 L75.1149,84.0023 L72.1174,81.7075 L80.203,82.5726 L73.7513,87.5224 " fill="#A80036" style="stroke:#A80036;stroke-width:1.0;"/><ellipse cx="22" cy="90" fill="#A80036" rx="3" ry="3" style="stroke:#A80036;stroke-width:1.0;"/><path d="M22,111 L35,111 C44.5643,111 54.3392,112.2592 63.9489,114.3309 " fill="none" style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:3.0,3.0;"/><path d="M63.2548,117.2549 L66.1419,114.8514 L64.6429,111.4068 L71.259,116.066 L63.2548,117.2549 " fill="#A80036" style="stroke:#A80036;stroke-width:1.0;"/><ellipse cx="22" cy="111" fill="#A80036" rx="3" ry="3" style="stroke:#A80036;stroke-width:1.0;"/><!--MD5=[6a0569742f83685bf227ab6558f78c6f]
+@startjson
+'#highlight "1" / "id"
+[
+    {
+       "id":"37814",
+       "name":"dmz-net",
+       "type":"dmz",
+       "ip":"10.1.2.0/24"
+    },
+    {
+       "id":"72458",
+       "name":"webserver-net",
+       "type":"public",
+       "ip":"172.16.1.0/24"
+    }
+]
+@endjson
+
+@startjson
+[
+    {
+       "id":"37814",
+       "name":"dmz-net",
+       "type":"dmz",
+       "ip":"10.1.2.0/24"
+    },
+    {
+       "id":"72458",
+       "name":"webserver-net",
+       "type":"public",
+       "ip":"172.16.1.0/24"
+    }
+]
+@endjson
+
+PlantUML version 1.2021.14(Fri Nov 12 17:46:50 CET 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: de
+Country: DE
+--></g></svg>

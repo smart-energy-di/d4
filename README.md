@@ -11,7 +11,7 @@
 
 Generate a backend and frontend stack using Python and json-ld, including interactive API documentation.
 
-## How to use it
+## How to use it in a virtual python environment.
 
 ### optionally create a virtual environment like
 
@@ -33,9 +33,34 @@ $ cookiecutter .
 project_name [Base Project]:
 project_slug [base-project]:
 ```
+cookiecutter has created a project under _base-project_.
 
-# See more
+### Now we start - without any further changes - the backend
 
-see documentation [here]({{cookiecutter.project_slug}}/docs)
+```bash
+$ cd base-project/backend/
+$ uvicorn app.main:app --reload
+INFO:     Will watch for changes in these directories: ['[...]/base-project/backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [50623] using statreload
+INFO:     Started server process [50625]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+```
+### From here on, the generated µService runs.
 
-see a very first intro [here](./docs/intro.md)
+```bash
+$ curl http://127.0.0.1:8000
+{"message":"Hello world! From FastAPI running on Uvicorn with Gunicorn. Using Python 3.10"}
+```
+## More to read
+
+### There is [_documentation_]({{cookiecutter.project_slug}}/docs).
+
+### There is an [_introduction_](./docs/intro.md) to the d4 basics.
+
+> **What is the difference between _introduction_ and _documentation_?**
+> 
+> The _introduction_ is for clarification of how d4 works, it is not included in the project cookiecutter will have created.
+>
+> The _documentation_ is part of the project and thus intended for later use in the generated project.

@@ -1,14 +1,16 @@
 @startjson
-#highlight "1" / "id"
+'#highlight "1" / "id"
 [
     {
        "id":"37814",
        "name":"dmz-net",
+       "type":"dmz",
        "ip":"10.1.2.0/24"
     },
     {
        "id":"72458",
        "name":"webserver-net",
+       "type":"public",
        "ip":"172.16.1.0/24"
     }
 ]

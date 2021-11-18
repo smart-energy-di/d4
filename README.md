@@ -17,7 +17,7 @@ d4 is a kind of template project for creating µServices based on python.
 These µServices collect existing data (e.g. inventory data from IT systems) and make this data available
 in a distributed way via standardised interfaces (REST-API) and in a standardised form (JSON-LD).
 
-For this purpose, the µServices collect data from several Single Points of Truth [SPOTs](https://en.wikipedia.org/wiki/Single_source_of_truth)
+For this purpose, the µServices collect data from several Single Points of Truth ([SPOTs](https://en.wikipedia.org/wiki/Single_source_of_truth))
 and offer possibilities to link the individual data sets (from different SPOTs) with each other.
 There is also a µService template that can be used to create a very simple SPOT with a web UI and CSV/Excel interface.
 This is used for data enrichment (distributed in several locations) that cannot be automatically read from systems.

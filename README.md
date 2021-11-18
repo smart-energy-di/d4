@@ -11,6 +11,30 @@
 
 Generate a backend and frontend stack using Python and json-ld, including interactive API documentation.
 
+## d4? What is d4 for?
+
+d4 is a kind of template project for creating µServices based on python.
+These µServices collect existing data (e.g. inventory data from IT systems) and make this data available
+in a distributed way via standardised interfaces (REST-API) and in a standardised form (JSON-LD).
+
+For this purpose, the µServices collect data from several Single Points of Truth [SPOTs](https://en.wikipedia.org/wiki/Single_source_of_truth)
+and offer possibilities to link the individual data sets (from different SPOTs) with each other.
+There is also a µService template that can be used to create a very simple SPOT with a web UI and CSV/Excel interface.
+This is used for data enrichment (distributed in several locations) that cannot be automatically read from systems.
+The templates produce µServices that are intended to enable the value-added consolidation of distributed data across
+organisational and departmental boundaries. 
+
+### Some feature aspects:
+
+- µservices adapting and caching [SPOTs](https://en.wikipedia.org/wiki/Single_source_of_truth)
+- robust and fast, based on [python](https://www.python.org/), [fastapi](https://fastapi.tiangolo.com/), [docker](https://www.docker.com/)
+- uses [OpenAPI](https://en.wikipedia.org/wiki/OpenAPI_Specification) (formerly Swagger)
+- uses [JSON-LD](https://www.w3.org/TR/json-ld/) including schemas
+- a µService can enrich information from its "neighbourhood" itself
+- at a "psydocentral" location, a lot of data from µServices can be consolidated in a "big graph DB".
+- the template project evolved from various iterations to improve heterogeneous IT infrastructures with "data driven" aspects.
+
+
 ## How to use it in a virtual python environment.
 
 ### optionally create a virtual environment like

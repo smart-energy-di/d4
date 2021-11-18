@@ -128,3 +128,5 @@ dmypy.json
 .pyre/
 /.idea
 /base-project
+/acme/
+/oceanic-airlines/

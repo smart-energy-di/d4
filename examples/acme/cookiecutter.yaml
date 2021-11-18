@@ -1,0 +1,4 @@
+default_context:
+    project_name: "ACME"
+    docker_image_backend_port: 9110
+    docker_image_frontend_port: 9120

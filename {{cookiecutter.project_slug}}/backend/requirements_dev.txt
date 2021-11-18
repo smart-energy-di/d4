@@ -1,1 +1,2 @@
+-r requirements_prd.txt
 pytest-docker

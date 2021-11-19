@@ -35,4 +35,4 @@ jobs:
           echo "cd \{\{cookiecutter.project_slug\}\}"
           cd \{\{cookiecutter.project_slug\}\}
           echo "start pylint"
-          pylint --rcfile=.pylintrc **/*.py | pylint-exit
+          pylint --rcfile=.pylintrc **/*.py | pylint-exit $?

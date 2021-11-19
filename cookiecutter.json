@@ -2,8 +2,8 @@
     "project_name": "Base Project",
     "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
     "docker_image_prefix": "d4",
-    "docker_image_backend": "{{cookiecutter.docker_image_prefix}}backend",
+    "docker_image_backend": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_backend",
     "docker_image_backend_port": 9010,
-    "docker_image_frontend": "{{cookiecutter.docker_image_prefix}}frontend",
+    "docker_image_frontend": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_frontend",
     "docker_image_frontend_port": 9020
 }

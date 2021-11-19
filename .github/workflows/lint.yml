@@ -20,7 +20,11 @@ jobs:
           python-version: 3.9.8
       - name: Install dependencies
         run: |
+          echo "upgrade pip"
           python -m pip install --upgrade pip
+          echo "install requirements_dev.txt"
           pip install -r requirements_dev.txt
+          echo "install pylint"
+          pip install pylint
       - name: Run pylint
         run: pylint **/*.py

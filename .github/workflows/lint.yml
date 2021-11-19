@@ -27,4 +27,10 @@ jobs:
           echo "install pylint"
           pip install pylint
       - name: Run pylint
-        run: pylint **/*.py
+        run: |
+          echo "pwd"
+          pwd
+          echo "ls -la"
+          ls -la
+          echo "start pylint"
+          pylint **/*.py

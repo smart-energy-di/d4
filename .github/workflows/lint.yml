@@ -1,0 +1,18 @@
+name: PyLint Runner
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  gitHubActionForPylint:
+    name: GitHub Action for pylint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: GitHub Action for pylint
+        uses: cclauss/GitHub-Action-for-pylint@master
+        with:
+          args = pip install -r requirements.txt ; pylint **/*.py"

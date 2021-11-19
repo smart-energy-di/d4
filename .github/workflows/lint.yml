@@ -24,8 +24,8 @@ jobs:
           python -m pip install --upgrade pip
           echo "install requirements_dev.txt"
           pip install -r requirements_dev.txt
-          echo "install pylint"
-          pip install pylint
+          echo "install pylint pylint-exit"
+          pip install pylint pylint-exit
       - name: Run pylint
         run: |
           echo "pwd"
@@ -35,4 +35,4 @@ jobs:
           echo "cd \{\{cookiecutter.project_slug\}\}"
           cd \{\{cookiecutter.project_slug\}\}
           echo "start pylint"
-          pylint **/*.py
+          pylint --rcfile=.pylintrc **/*.py | pylint-exit

@@ -36,3 +36,4 @@ jobs:
           cd \{\{cookiecutter.project_slug\}\}
           echo "start pylint"
           pylint --rcfile=.pylintrc --errors-only **/*.py
+          echo "end pylint"

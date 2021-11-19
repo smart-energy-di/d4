@@ -32,5 +32,7 @@ jobs:
           pwd
           echo "ls -la"
           ls -la
+          echo "cd \{\{cookiecutter.project_slug\}\}"
+          cd \{\{cookiecutter.project_slug\}\}
           echo "start pylint"
           pylint **/*.py

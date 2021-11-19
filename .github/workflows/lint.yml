@@ -10,7 +10,7 @@ jobs:
   gitHubActionForPylint:
     runs-on: ubuntu-latest
     env:
-      working-directory: {{cookiecutter.project_slug}}
+      working-directory: \{\{cookiecutter.project_slug\}\}
     steps:
       - name: Checkout
         uses: actions/checkout@v2

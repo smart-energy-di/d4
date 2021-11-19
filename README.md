@@ -2,10 +2,10 @@
 
 ![GitHub](https://img.shields.io/github/license/mleist/d4?color=00998a)
 [![build](https://github.com/mleist/d4/actions/workflows/config.yml/badge.svg)](https://github.com/mleist/d4/actions/workflows/config.yml)
-![GitHub Repo stars](https://img.shields.io/github/stars/mleist/d4?color=%2300998a&style=flat)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mleist/d4?color=%2300998a&style=flat)
+[![GitHub Repo stars](https://img.shields.io/github/stars/mleist/d4?color=%2300998a&style=flat)](https://github.com/mleist/d4/stargazers)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mleist/d4?color=%2300998a&style=flat)](https://github.com/mleist/d4/graphs/commit-activity)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg?color=%2300998a&style=flat)](https://www.python.org/)
-![GitHub top language](https://img.shields.io/github/languages/top/mleist/d4?color=%2300998a)
+[![GitHub top language](https://img.shields.io/github/languages/top/mleist/d4?color=%2300998a)](https://github.com/mleist/d4/search?l=python)
 ![https://github.com/cookiecutter/cookiecutter](https://img.shields.io/badge/cookiecutter-template-D4AA00.svg?style=flat&logo=cookiecutter&color=%2300998a)
 
 

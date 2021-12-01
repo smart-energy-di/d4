@@ -1,15 +1,17 @@
 {
     "project_name": "Base Project",
     "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
-    "enable_adapter": "y",
-    "enable_cache": "y",
-    "enable_ui": "y",
-    "enable_proxy": "y",
+    "enable_adapter": "n",
+    "enable_cache": "n",
+    "enable_ui": "n",
+    "enable_proxy": "n",
     "enable_spot": "y",
     "test_auth_realm": "{{cookiecutter.project_slug}}",
     "docker_image_prefix": "d4",
     "docker_image_backend": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_backend",
     "docker_image_backend_port": 9010,
     "docker_image_frontend": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_frontend",
-    "docker_image_frontend_port": 9020
+    "docker_image_frontend_port": 9020,
+    "docker_image_spot": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_spot",
+    "docker_image_spot_port": 9030
 }

@@ -18,16 +18,21 @@ def remove(filepath):
 
 
 if not enable_adapter:
+    remove('./test-adapter-docker-compose.yml')
     remove('./adapter')
 
 if not enable_cache:
+    remove('./test-cache-docker-compose.yml')
     remove('./cache')
 
 if not enable_ui:
+    remove('./test-ui-docker-compose.yml')
     remove('./ui')
 
 if not enable_proxy:
+    remove('./test-proxy-docker-compose.yml')
     remove('./proxy')
 
 if not enable_spot:
+    remove('./test-spot-docker-compose.yml')
     remove('./spot')

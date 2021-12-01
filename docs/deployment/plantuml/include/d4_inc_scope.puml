@@ -1,20 +1,28 @@
 @startuml
 !include d4_inc_mservices.puml
-!procedure $d4scope($company, $scope, $scope_name, $show_ds1=true, $show_ds2=true, $show_ds3=true, $show_rproxy=true, $show_cache=true, $show_ui=true, $show_ui_user=true, $show_adpt=true)
+!procedure $d4scope($company, $scope, $scope_name, $show_ds1=false, $show_ds2=false, $show_ds3=false, $show_ds4=false, $show_ds5=false, $show_rproxy=true, $show_cache=true, $show_ui=true, $show_ui_user=true, $show_adpt=true)
     package %string($company+"_"+$scope) as "$scope_name" {
 
         !if ($show_ds1==true)
-            node %string($company+"_"+$scope+"_ds1") as "(foreign)\ndatasource 1"
+            node %string($company+"_"+$scope+"_ds1") as "(foreign)\ndatasource 1\nfirewall rules"
         !endif
 
         !if ($show_ds2==true)
-            node %string($company+"_"+$scope+"_ds2") as "(foreign)\ndatasource 2"
+            node %string($company+"_"+$scope+"_ds2") as "(foreign)\ndatasource 2\nrouting tables"
         !endif
 
         !if ($show_ds3==true)
             node %string($company+"_"+$scope+"_ds3") as "(own) datasource 3"{
                 $d4spot($company, $scope)
             }
+        !endif
+
+        !if ($show_ds4==true)
+            node %string($company+"_"+$scope+"_ds4") as "(foreign)\ndatasource 4\ncompute VMs"
+        !endif
+
+        !if ($show_ds5==true)
+            node %string($company+"_"+$scope+"_ds5") as "(foreign)\ndatasource 5\nbooking entries"
         !endif
 
         !if ($show_rproxy==true)
@@ -53,6 +61,14 @@
 
         !if ($show_ds2==true) && ($show_adpt==true)
             %string($company+"_"+$scope+"_ds2") .u. %string($company+"_"+$scope+"_d4_adpt_conv")
+        !endif
+
+        !if ($show_ds4==true) && ($show_adpt==true)
+            %string($company+"_"+$scope+"_ds4") .u. %string($company+"_"+$scope+"_d4_adpt_conv")
+        !endif
+
+        !if ($show_ds5==true) && ($show_adpt==true)
+            %string($company+"_"+$scope+"_ds5") .u. %string($company+"_"+$scope+"_d4_adpt_conv")
         !endif
 
         !if ($show_adpt==true) && ($show_cache==true)

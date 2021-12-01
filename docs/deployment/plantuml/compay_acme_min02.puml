@@ -2,7 +2,7 @@
 !include include/d4_inc_scope.puml
 
 package ca as "Company ACME" {
-    $d4scope(ca, scp1, "Networking (Scope 1)", $show_ds1=true, $show_ds2=true, $show_ds3=false, $show_rproxy=false, $show_cache=false, $show_ui=false, $show_adpt=false)
+    $d4scope(ca, scp1, "Networking (Scope 1)", $show_ds1=true, $show_ds2=false, $show_ds3=false, $show_rproxy=false, $show_cache=false, $show_ui=false, $show_adpt=false)
 }
 
 @enduml

@@ -2,7 +2,7 @@
 !include include/d4_inc_scope.puml
 
 package ca as "Company ACME" {
-    $d4scope(ca, scp1, "Networking (Scope 1)", $show_ds1=true, $show_ds2=true, $show_ds3=false, $show_rproxy=true, $show_cache=true, $show_ui=false, $show_ui_user=false, $show_adpt=true)
+    $d4scope(ca, scp1, "Networking (Scope 1)", $show_ds1=true, $show_ds2=false, $show_ds3=false, $show_rproxy=true, $show_cache=true, $show_ui=false, $show_ui_user=false, $show_adpt=true)
     actor ca_scp1_d4_actor_rproxy as "User"
     ca_scp1_d4_prxy_conv <-- ca_scp1_d4_actor_rproxy
 

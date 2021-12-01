@@ -1,4 +1,4 @@
 @startuml
-!include compay_acme.puml
-!include compay_b.puml
+!include company_acme.puml
+!include company_b.puml
 @enduml

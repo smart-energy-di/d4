@@ -1,0 +1,16 @@
+@startjson
+'#highlight "1" / "id"
+
+{
+  "@context": {
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "id": "http://schema.org/identifier",
+    "scope": "http://schema.d4.acme.example.com/network/scope",
+    "name": "http://schema.d4.acme.example.com/network/name",
+    "IPv4_net": "http://schema.d4.acme.example.com/network/IPv4_net",
+    "type": "http://schema.d4.acme.example.com/network/type"
+  }
+}
+
+
+@endjson

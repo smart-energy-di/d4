@@ -22,7 +22,7 @@
         !endif
 
         !if ($show_ds5==true)
-            node %string($company+"_"+$scope+"_ds5") as "(foreign)\ndatasource 5\nbooking entries"
+            node %string($company+"_"+$scope+"_ds5") as "(foreign)\ndatasource 5\nbooking systems"
         !endif
 
         !if ($show_rproxy==true)

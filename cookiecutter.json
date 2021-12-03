@@ -1,12 +1,12 @@
 {
     "project_name": "Base Project",
     "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
+    "test_auth_realm": "{{cookiecutter.project_slug}}-realm",
     "enable_adapter": "n",
     "enable_cache": "n",
     "enable_ui": "n",
     "enable_proxy": "n",
     "enable_spot": "y",
-    "test_auth_realm": "{{cookiecutter.project_slug}}",
     "docker_image_prefix": "d4",
     "docker_image_backend": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_backend",
     "docker_image_backend_port": 9010,

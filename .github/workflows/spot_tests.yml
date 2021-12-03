@@ -45,6 +45,7 @@ jobs:
           docker-compose -f test-spot-docker-compose.yml ps
           docker-compose -f test-spot-docker-compose.yml up -d
           docker-compose -f test-spot-docker-compose.yml ps
+          echo ---Containers up---
       - name: Run tests
         working-directory: ./testing-project
         run: |

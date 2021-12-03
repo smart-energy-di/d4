@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.7"
 # created with cookiecutter for project '{{ cookiecutter.project_name }}'
 services:
   keycloak:

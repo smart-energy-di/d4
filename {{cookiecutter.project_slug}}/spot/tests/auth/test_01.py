@@ -1,33 +1,38 @@
-import pytest
 import requests
-
-from requests.exceptions import ConnectionError
-
-
-def is_responsive(url):
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            return True
-    except ConnectionError:
-        return False
+from lxml import html
 
 
-@pytest.fixture(scope="session")
-def keycloak_service(docker_ip, docker_services):
-    """Ensure that HTTP service is up and responsive."""
-
-    # `port_for` takes a container port and returns the corresponding host port
-    port = docker_services.port_for("keycloak", 8080)
-    url = "http://{}:{}".format(docker_ip, port)
-    docker_services.wait_until_responsive(
-        timeout=100.0, pause=0.1, check=lambda: is_responsive(url)
-    )
-    return url
-
-
-def test_keycloak_status_code(keycloak_service):
+def test_keycloak_alice01(docker_spot):
     status = 200
-    response = requests.get(keycloak_service + "/")
+    session = requests.Session()
+    url_1 = 'http://spot:9030/finance/salary/alice'
+    resp_1 = session.get(url_1)
+    tree = html.fromstring(resp_1.content)
+    url_2 = tree.xpath('//form[@id="kc-form-login"]')[0].attrib['action']
+    form_data = {'username': 'alice', 'password': 'alice', 'credentialId': ''}
+    resp_2 = session.post(url_2, data=form_data)
+    assert resp_2.json() == {"msg": "success", "name": "alice"}
 
-    assert response.status_code == status
+
+def test_keycloak_bob01(docker_spot):
+    status = 200
+    session = requests.Session()
+    url_1 = 'http://spot:9030/finance/salary/bob'
+    resp_1 = session.get(url_1)
+    tree = html.fromstring(resp_1.content)
+    url_2 = tree.xpath('//form[@id="kc-form-login"]')[0].attrib['action']
+    form_data = {'username': 'bob', 'password': 'bob', 'credentialId': ''}
+    resp_2 = session.post(url_2, data=form_data)
+    assert resp_2.json() == {"msg": "success", "name": "bob"}
+
+
+def test_keycloak_bob02(docker_spot):
+    status = 200
+    session = requests.Session()
+    url_1 = 'http://spot:9030/finance/salary/alice'
+    resp_1 = session.get(url_1)
+    tree = html.fromstring(resp_1.content)
+    url_2 = tree.xpath('//form[@id="kc-form-login"]')[0].attrib['action']
+    form_data = {'username': 'bob', 'password': 'bob', 'credentialId': ''}
+    resp_2 = session.post(url_2, data=form_data)
+    assert resp_2.json() == {"msg": "success", "name": "alice"}

@@ -9,26 +9,29 @@ services:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
       - KEYCLOAK_IMPORT=/tmp/realm.json
+      - KEYCLOAK_LOGLEVEL=INFO
     volumes:
       - ./spot/tests/realm.json:/tmp/realm.json
-#  opa:
-#    image: openpolicyagent/opa:latest
-#    ports:
-#      - 8181:8181
-#    command:
-#      - "run"
-#      - "--server"
-#      - "--log-level=debug"
-#      - "/policy/auth.rego"
-#    volumes:
-#      - ./policy:/policy
+  opa:
+    image: openpolicyagent/opa:latest
+    ports:
+      - 8181:8181
+    command:
+      - "run"
+      - "--server"
+      - "--log-level=debug"
+      - "--log-format=json"
+      - "/policy/test.rego"
+    volumes:
+      - ./spot/tests/policy:/policy
   spot:
     image: '${DOCKER_IMAGE_SPOT?Variable not set}:${TAG-latest}'
     env_file:
       - .env
     environment:
-      - SERVER_NAME=${DOMAIN?Variable not set}
-      - SERVER_HOST=https://${DOMAIN?Variable not set}
+      - SERVER_NAME=spot
+      - SERVER_HOST=http://spot:9030
+      - LOG_LEVEL=debug
       # Allow explicit env var override for tests
     build:
       context: ./spot

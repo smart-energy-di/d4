@@ -12,13 +12,13 @@ oidc_config = OIDCConfig(
     client_id="d4-client",
     client_secret="1f02bb76-eb58-40e2-928d-13f5c35794c1",
     # ---------------------------------------------------------------------------
-    # well_known_endpoint="http://keycloak:8080/auth/realms/d4-realm/.well-known/openid-configuration",  # noqa
+    # well_known_endpoint="http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}/.well-known/openid-configuration",  # noqa
     well_known_endpoint=None,
-    issuer='http://keycloak:8080/auth/realms/d4-realm',
-    authorization_endpoint='http://keycloak:8080/auth/realms/d4-realm/protocol/openid-connect/auth',
-    token_endpoint='http://keycloak:8080/auth/realms/d4-realm/protocol/openid-connect/token',
-    jwks_uri='http://keycloak:8080/auth/realms/d4-realm/protocol/openid-connect/certs',
-    userinfo_endpoint='http://keycloak:8080/auth/realms/d4-realm/protocol/openid-connect/userinfo'
+    issuer='http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}',
+    authorization_endpoint='http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}/protocol/openid-connect/auth',
+    token_endpoint='http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}/protocol/openid-connect/token',
+    jwks_uri='http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}/protocol/openid-connect/certs',
+    userinfo_endpoint='http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}/protocol/openid-connect/userinfo'
 )
 
 oidc_auth = OIDCAuthentication(oidc_config)

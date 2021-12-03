@@ -37,11 +37,18 @@ jobs:
         working-directory: ./testing-project
         run: |
           pip install -r ./spot/requirements_dev.txt
-      - name: Run tests
+      - name: Build image
         working-directory: ./testing-project
         run: |
           docker-compose -f test-spot-docker-compose.yml pull
-          docker-compose -f test-spot-docker-compose.yml build spot
+          docker-compose -f test-spot-docker-compose.yml build
+          docker-compose -f test-spot-docker-compose.yml ps
+          docker-compose -f test-spot-docker-compose.yml up -d
+          docker-compose -f test-spot-docker-compose.yml ps
+      - name: Run tests
+        working-directory: ./testing-project
+        run: |
+          docker-compose -f test-spot-docker-compose.yml ps
           pytest spot/tests
       - name: Stop Docker compose
         working-directory: ./testing-project

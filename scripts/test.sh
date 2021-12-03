@@ -26,8 +26,8 @@ ls -la ./
 
 pip install -r ./spot/requirements_dev.txt
 
-pytest .
+pytest spot/tests
 
-bash ./scripts/test.sh "$@"
-
-cd ../
+#bash ./scripts/test.sh "$@"
+#
+#cd ../

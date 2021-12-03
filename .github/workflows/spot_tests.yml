@@ -33,17 +33,20 @@ jobs:
       - name: Create testing-project dir with cookiecutter
         run: |
           cookiecutter --no-input -f ./ project_name="Testing Project"
-          cd ./testing-project
       - name: Install dependencies 2
+        working-directory: ./testing-project
         run: |
           pip install -r ./spot/requirements_dev.txt
       - name: Build image
+        working-directory: ./testing-project
         run: |
           docker-compose -f test-spot-docker-compose.yml pull
           docker-compose -f test-spot-docker-compose.yml build
       - name: Run tests
+        working-directory: ./testing-project
         run: |
           pytest spot/tests
       - name: Stop Docker compose
+        working-directory: ./testing-project
         run: |
-          docker-compose -f tests/docker-compose.yml down
+          docker-compose -f test-spot-docker-compose.yml down

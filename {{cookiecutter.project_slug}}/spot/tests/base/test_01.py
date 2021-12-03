@@ -31,9 +31,3 @@ def test_status_code(http_service):
     response = requests.get(http_service + "/")
 
     assert response.status_code == status
-
-
-def test_result_01(http_service):
-    response = requests.get(http_service + "/")
-
-    assert 'message' in response.json()

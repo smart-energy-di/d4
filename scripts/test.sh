@@ -24,7 +24,7 @@ cookiecutter --version
 echo "ls -la ./ [in testing-project]"
 ls -la ./
 
-pip install -r ./backend/requirements_dev.txt
+pip install -r ./spot/requirements_dev.txt
 
 pytest .
 

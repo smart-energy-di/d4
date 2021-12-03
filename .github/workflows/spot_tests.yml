@@ -25,16 +25,18 @@ jobs:
       - name: Remove testing-project dir
         run: |
           rm -rf ./testing-project
-      - name: Install dependencies, pytest ${{ matrix.pytest-version }}
+      - name: Install dependencies 1, pytest ${{ matrix.pytest-version }}
         run: |
           python -m pip install --upgrade pip setuptools
           pip install pytest==${{ matrix.pytest-version }}
           pip install cookiecutter
-          pip install -r ./spot/requirements_dev.txt
       - name: Create testing-project dir with cookiecutter
         run: |
           cookiecutter --no-input -f ./ project_name="Testing Project"
           cd ./testing-project
+      - name: Install dependencies 2
+        run: |
+          pip install -r ./spot/requirements_dev.txt
       - name: Build image
         run: |
           docker-compose -f test-spot-docker-compose.yml pull

@@ -42,6 +42,7 @@ jobs:
         run: |
           docker-compose -f test-spot-docker-compose.yml pull
           docker-compose -f test-spot-docker-compose.yml build
+          docker-compose -f test-spot-docker-compose.yml up -d
       - name: Run tests
         working-directory: ./testing-project
         run: |

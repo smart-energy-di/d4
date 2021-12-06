@@ -44,6 +44,3 @@ services:
         INSTALL_DEV: ${INSTALL_DEV-false}
     ports:
       - "${DOCKER_IMAGE_SPOT_PORT}:${DOCKER_IMAGE_SPOT_PORT}"
-
-#volumes:
-#  app-db-data:

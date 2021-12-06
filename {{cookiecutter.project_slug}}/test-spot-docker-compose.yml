@@ -16,6 +16,8 @@ services:
     image: openpolicyagent/opa:latest
     ports:
       - 8181:8181
+    depends_on:
+      - keycloak
     command:
       - "run"
       - "--server"
@@ -30,16 +32,18 @@ services:
       - .env
     environment:
       - SERVER_NAME=spot
-      - SERVER_HOST=http://spot:9030
+      - SERVER_HOST=http://spot:${DOCKER_IMAGE_SPOT_PORT}
       - LOG_LEVEL=debug
       # Allow explicit env var override for tests
+    depends_on:
+      - opa
     build:
       context: ./spot
       dockerfile: python3.9-slim.dockerfile
       args:
         INSTALL_DEV: ${INSTALL_DEV-false}
     ports:
-      - "${DOCKER_IMAGE_SPOT_PORT}:80"
+      - "${DOCKER_IMAGE_SPOT_PORT}:${DOCKER_IMAGE_SPOT_PORT}"
 
 #volumes:
 #  app-db-data:

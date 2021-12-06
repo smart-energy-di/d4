@@ -8,7 +8,7 @@ from fastapi_opa.auth import OIDCConfig
 
 opa_host = "http://opa:8181"
 oidc_config = OIDCConfig(
-    app_uri="http://spot:9030",
+    app_uri="http://spot:{{cookiecutter.docker_image_spot_port}}",
     client_id="d4-client",
     client_secret="1f02bb76-eb58-40e2-928d-13f5c35794c1",
     # ---------------------------------------------------------------------------

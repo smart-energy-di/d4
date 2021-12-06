@@ -826,20 +826,20 @@
     {
       "id": "fb9af494-1c6a-479e-959f-059bc1e61d5f",
       "clientId": "d4-client",
-      "rootUrl": "http://spot:9030",
-      "adminUrl": "http://spot:9030",
+      "rootUrl": "http://spot:{{cookiecutter.docker_image_spot_port}}",
+      "adminUrl": "http://spot:{{cookiecutter.docker_image_spot_port}}",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "secret": "1f02bb76-eb58-40e2-928d-13f5c35794c1",
       "redirectUris": [
-        "http://spot:9030/*",
-        "http://localhost:9030/*",
-        "http://127.0.0.1:9030/*"
+        "http://spot:{{cookiecutter.docker_image_spot_port}}/*",
+        "http://localhost:{{cookiecutter.docker_image_spot_port}}/*",
+        "http://127.0.0.1:{{cookiecutter.docker_image_spot_port}}/*"
       ],
       "webOrigins": [
-        "http://spot:9030/*"
+        "http://spot:{{cookiecutter.docker_image_spot_port}}/*"
       ],
       "notBefore": 0,
       "bearerOnly": false,

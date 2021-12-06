@@ -42,14 +42,9 @@ jobs:
         run: |
           docker-compose -f test-spot-docker-compose.yml pull
           docker-compose -f test-spot-docker-compose.yml build
-          docker-compose -f test-spot-docker-compose.yml ps
-          docker-compose -f test-spot-docker-compose.yml up -d
-          docker-compose -f test-spot-docker-compose.yml ps
-          echo ---Containers up---
       - name: Run tests
         working-directory: ./testing-project
         run: |
-          docker-compose -f test-spot-docker-compose.yml ps
           pytest spot/tests
       - name: Stop Docker compose
         working-directory: ./testing-project

@@ -40,16 +40,20 @@ jobs:
       - name: Build image
         working-directory: ./testing-project
         run: |
+          docker network ls
           docker-compose -f test-spot-docker-compose.yml pull
           docker-compose -f test-spot-docker-compose.yml build
+          docker network ls
       - name: Start docker container
         working-directory: ./testing-project
         run: |
           docker-compose -f test-spot-docker-compose.yml up -d
           docker-compose -f test-spot-docker-compose.yml ps
+          docker network ls
       - name: Run tests
         working-directory: ./testing-project
         run: |
+          docker network ls
           docker-compose -f test-spot-docker-compose.yml ps
           pytest spot/tests
       - name: Stop Docker compose

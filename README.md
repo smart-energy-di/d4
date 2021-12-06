@@ -1,7 +1,7 @@
 # d4 - Base Project Generator
 
 ![GitHub](https://img.shields.io/github/license/mleist/d4?color=00998a)
-[![build](https://github.com/mleist/d4/actions/workflows/config.yml/badge.svg)](https://github.com/mleist/d4/actions/workflows/config.yml)
+[![build](https://github.com/mleist/d4/actions/workflows/spot_tests.yml/badge.svg)](https://github.com/mleist/d4/actions/workflows/spot_tests.yml)
 [![PyLint](https://github.com/mleist/d4/actions/workflows/lint.yml/badge.svg)](https://github.com/mleist/d4/actions/workflows/lint.yml)
 [![GitHub Repo stars](https://img.shields.io/github/stars/mleist/d4?color=%2300998a&style=flat)](https://github.com/mleist/d4/stargazers)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mleist/d4?color=%2300998a&style=flat)](https://github.com/mleist/d4/graphs/commit-activity)

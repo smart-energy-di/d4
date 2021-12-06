@@ -1,3 +1,4 @@
+import os
 from typing import Dict
 
 from fastapi import FastAPI
@@ -6,20 +7,38 @@ from fastapi_opa import OPAMiddleware
 from fastapi_opa.auth import OIDCAuthentication
 from fastapi_opa.auth import OIDCConfig
 
-opa_host = "http://opa:8181"
+# D4SERVICE_OAUTH2_HOSTNAME = os.getenv("D4SERVICE_OAUTH2_HOSTNAME")
+# D4SERVICE_OAUTH2_PORT = os.getenv("D4SERVICE_OAUTH2_PORT")
+# D4SERVICE_OAUTH2_CLIENT_ID = os.getenv("D4SERVICE_OAUTH2_CLIENT_ID")
+# D4SERVICE_OAUTH2_CLIENT_SECRET = os.getenv("D4SERVICE_OAUTH2_CLIENT_SECRET")
+# D4SERVICE_OAUTH2_WELL_KNOWN_ENDPOINT = os.getenv("D4SERVICE_OAUTH2_WELL_KNOWN_ENDPOINT")
+# D4SERVICE_OAUTH2_ISSUER = os.getenv("D4SERVICE_OAUTH2_ISSUER")
+# D4SERVICE_OAUTH2_AUTHORIZATION_ENDPOINT = os.getenv("D4SERVICE_OAUTH2_AUTHORIZATION_ENDPOINT")
+# D4SERVICE_OAUTH2_TOKEN_ENDPOINT = os.getenv("D4SERVICE_OAUTH2_TOKEN_ENDPOINT")
+# D4SERVICE_OAUTH2_JWKS_URI = os.getenv("D4SERVICE_OAUTH2_JWKS_URI")
+# D4SERVICE_OAUTH2_USERINFO_ENDPOINT = os.getenv("D4SERVICE_OAUTH2_USERINFO_ENDPOINT")
+# D4SERVICE_OPA_HOSTNAME = os.getenv("D4SERVICE_OPA_HOSTNAME")
+# D4SERVICE_OPA_PORT = os.getenv("D4SERVICE_OPA_PORT")
+# D4SERVICE_SPOT_HOSTNAME = os.getenv("D4SERVICE_SPOT_HOSTNAME")
+# D4SERVICE_SPOT_PORT = os.getenv("D4SERVICE_SPOT_PORT")
+
+
+opa_host = os.getenv("D4SERVICE_OPA_URI")
 oidc_config = OIDCConfig(
-    app_uri="http://spot:{{cookiecutter.docker_image_spot_port}}",
-    client_id="d4-client",
-    client_secret="1f02bb76-eb58-40e2-928d-13f5c35794c1",
-    # ---------------------------------------------------------------------------
-    # well_known_endpoint="http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}/.well-known/openid-configuration",  # noqa
-    well_known_endpoint=None,
-    issuer='http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}',
-    authorization_endpoint='http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}/protocol/openid-connect/auth',
-    token_endpoint='http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}/protocol/openid-connect/token',
-    jwks_uri='http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}/protocol/openid-connect/certs',
-    userinfo_endpoint='http://keycloak:8080/auth/realms/{{cookiecutter.test_auth_realm}}/protocol/openid-connect/userinfo'
+    # well_known_endpoint=None,
+    well_known_endpoint=os.getenv("D4SERVICE_OAUTH2_WELL_KNOWN_ENDPOINT"),
+    app_uri=os.getenv("D4SERVICE_SPOT_URI"),
+    client_id=os.getenv("D4SERVICE_OAUTH2_CLIENT_ID"),
+    client_secret=os.getenv("D4SERVICE_OAUTH2_CLIENT_SECRET"),
+    issuer=os.getenv("D4SERVICE_OAUTH2_ISSUER"),
+    authorization_endpoint=os.getenv("D4SERVICE_OAUTH2_AUTHORIZATION_ENDPOINT"),
+    token_endpoint=os.getenv("D4SERVICE_OAUTH2_TOKEN_ENDPOINT"),
+    jwks_uri=os.getenv("D4SERVICE_OAUTH2_JWKS_URI"),
+    userinfo_endpoint=os.getenv("D4SERVICE_OAUTH2_USERINFO_ENDPOINT"),
 )
+
+import pprint
+pprint.pprint(oidc_config.__dict__)
 
 oidc_auth = OIDCAuthentication(oidc_config)
 opa_config = OPAConfig(authentication=oidc_auth, opa_host=opa_host)

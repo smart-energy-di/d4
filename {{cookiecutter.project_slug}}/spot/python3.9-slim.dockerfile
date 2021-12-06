@@ -17,7 +17,7 @@ WORKDIR /app/
 
 ENV PYTHONPATH=/app
 
-EXPOSE {{cookiecutter.docker_image_spot_port}}
+EXPOSE {{cookiecutter.d4service_spot_port}}
 
 # Run the start script, it will check for an /app/prestart.sh script (e.g. for migrations)
 # And then will start Gunicorn with Uvicorn

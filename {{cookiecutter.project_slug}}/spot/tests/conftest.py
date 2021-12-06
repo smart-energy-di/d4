@@ -14,8 +14,13 @@ def docker_compose_files(pytestconfig):
 
 
 @pytest.fixture(scope='session')
+def docker_services_project_name(pytestconfig):
+    return "{{cookiecutter.project_slug}}"
+
+
+@pytest.fixture(scope='session')
 def docker_keycloak(docker_services):
-    docker_services.start('keycloak')
+    # docker_services.start('keycloak')
     public_port = docker_services.wait_for_service("keycloak", 8080)
     url = "http://{docker_services.docker_ip}:{public_port}".format(**locals())
     return url
@@ -23,7 +28,7 @@ def docker_keycloak(docker_services):
 
 @pytest.fixture(scope='session')
 def docker_opa(docker_services):
-    docker_services.start('opa')
+    # docker_services.start('opa')
     public_port = docker_services.wait_for_service("opa", 8181)
     url = "http://{docker_services.docker_ip}:{public_port}".format(**locals())
     return url
@@ -31,7 +36,7 @@ def docker_opa(docker_services):
 
 @pytest.fixture(scope='session')
 def docker_spot(docker_services):
-    docker_services.start('spot')
+    # docker_services.start('spot')
     public_port = docker_services.wait_for_service("spot", 9030)
     url = "http://{docker_services.docker_ip}:{public_port}".format(**locals())
     return url

@@ -63,11 +63,11 @@ services:
       # Allow explicit env var override for tests
     build:
       context: ./spot
-      dockerfile: python3.9-slim.dockerfile
+      dockerfile: compose/tests/spot/python3.9-slim.dockerfile
       args:
         INSTALL_DEV: ${INSTALL_DEV-false}
     ports:
-      - "${D4SERVICE_SPOT_PORT}:9030"
+      - "${D4SERVICE_SPOT_PORT}:{{cookiecutter.d4service_spot_port}}"
 
 volumes:
   app-db-data:

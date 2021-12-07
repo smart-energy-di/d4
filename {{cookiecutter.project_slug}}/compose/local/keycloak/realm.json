@@ -834,13 +834,24 @@
       "clientAuthenticatorType": "client-secret",
       "secret": "1f02bb76-eb58-40e2-928d-13f5c35794c1",
       "redirectUris": [
-        "http://spot:{{cookiecutter.d4service_spot_port}}/*",
-        "http://localhost:9030/*",
-        "http://127.0.0.1:9030/*"
+        "http://localhost:{{cookiecutter.d4service_adapter_port}}/*",
+        "http://127.0.0.1:{{cookiecutter.d4service_adapter_port}}/*",
+        "http://localhost:{{cookiecutter.d4service_cache_port}}/*",
+        "http://127.0.0.1:{{cookiecutter.d4service_cache_port}}/*",
+        "http://localhost:{{cookiecutter.d4service_proxy_port}}/*",
+        "http://127.0.0.1:{{cookiecutter.d4service_proxy_port}}/*",
+        "http://localhost:{{cookiecutter.d4service_spot_port}}/*",
+        "http://127.0.0.1:{{cookiecutter.d4service_spot_port}}/*",
+        "http://localhost:{{cookiecutter.d4service_ui_port}}/*",
+        "http://127.0.0.1:{{cookiecutter.d4service_ui_port}}/*"
       ],
       "webOrigins": [
         "http://spot:{{cookiecutter.d4service_spot_port}}/*",
-        "http://127.0.0.1:9030/*"
+        "http://127.0.0.1:{{cookiecutter.d4service_adapter_port}}/*",
+        "http://127.0.0.1:{{cookiecutter.d4service_cache_port}}/*",
+        "http://127.0.0.1:{{cookiecutter.d4service_proxy_port}}/*",
+        "http://127.0.0.1:{{cookiecutter.d4service_spot_port}}/*",
+        "http://127.0.0.1:{{cookiecutter.d4service_ui_port}}/*"
       ],
       "notBefore": 0,
       "bearerOnly": false,

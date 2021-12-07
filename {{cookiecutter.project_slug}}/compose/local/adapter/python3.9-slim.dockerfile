@@ -1,6 +1,6 @@
 FROM python:3.9-slim as p39template
 
-COPY requirements_prd.txt /tmp/requirements_prd.txt
+COPY ./requirements_prd.txt /tmp/requirements_prd.txt
 RUN pip install --no-cache-dir -r /tmp/requirements_prd.txt
 
 COPY ./start.sh /start.sh
@@ -17,7 +17,7 @@ WORKDIR /app/
 
 ENV PYTHONPATH=/app
 
-EXPOSE {{cookiecutter.d4service_spot_port}}
+EXPOSE {{cookiecutter.d4service_adapter_port}}
 
 # Run the start script, it will check for an /app/prestart.sh script (e.g. for migrations)
 # And then will start Gunicorn with Uvicorn

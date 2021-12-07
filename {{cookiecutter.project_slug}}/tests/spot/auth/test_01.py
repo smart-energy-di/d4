@@ -5,7 +5,7 @@ from lxml import html
 def test_keycloak_alice01(docker_spot):
     status = 200
     session = requests.Session()
-    url_1 = 'http://127.0.0.1:9030/finance/salary/alice'
+    url_1 = 'http://127.0.0.1:{{cookiecutter.d4service_spot_port}}/finance/salary/alice'
     resp_1 = session.get(url_1)
     tree = html.fromstring(resp_1.content)
     url_2 = tree.xpath('//form[@id="kc-form-login"]')[0].attrib['action']
@@ -17,7 +17,7 @@ def test_keycloak_alice01(docker_spot):
 def test_keycloak_bob01(docker_spot):
     status = 200
     session = requests.Session()
-    url_1 = 'http://127.0.0.1:9030/finance/salary/bob'
+    url_1 = 'http://127.0.0.1:{{cookiecutter.d4service_spot_port}}/finance/salary/bob'
     resp_1 = session.get(url_1)
     tree = html.fromstring(resp_1.content)
     url_2 = tree.xpath('//form[@id="kc-form-login"]')[0].attrib['action']
@@ -29,7 +29,7 @@ def test_keycloak_bob01(docker_spot):
 def test_keycloak_bob02(docker_spot):
     status = 200
     session = requests.Session()
-    url_1 = 'http://127.0.0.1:9030/finance/salary/alice'
+    url_1 = 'http://127.0.0.1:{{cookiecutter.d4service_spot_port}}/finance/salary/alice'
     resp_1 = session.get(url_1)
     tree = html.fromstring(resp_1.content)
     url_2 = tree.xpath('//form[@id="kc-form-login"]')[0].attrib['action']

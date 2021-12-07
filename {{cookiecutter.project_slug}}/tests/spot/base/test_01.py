@@ -14,7 +14,7 @@ def is_responsive(url):
 
 def test_status_code(docker_spot):
     status = 200
-    url = 'http://127.0.0.1:9030/'
+    url = 'http://127.0.0.1:{{cookiecutter.d4service_spot_port}}/'
     response = requests.get(url)
 
     assert response.status_code == status

@@ -2,11 +2,13 @@
   "project_name": "Base Project",
   "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-') }}",
   "test_auth_realm": "{{cookiecutter.project_slug}}-realm",
-  "enable_adapter": "y",
-  "enable_cache": "y",
+  "enable_adapter": "n",
+  "enable_cache": "n",
   "enable_ui": "n",
   "enable_proxy": "n",
   "enable_spot": "y",
+  "_enable_opa": "n",
+  "_enable_keycloak": "n",
   "docker_image_prefix": "d4",
   "docker_image_adapter": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_adapter",
   "docker_image_cache": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_cache",
@@ -36,5 +38,8 @@
   "d4service_spot_uri": "http://spot:9040",
   "d4service_spot_port": 9040,
   "d4service_ui_uri": "http://ui:9050",
-  "d4service_ui_port": 9050
+  "d4service_ui_port": 9050,
+  "debug": "y",
+  "timezone": "UTC",
+  "prod_domain_name": "example.com"
 }

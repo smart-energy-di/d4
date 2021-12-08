@@ -1,6 +1,15 @@
 version: "3.7"
 # created with cookiecutter for project '{{ cookiecutter.project_name }}'
+
+# {% if cookiecutter.enable_spot == "y" %}
+volumes:
+  local_postgres_data: {}
+  local_postgres_data_backups: {}
+# {% endif %}
+
+
 services:
+# {% if cookiecutter._enable_keycloak == "y" %}
   keycloak:
     image: jboss/keycloak:latest
     ports:
@@ -12,6 +21,9 @@ services:
       - KEYCLOAK_LOGLEVEL=INFO
     volumes:
       - ./compose/local/keycloak/realm.json:/tmp/realm.json
+# {% endif %}
+
+# {% if cookiecutter._enable_opa == "y" %}
   opa:
     image: openpolicyagent/opa:latest
     ports:
@@ -26,6 +38,7 @@ services:
       - "/policy/test.rego"
     volumes:
       - ./compose/local/opa/policy:/policy
+# {% endif %}
 
 # ADAPTER - docker container
 # {% if cookiecutter.enable_adapter == "y" %}
@@ -93,32 +106,34 @@ services:
 
 # SPOT - docker container
 # {% if cookiecutter.enable_spot == "y" %}
-  spot:
-    image: '${DOCKER_IMAGE_SPOT?Variable not set}:${TAG-latest}'
-    env_file:
-      - .env
-    environment:
-      - LOG_LEVEL=debug
-      - D4SERVICE_OAUTH2_URI=http://keycloak:8080
-      - D4SERVICE_OAUTH2_PORT=8080
-      - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
-      - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
-      - D4SERVICE_OAUTH2_ISSUER=http://keycloak:8080/auth/realms/testing-project-realm
-      - D4SERVICE_OAUTH2_AUTHORIZATION_ENDPOINT=http://127.0.0.1:8080/auth/realms/testing-project-realm/protocol/openid-connect/auth
-      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/token
-      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/certs
-      - D4SERVICE_OAUTH2_USERINFO_ENDPOINT=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/userinfo
-      - D4SERVICE_OPA_URI=http://opa:8181
-      - D4SERVICE_OPA_PORT=8181
-      - D4SERVICE_SPOT_URI=http://127.0.0.1:{{cookiecutter.d4service_spot_port}}
-      # Allow explicit env var override for tests
-    depends_on:
-      - opa
+  postgres:
     build:
-      context: ./spot
-      dockerfile: ../compose/local/spot/python3.9-slim.dockerfile
-      args:
-        INSTALL_DEV: ${INSTALL_DEV-false}
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: {{ cookiecutter.project_slug }}_production_postgres
+    container_name: postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data:Z
+      - local_postgres_data_backups:/backups:z
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./.envs/.local/.postgres
+
+  spot:
+    build:
+      context: .
+      dockerfile: ./compose/local/spot/Dockerfile
+    image: {{ cookiecutter.project_slug }}_local_django
+    container_name: django
+    depends_on:
+      - postgres
+    volumes:
+      - ./spot/app:/app:z
+    env_file:
+      - ./.envs/.local/.spot
+      - ./.envs/.local/.postgres
     ports:
       - "${D4SERVICE_SPOT_PORT}:${D4SERVICE_SPOT_PORT}"
+    command: /start
 # {% endif %}

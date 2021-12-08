@@ -1,4 +1,0 @@
--r requirements_prd.txt
-lovely-pytest-docker
-pylint
-lxml

@@ -1,4 +1,0 @@
-fastapi
-gunicorn
-uvicorn[standard]
-fastapi-opa

@@ -42,8 +42,8 @@ jobs:
       - name: Build image
         working-directory: ./testing-project
         run: |
-          docker-compose -f test-spot-docker-compose.yml pull
-          docker-compose -f test-spot-docker-compose.yml build
+          docker-compose -f docker-compose-local.yml pull
+          docker-compose -f docker-compose-local.yml build
       - name: Run tests
         working-directory: ./testing-project
         run: |
@@ -51,4 +51,4 @@ jobs:
       - name: Stop Docker compose
         working-directory: ./testing-project
         run: |
-          docker-compose -f test-spot-docker-compose.yml down
+          docker-compose -f docker-compose-local.yml down

@@ -26,9 +26,6 @@ jobs:
           pip install -r requirements_dev.txt
           echo "install pylint"
           pip install pylint
-          pip install -r ./adapter/requirements_dev.txt
-          pip install -r ./cache/requirements_dev.txt
-          pip install -r ./spot/requirements/local.txt
       - name: Run pylint
         run: |
           echo "pwd"
@@ -37,6 +34,10 @@ jobs:
           ls -la
           echo "cd \{\{cookiecutter.project_slug\}\}"
           cd \{\{cookiecutter.project_slug\}\}
+          echo "install more requirements"
+          pip install -r ./adapter/requirements_dev.txt
+          pip install -r ./cache/requirements_dev.txt
+          pip install -r ./spot/requirements/local.txt
           echo "start pylint"
           pylint --rcfile=.pylintrc --errors-only adapter cache proxy spot ui
           echo "end pylint"

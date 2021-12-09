@@ -4,12 +4,14 @@ from authlib.integrations.django_client import OAuth
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-CONF_URL = os.getenv("D4SERVICE_OAUTH2_WELL_KNOWN_ENDPOINT")
-
 oauth = OAuth()
 oauth.register(
     name='keycloak',
-    server_metadata_url=CONF_URL,
+    client_id=os.getenv("D4SERVICE_OAUTH2_CLIENT_ID"),
+    client_secret=os.getenv("D4SERVICE_OAUTH2_CLIENT_SECRET"),
+    access_token_url=os.getenv("D4SERVICE_OAUTH2_TOKEN_ENDPOINT"),
+    authorize_url=os.getenv("D4SERVICE_OAUTH2_AUTHORIZATION_ENDPOINT"),
+    jwks_uri=os.getenv("D4SERVICE_OAUTH2_JWKS_URI"),
     client_kwargs={
         'scope': 'openid email profile'
     }

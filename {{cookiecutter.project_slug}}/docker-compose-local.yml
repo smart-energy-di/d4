@@ -137,7 +137,12 @@ services:
       - ./.envs/.local/.spot
       - ./.envs/.local/.postgres
     environment:
-      - D4SERVICE_OAUTH2_WELL_KNOWN_ENDPOINT=http://keycloak:8080/auth/realms/testing-project-realm/.well-known/openid-configuration
+      - LOG_LEVEL=debug
+      - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
+      - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
+      - D4SERVICE_OAUTH2_AUTHORIZATION_ENDPOINT=http://127.0.0.1:8080/auth/realms/testing-project-realm/protocol/openid-connect/auth
+      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/token
+      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/certs
     ports:
       - "${D4SERVICE_SPOT_PORT}:${D4SERVICE_SPOT_PORT}"
     command: /start

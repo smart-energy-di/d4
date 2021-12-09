@@ -1,4 +1,4 @@
-name: PyTest for d4spot
+name: PyTest for integration
 
 on:
   push:
@@ -36,7 +36,9 @@ jobs:
       - name: Install dependencies 2
         working-directory: ./testing-project
         run: |
-          pip install -r ./spot/requirements_dev.txt
+          pip install -r ./adapter/requirements_dev.txt
+          pip install -r ./cache/requirements_dev.txt
+          pip install -r ./spot/requirements/local.txt.txt
       - name: Build image
         working-directory: ./testing-project
         run: |
@@ -45,7 +47,7 @@ jobs:
       - name: Run tests
         working-directory: ./testing-project
         run: |
-          pytest spot/tests
+          pytest tests
       - name: Stop Docker compose
         working-directory: ./testing-project
         run: |

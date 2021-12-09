@@ -62,6 +62,6 @@ RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
 # copy application code to WORKDIR
-COPY ./spot/* ${APP_HOME}
+COPY ./spot/* ${APP_HOME}/
 
 ENTRYPOINT ["/entrypoint"]

@@ -1,8 +1,11 @@
+import os
+
 from authlib.integrations.django_client import OAuth
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-CONF_URL = 'http://keycloak:8080/auth/realms/testing-project-realm/.well-known/openid-configuration'
+CONF_URL = os.getenv("D4SERVICE_OAUTH2_WELL_KNOWN_ENDPOINT")
+
 oauth = OAuth()
 oauth.register(
     name='keycloak',

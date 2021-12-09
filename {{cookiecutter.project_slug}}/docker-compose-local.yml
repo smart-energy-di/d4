@@ -136,6 +136,8 @@ services:
       - .env
       - ./.envs/.local/.spot
       - ./.envs/.local/.postgres
+    environment:
+      - D4SERVICE_OAUTH2_WELL_KNOWN_ENDPOINT=http://keycloak:8080/auth/realms/testing-project-realm/.well-known/openid-configuration
     ports:
       - "${D4SERVICE_SPOT_PORT}:${D4SERVICE_SPOT_PORT}"
     command: /start

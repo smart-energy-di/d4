@@ -35,5 +35,5 @@ jobs:
           echo "cd \{\{cookiecutter.project_slug\}\}"
           cd \{\{cookiecutter.project_slug\}\}
           echo "start pylint"
-          pylint --rcfile=.pylintrc --errors-only **/*.py
+          pylint --rcfile=.pylintrc --errors-only adapter cache proxy spot ui
           echo "end pylint"

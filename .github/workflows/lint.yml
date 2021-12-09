@@ -26,6 +26,9 @@ jobs:
           pip install -r requirements_dev.txt
           echo "install pylint"
           pip install pylint
+          pip install -r ./adapter/requirements_dev.txt
+          pip install -r ./cache/requirements_dev.txt
+          pip install -r ./spot/requirements/local.txt
       - name: Run pylint
         run: |
           echo "pwd"

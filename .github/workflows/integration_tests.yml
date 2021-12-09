@@ -47,7 +47,7 @@ jobs:
       - name: Run tests
         working-directory: ./testing-project
         run: |
-          pytest tests
+          pytest --keepalive tests
       - name: Stop Docker compose
         working-directory: ./testing-project
         run: |

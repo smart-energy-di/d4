@@ -8,7 +8,7 @@ def test_about_01(docker_spot):
     assert tree.find(".//title").text == 'About'
 
 
-def test_keycloak_alice01(docker_spot, docker_keycloak):
+def test_keycloak_alice01(docker_keycloak, docker_spot):
     status = 200
     session = requests.Session()
     url_1 = 'http://127.0.0.1:{{cookiecutter.d4service_spot_port}}/login/'

@@ -1,5 +1,6 @@
 from .base import *  # noqa
 from .base import env
+import os
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -25,6 +26,17 @@ CACHES = {
 
 # EMAIL
 # ------------------------------------------------------------------------------
+
+
+
+# AUTHLIB CLIENTS
+# ------------------------------------------------------------------------------
+AUTHLIB_OAUTH_CLIENTS = {
+    'keycloak': {
+        'client_id': os.getenv("D4SERVICE_OAUTH2_CLIENT_ID"),
+        'client_secret': os.getenv("D4SERVICE_OAUTH2_CLIENT_SECRET"),
+    }
+}
 
 
 # django-debug-toolbar

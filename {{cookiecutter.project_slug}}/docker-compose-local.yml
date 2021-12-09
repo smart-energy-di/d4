@@ -15,6 +15,7 @@ services:
     ports:
       - 8080:8080
     environment:
+      - DB_VENDOR=h2
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
       - KEYCLOAK_IMPORT=/tmp/realm.json
@@ -111,7 +112,7 @@ services:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
     image: {{ cookiecutter.project_slug }}_production_postgres
-    container_name: postgres
+#    container_name: postgres
     volumes:
       - local_postgres_data:/var/lib/postgresql/data:Z
       - local_postgres_data_backups:/backups:z
@@ -125,12 +126,14 @@ services:
       context: .
       dockerfile: ./compose/local/spot/Dockerfile
     image: {{ cookiecutter.project_slug }}_local_django
-    container_name: django
+#    container_name: django
     depends_on:
       - postgres
+      - keycloak
     volumes:
       - ./spot/app:/app:z
     env_file:
+      - .env
       - ./.envs/.local/.spot
       - ./.envs/.local/.postgres
     ports:

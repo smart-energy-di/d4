@@ -461,9 +461,6 @@
         ],
         "user": [
           "alice"
-        ],
-        "azp": [
-          "alice"
         ]
       },
       "credentials": [
@@ -498,9 +495,6 @@
           "[\"charlie\"]"
         ],
         "user": [
-          "betty"
-        ],
-        "azp": [
           "betty"
         ]
       },
@@ -537,9 +531,6 @@
         ],
         "subordinates": [
           "[\"alice\"]"
-        ],
-        "azp": [
-          "bob"
         ]
       },
       "credentials": [
@@ -574,9 +565,6 @@
           "[]"
         ],
         "user": [
-          "charlie"
-        ],
-        "azp": [
           "charlie"
         ]
       },
@@ -613,9 +601,6 @@
         ],
         "user": [
           "david"
-        ],
-        "azp": [
-          "David"
         ]
       },
       "credentials": [
@@ -918,21 +903,6 @@
             "id.token.claim": "true",
             "access.token.claim": "true",
             "claim.name": "user",
-            "jsonType.label": "String"
-          }
-        },
-        {
-          "id": "f0fe558f-d2e3-48b6-9830-ebb22d67c61a",
-          "name": "azp",
-          "protocol": "openid-connect",
-          "protocolMapper": "oidc-usermodel-attribute-mapper",
-          "consentRequired": false,
-          "config": {
-            "userinfo.token.claim": "true",
-            "user.attribute": "azp",
-            "id.token.claim": "true",
-            "access.token.claim": "true",
-            "claim.name": "azp",
             "jsonType.label": "String"
           }
         },

@@ -1,0 +1,17 @@
+{% raw %}{% extends "base.html" %}
+
+{% block content %}
+{% if user %}
+<ul>
+  {% for key, value in user.items %}
+    <dt>{{ key }}</dt>
+    <dd>{{ value }}</dd>
+  {% endfor %}
+</ul>
+<hr>
+<a href="/logout/">logout</a>
+{% else %}
+<a href="/login/">login</a>
+{% endif %}
+{% endblock %}
+{% endraw %}

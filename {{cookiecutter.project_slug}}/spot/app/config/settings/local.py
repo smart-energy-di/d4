@@ -1,6 +1,7 @@
+import os
+
 from .base import *  # noqa
 from .base import env
-import os
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -28,7 +29,6 @@ CACHES = {
 # ------------------------------------------------------------------------------
 
 
-
 # AUTHLIB CLIENTS
 # ------------------------------------------------------------------------------
 AUTHLIB_OAUTH_CLIENTS = {
@@ -37,7 +37,6 @@ AUTHLIB_OAUTH_CLIENTS = {
         'client_secret': os.getenv("D4SERVICE_OAUTH2_CLIENT_SECRET"),
     }
 }
-
 
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
@@ -55,7 +54,8 @@ INTERNAL_IPS = ["127.0.0.1", "10.0.2.2"]
 if env("USE_DOCKER") == "yes":
     import socket
 
-    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())   # pylint: disable=E1101
+    hostname, _, ips = socket.gethostbyname_ex(
+        socket.gethostname())  # pylint: disable=E1101
     INTERNAL_IPS += [".".join(ip.split(".")[:-1] + ["1"]) for ip in ips]
 
 # django-extensions

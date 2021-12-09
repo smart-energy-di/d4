@@ -2,20 +2,22 @@ from .base import *  # noqa
 from .base import env
 
 # GENERAL
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["{{ cookiecutter.prod_domain_name }}"])
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS",
+                         default=["{{ cookiecutter.prod_domain_name }}"])
 
 # DATABASES
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 DATABASES["default"] = env.db("DATABASE_URL")  # noqa F405
 DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa F405
-DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE", default=60)  # noqa F405
+DATABASES["default"]["CONN_MAX_AGE"] = env.int("CONN_MAX_AGE",
+                                               default=60)  # noqa F405
 
 # CACHES
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
@@ -30,7 +32,7 @@ CACHES = {
 }
 
 # SECURITY
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-proxy-ssl-header
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-ssl-redirect
@@ -41,7 +43,8 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 # https://docs.djangoproject.com/en/dev/topics/security/#ssl-https
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-hsts-seconds
-# TODO: set this to 60 seconds first and then to 518400 once you prove the former works
+# TODO: set this to 60 seconds first and then
+#  to 518400 once you prove the former works
 SECURE_HSTS_SECONDS = 60
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-hsts-include-subdomains
 SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool(
@@ -59,10 +62,10 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # MEDIA
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 
 # TEMPLATES
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#templates
 TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
     (
@@ -75,10 +78,11 @@ TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
 ]
 
 # EMAIL
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = env(
-    "DJANGO_DEFAULT_FROM_EMAIL", default="{{cookiecutter.project_name}} <noreply@{{cookiecutter.prod_domain_name}}>"
+    "DJANGO_DEFAULT_FROM_EMAIL",
+    default="{{cookiecutter.project_name}} <noreply@{{cookiecutter.prod_domain_name}}>"  # noqa
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
@@ -89,19 +93,19 @@ EMAIL_SUBJECT_PREFIX = env(
 )
 
 # ADMIN
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 # Django Admin URL regex.
 ADMIN_URL = env("DJANGO_ADMIN_URL")
 
 # Anymail
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 # https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
 INSTALLED_APPS += ["anymail"]  # noqa F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
 
 # LOGGING
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#logging
 # See https://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
@@ -111,7 +115,8 @@ INSTALLED_APPS += ["anymail"]  # noqa F405
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "filters": {"require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},
+    "filters": {
+        "require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},
     "formatters": {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s "
@@ -145,4 +150,4 @@ LOGGING = {
     },
 }
 # Your stuff...
-# ------------------------------------------------------------------------------
+# --------------------------------------------------------------------------

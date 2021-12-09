@@ -1,8 +1,10 @@
 # d4 - Base Project Generator
 
-![GitHub](https://img.shields.io/github/license/mleist/d4?color=00998a)
-[![build](https://github.com/mleist/d4/actions/workflows/spot_tests.yml/badge.svg)](https://github.com/mleist/d4/actions/workflows/spot_tests.yml)
+[![PyTest for integration](https://github.com/mleist/d4/actions/workflows/integration_tests.yml/badge.svg)](https://github.com/mleist/d4/actions/workflows/integration_tests.yml)
 [![PyLint](https://github.com/mleist/d4/actions/workflows/lint.yml/badge.svg)](https://github.com/mleist/d4/actions/workflows/lint.yml)
+[![flake8](https://github.com/mleist/d4/actions/workflows/flake8.yml/badge.svg)](https://github.com/mleist/d4/actions/workflows/flake8.yml)
+
+![GitHub](https://img.shields.io/github/license/mleist/d4?color=00998a)
 [![GitHub Repo stars](https://img.shields.io/github/stars/mleist/d4?color=%2300998a&style=flat)](https://github.com/mleist/d4/stargazers)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mleist/d4?color=%2300998a&style=flat)](https://github.com/mleist/d4/graphs/commit-activity)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg?color=%2300998a&style=flat)](https://www.python.org/)

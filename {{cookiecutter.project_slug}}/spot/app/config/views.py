@@ -10,7 +10,7 @@ oauth.register(
     client_id=os.getenv("D4SERVICE_OAUTH2_CLIENT_ID"),
     client_secret=os.getenv("D4SERVICE_OAUTH2_CLIENT_SECRET"),
     access_token_url=os.getenv("D4SERVICE_OAUTH2_TOKEN_ENDPOINT"),
-    authorize_url=os.getenv("D4SERVICE_OAUTH2_AUTHORIZATION_ENDPOINT"),
+    authorize_url=os.getenv("D4SERVICE_OAUTH2_AUTH_ENDPOINT"),
     jwks_uri=os.getenv("D4SERVICE_OAUTH2_JWKS_URI"),
     client_kwargs={
         'scope': 'openid email profile'

@@ -1,4 +1,4 @@
-name: PyLint Tests
+name: flake8 Tests
 
 on:
   push:
@@ -24,9 +24,9 @@ jobs:
           python -m pip install --upgrade pip
           echo "install requirements_dev.txt"
           pip install -r requirements_dev.txt
-          echo "install pylint"
-          pip install pylint
-      - name: Run pylint
+          echo "install flake8"
+          pip install flake8
+      - name: Run flake8
         run: |
           echo "pwd"
           pwd
@@ -38,6 +38,6 @@ jobs:
           pip install -r ./adapter/requirements_prd.txt
           pip install -r ./cache/requirements_prd.txt
           pip install -r ./spot/requirements/base.txt
-          echo "start pylint"
-          pylint --rcfile=.pylintrc --errors-only adapter cache proxy spot ui
-          echo "end pylint"
+          echo "start flake8"
+          flake8 --select=E  adapter cache proxy spot ui
+          echo "end flake8"

@@ -7,8 +7,6 @@ from fastapi_opa import OPAMiddleware
 from fastapi_opa.auth import OIDCAuthentication
 from fastapi_opa.auth import OIDCConfig
 
-
-
 opa_host = os.getenv("D4SERVICE_OPA_URI")
 oidc_config = OIDCConfig(
     # well_known_endpoint=None,
@@ -17,14 +15,11 @@ oidc_config = OIDCConfig(
     client_id=os.getenv("D4SERVICE_OAUTH2_CLIENT_ID"),
     client_secret=os.getenv("D4SERVICE_OAUTH2_CLIENT_SECRET"),
     issuer=os.getenv("D4SERVICE_OAUTH2_ISSUER"),
-    authorization_endpoint=os.getenv("D4SERVICE_OAUTH2_AUTHORIZATION_ENDPOINT"),
+    authorization_endpoint=os.getenv("D4SERVICE_OAUTH2_AUTH_ENDPOINT"),
     token_endpoint=os.getenv("D4SERVICE_OAUTH2_TOKEN_ENDPOINT"),
     jwks_uri=os.getenv("D4SERVICE_OAUTH2_JWKS_URI"),
     userinfo_endpoint=os.getenv("D4SERVICE_OAUTH2_USERINFO_ENDPOINT"),
 )
-
-import pprint
-pprint.pprint(oidc_config.__dict__)
 
 oidc_auth = OIDCAuthentication(oidc_config)
 opa_config = OPAConfig(authentication=oidc_auth, opa_host=opa_host)

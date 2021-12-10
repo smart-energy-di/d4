@@ -9,8 +9,7 @@ from fastapi_opa.auth import OIDCConfig
 
 opa_host = os.getenv("D4SERVICE_OPA_URI")
 oidc_config = OIDCConfig(
-    # well_known_endpoint=None,
-    well_known_endpoint=os.getenv("D4SERVICE_OAUTH2_WELL_KNOWN_ENDPOINT"),
+    well_known_endpoint=None,
     app_uri=os.getenv("D4SERVICE_ADAPTER_URI"),
     client_id=os.getenv("D4SERVICE_OAUTH2_CLIENT_ID"),
     client_secret=os.getenv("D4SERVICE_OAUTH2_CLIENT_SECRET"),

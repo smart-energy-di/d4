@@ -53,11 +53,11 @@ services:
       - D4SERVICE_OAUTH2_PORT=8080
       - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
       - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
-      - D4SERVICE_OAUTH2_ISSUER=http://keycloak:8080/auth/realms/testing-project-realm
-      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/testing-project-realm/protocol/openid-connect/auth
-      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/token
-      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/certs
-      - D4SERVICE_OAUTH2_USERINFO_ENDPOINT=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/userinfo
+      - D4SERVICE_OAUTH2_ISSUER=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}
+      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/auth
+      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/token
+      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/certs
+      - D4SERVICE_OAUTH2_USERINFO_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/userinfo
       - D4SERVICE_OPA_URI=http://opa:8181
       - D4SERVICE_OPA_PORT=8181
       - D4SERVICE_ADAPTER_URI=http://127.0.0.1:{{cookiecutter.d4service_adapter_port}}
@@ -85,11 +85,11 @@ services:
       - D4SERVICE_OAUTH2_PORT=8080
       - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
       - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
-      - D4SERVICE_OAUTH2_ISSUER=http://keycloak:8080/auth/realms/testing-project-realm
-      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/testing-project-realm/protocol/openid-connect/auth
-      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/token
-      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/certs
-      - D4SERVICE_OAUTH2_USERINFO_ENDPOINT=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/userinfo
+      - D4SERVICE_OAUTH2_ISSUER=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}
+      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/auth
+      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/token
+      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/certs
+      - D4SERVICE_OAUTH2_USERINFO_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/userinfo
       - D4SERVICE_OPA_URI=http://opa:8181
       - D4SERVICE_OPA_PORT=8181
       - D4SERVICE_CACHE_URI=http://127.0.0.1:{{cookiecutter.d4service_cache_port}}
@@ -140,9 +140,9 @@ services:
       - LOG_LEVEL=debug
       - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
       - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
-      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/testing-project-realm/protocol/openid-connect/auth
-      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/token
-      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/testing-project-realm/protocol/openid-connect/certs
+      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/auth
+      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/token
+      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/certs
     ports:
       - "${D4SERVICE_SPOT_PORT}:${D4SERVICE_SPOT_PORT}"
     command: /start

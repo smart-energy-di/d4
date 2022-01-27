@@ -1,0 +1,31 @@
+@startuml
+
+rectangle "[[https://github.com/mleist/d4]]" <<context framework>> as aaa {
+    actor ctxframe_actor1 [
+    Developer: d4
+    ]
+
+    database ctxframe_knowhow [
+    d4 - KnowHow
+    ====
+    Knowledge repository with
+    - µServices in python, docker, k8s, FastAPI
+    - Modern development environment
+    - test-driven approaches
+    ]
+
+    node ctxframe_d4 [
+    d4 - Base Project Generator
+    ====
+    template generator
+    ----
+    [[https://github.com/mleist/d4]]
+    BSD-Licence (OpenSource)
+    ]
+
+    ctxframe_knowhow -[bold]-> ctxframe_d4
+    ctxframe_actor1 -> ctxframe_knowhow
+    ctxframe_actor1 -> ctxframe_d4
+}
+
+@enduml

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="1009px" preserveAspectRatio="none" style="width:1341px;height:1009px;background:#FFFFFF;" version="1.1" viewBox="0 0 1341 1009" width="1341px" zoomAndPan="magnify"><defs><filter height="300%" id="f11klfzqm9ekrj" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[1a12de18ce4353d02c90927ad2bdf5a4]
+cluster aaa--><rect fill="#87CEFA" filter="url(#f11klfzqm9ekrj)" height="364" rx="15" ry="15" style="stroke:#000000;stroke-width:1.5;" width="473" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="144" x="171.5" y="22.5352">«context framework»</text><a href="https://github.com/mleist/d4" target="_top" title="https://github.com/mleist/d4" xlink:actuate="onRequest" xlink:href="https://github.com/mleist/d4" xlink:show="new" xlink:title="https://github.com/mleist/d4" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" text-decoration="underline" textLength="217" x="135" y="39.0234">https://github.com/mleist/d4</text></a><!--MD5=[249af6bfc47b2e1daa73188e49ca1a0b]
+cluster ctxdev--><rect fill="#F0E68C" filter="url(#f11klfzqm9ekrj)" height="483" rx="15" ry="15" style="stroke:#000000;stroke-width:1.5;" width="495" x="504" y="193"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="159" x="672" y="208.5352">«context development»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="143" x="680" y="225.0234">git: µService Project</text><!--MD5=[eb1f0ea281c6e3440433c5ad93a700a2]
+cluster ctxdev_package1--><polygon fill="#F0E68C" filter="url(#f11klfzqm9ekrj)" points="550,465,757,465,764,487.4883,967,487.4883,967,644,550,644,550,465" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="550" x2="764" y1="487.4883" y2="487.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="201" x="554" y="480.5352">e.g. Firewall Rule-Converter</text><!--MD5=[d003ab76c693a14ba0c481096dc8752f]
+cluster ccc4--><path d="M1043.4441,500.2336 C1050.3058,487.7718 1062.4381,484.2435 1071.7674,497.5178 C1082.1891,482.8898 1093.6998,479.2954 1105.0944,496.4992 C1112.364,482.6485 1127.7467,478.4238 1136.7435,494.6837 C1144.5763,476.3696 1161.2369,475.585 1172.8187,490.6294 C1182.4789,475.5329 1192.845,475.6363 1203.2892,489.8134 C1217.023,474.0758 1230.4623,475.798 1237.4198,496.211 C1250.0695,478.9541 1264.7351,480.9643 1272.8251,500.5883 C1284.7135,486.831 1299.3833,489.5359 1307,505.5 C1308.8277,504.4894 1310.4627,505.6378 1310.4827,507.6104 C1326.7643,515.1306 1327.2508,526.5651 1312.8822,536.6205 C1328.6472,545.8869 1328.9382,560.9546 1312.3285,569.6787 C1325.9935,578.0855 1328.1136,588.316 1313.3045,597.714 C1330.4428,606.1887 1330.6463,618.226 1315.2019,628.696 C1328.5262,635.727 1332.5147,648.5179 1318.3345,658.4453 C1334.3425,667.6819 1332.4322,679.1439 1318.3086,688.3545 C1334.7122,696.9942 1334.7659,708.9487 1318.8183,718.1418 C1332.378,728.0156 1331.4768,738.3488 1316.1029,745.3333 C1332.903,756.8592 1330.5053,768.4688 1314.7872,778.713 C1329.6913,790.3538 1328.7943,799.5421 1312.1336,808.3574 C1326.8275,816.3066 1325.9309,829.6574 1311.9096,837.3851 C1323.5286,846.3468 1325.9825,859.0949 1310.4687,866.7241 C1327.6908,876.2458 1326.9411,889.2029 1310.3883,898.6396 C1323.5579,914.8557 1320.1601,924.8245 1300,930 C1302.2125,930.0145 1302.7089,931.924 1301.7441,933.515 C1292.6068,950.5552 1283.2303,950.701 1271.7738,935.6834 C1263.7818,954.225 1247.7326,955.7416 1236.4513,938.9739 C1225.9134,952.3943 1216.0605,954.9378 1204.8641,939.6998 C1197.7844,959.9189 1179.7527,957.3528 1169.0557,943.5016 C1157.9675,956.7956 1146.2811,954.61 1140.4057,938.4338 C1130.8928,952.8604 1115.1953,952.5515 1107.4721,936.5 C1097.2897,955.6806 1080.2794,953.2948 1071.6519,935.0133 C1054.237,949.0111 1036.7751,948.3898 1031,923 C1032.6613,921.487 1033.9264,921.5505 1034.9185,923.7134 C1021.0774,915.938 1022.1931,906.6971 1032.8079,896.9901 C1015.3686,889.1753 1017.7893,873.8607 1030.5831,864.0067 C1018.6958,853.0276 1021.8707,842.9843 1034.9195,835.8448 C1021.5337,829.818 1018.0637,815.4086 1030.35,805.5142 C1015.7004,794.3307 1016.0205,784.4381 1031.1561,774.0168 C1019.6813,767.5385 1017.4915,755.6698 1030.9623,748.9983 C1015.8002,738.7479 1018.071,725.3842 1033.0063,717.06 C1018.1278,707.8684 1017.5954,697.5233 1032.3643,687.6838 C1016.6873,679.3698 1017.3171,665.6028 1031.3077,656.2902 C1017.2381,649.0023 1018.3995,636.2315 1032.1629,629.8437 C1015.2628,617.5116 1017.3912,605.3565 1035.3405,596.3284 C1018.7047,585.8788 1022.2527,576.4118 1035.2353,565.8598 C1019.9052,557.9049 1020.0981,544.8773 1035.1737,536.8578 C1018.5116,524.0564 1017.7401,508.5809 1038,498.5 C1040.6101,496.4921 1042.3764,497.3981 1043.4441,500.2336 " fill="#90EE90" filter="url(#f11klfzqm9ekrj)" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="137" x="1100.5" y="517.0352">«context operation»</text><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="124" x="1107" y="533.5234">Services Network</text><!--MD5=[3b185c0023ff776c37ac8e2ff4ecd250]
+cluster ctxops_service--><polygon fill="#90EE90" filter="url(#f11klfzqm9ekrj)" points="1047,710,1057,700,1291,700,1291,782,1281,792,1047,792,1047,710" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="1281" x2="1291" y1="710" y2="700"/><line style="stroke:#000000;stroke-width:1.5;" x1="1047" x2="1281" y1="710" y2="710"/><line style="stroke:#000000;stroke-width:1.5;" x1="1281" x2="1281" y1="710" y2="792"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="60" x="1135" y="726.5352">µService</text><!--MD5=[d19b4a13c223f96464aa20400a66ffa3]
+entity ctxframe_actor1--><ellipse cx="71" cy="86.5" fill="#FEFECE" filter="url(#f11klfzqm9ekrj)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M71,94.5 L71,121.5 M58,102.5 L84,102.5 M71,121.5 L58,136.5 M71,121.5 L84,136.5 " fill="none" filter="url(#f11klfzqm9ekrj)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="23.5" y="155.5352">Developer: d4</text><!--MD5=[b6fb0c851da63b980f131ef34e464bb1]
+entity ctxframe_knowhow--><path d="M154,68 C154,58 309,58 309,58 C309,58 464,58 464,68 L464,167.4414 C464,177.4414 309,177.4414 309,177.4414 C309,177.4414 154,177.4414 154,167.4414 L154,68 " fill="#FEFECE" filter="url(#f11klfzqm9ekrj)" style="stroke:#000000;stroke-width:1.5;"/><path d="M154,68 C154,78 309,78 309,78 C309,78 464,78 464,68 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="164" y="95.5352">d4 - KnowHow</text><path d="M154,93.4883 C154,103.4883 309,103.4883 309,103.4883 C309,103.4883 464,103.4883 464,93.4883 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><path d="M154,95.4883 C154,105.4883 309,105.4883 309,105.4883 C309,105.4883 464,105.4883 464,95.4883 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="183" x="164" y="116.0234">Knowledge repository with</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="290" x="164" y="132.5117">- µServices in python, docker, k8s, FastAPI</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="249" x="164" y="149">- Modern development environment</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="172" x="164" y="165.4883">- test-driven approaches</text><!--MD5=[797c5d21ac2b1aec7eda11401843d39c]
+entity ctxframe_d4--><polygon fill="#FEFECE" filter="url(#f11klfzqm9ekrj)" points="187,253,197,243,431,243,431,344.9531,421,354.9531,187,354.9531,187,253" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="421" x2="431" y1="253" y2="243"/><line style="stroke:#000000;stroke-width:1.5;" x1="187" x2="421" y1="253" y2="253"/><line style="stroke:#000000;stroke-width:1.5;" x1="421" x2="421" y1="253" y2="354.9531"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="189" x="202" y="276.5352">d4 - Base Project Generator</text><line style="stroke:#000000;stroke-width:1.0;" x1="187" x2="421" y1="279.4883" y2="279.4883"/><line style="stroke:#000000;stroke-width:1.0;" x1="421" x2="431" y1="279.4883" y2="269.4883"/><line style="stroke:#000000;stroke-width:1.0;" x1="187" x2="421" y1="281.4883" y2="281.4883"/><line style="stroke:#000000;stroke-width:1.0;" x1="421" x2="431" y1="281.4883" y2="271.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="132" x="202" y="297.0234">template generator</text><line style="stroke:#000000;stroke-width:1.0;" x1="187" x2="421" y1="303.9766" y2="303.9766"/><line style="stroke:#000000;stroke-width:1.0;" x1="421" x2="431" y1="303.9766" y2="293.9766"/><a href="https://github.com/mleist/d4" target="_top" title="https://github.com/mleist/d4" xlink:actuate="onRequest" xlink:href="https://github.com/mleist/d4" xlink:show="new" xlink:title="https://github.com/mleist/d4" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="204" x="202" y="321.5117">https://github.com/mleist/d4</text></a><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="182" x="202" y="338">BSD-Licence (OpenSource)</text><!--MD5=[6a416f34a5c01564173f947bcbbee9e2]
+entity ctxdev_actor1--><ellipse cx="916" cy="268" fill="#FEFECE" filter="url(#f11klfzqm9ekrj)" rx="8" ry="8" style="stroke:#A80036;stroke-width:1.5;"/><path d="M916,276 L916,303 M903,284 L929,284 M916,303 L903,318 M916,303 L929,318 " fill="none" filter="url(#f11klfzqm9ekrj)" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="134" x="849" y="337.0352">Developer: µService</text><!--MD5=[780d98c848f09d8e529333eb30f21b3c]
+entity ctxdev_file_1--><polygon fill="#FEFECE" filter="url(#f11klfzqm9ekrj)" points="520,244,520,354.4414,814,354.4414,814,254,804,244,520,244" style="stroke:#000000;stroke-width:1.5;"/><path d="M804,244 L804,254 L814,254 " fill="#FEFECE" style="stroke:#000000;stroke-width:1.5;"/><a href="https://github.com/mleist/d4/blob/main/cookiecutter.json" target="_top" title="https://github.com/mleist/d4/blob/main/cookiecutter.json" xlink:actuate="onRequest" xlink:href="https://github.com/mleist/d4/blob/main/cookiecutter.json" xlink:show="new" xlink:title="https://github.com/mleist/d4/blob/main/cookiecutter.json" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" text-decoration="underline" textLength="203" x="530" y="267.5352">Configuration of the software</text></a><line style="stroke:#000000;stroke-width:1.0;" x1="521" x2="813" y1="270.4883" y2="270.4883"/><line style="stroke:#000000;stroke-width:1.0;" x1="521" x2="813" y1="272.4883" y2="272.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="5" x="530" y="288.0234">{</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="258" x="546" y="304.5117">"project_name": "e.g. Firewall Project",</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="12" x="546" y="321">...</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="5" x="530" y="337.4883">}</text><!--MD5=[756e66b09d52dfd62ef872edad0ca4f8]
+entity ctxdev_toolset1--><path d="M586.5,415 L747.5,415 C752.5,415 752.5,428.2441 752.5,428.2441 C752.5,428.2441 752.5,441.4883 747.5,441.4883 L586.5,441.4883 C581.5,441.4883 581.5,428.2441 581.5,428.2441 C581.5,428.2441 581.5,415 586.5,415 " fill="#FEFECE" filter="url(#f11klfzqm9ekrj)" style="stroke:#A80036;stroke-width:1.5;"/><path d="M747.5,415 C742.5,415 742.5,428.2441 742.5,428.2441 C742.5,441.4883 747.5,441.4883 747.5,441.4883 " fill="none" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="151" x="586.5" y="433.5352">produces source code</text><!--MD5=[43fe07302fd18318d2bda9d311457eb5]
+entity c1_runtime--><rect fill="#FEFECE" filter="url(#f11klfzqm9ekrj)" height="112.4414" style="stroke:#A80036;stroke-width:1.5;" width="149" x="593.5" y="508"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="722.5" y="513"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="720.5" y="515"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="720.5" y="519"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="608.5" y="541.5352">PythonModules:</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="608.5" y="558.0234">- runtime</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="612.5" y="574.5117">- testing</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="71" x="612.5" y="591">- OpenAPI</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="24" x="612.5" y="607.4883">- ...</text><!--MD5=[bede216c3e63187dd7be3f37a09812f6]
+entity c1_app_logic--><rect fill="#FEFECE" filter="url(#f11klfzqm9ekrj)" height="62.9766" style="stroke:#A80036;stroke-width:1.5;" width="165" x="777.5" y="532.5"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="922.5" y="537.5"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="920.5" y="539.5"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="920.5" y="543.5"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="109" x="792.5" y="566.0352">PythonModules:</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="125" x="792.5" y="582.5234">- application logic</text><!--MD5=[21e92d4c108550dfe12e29b56a7e891e]
+entity ctxops_db_spot--><path d="M1078.5,551.5 C1078.5,541.5 1169,541.5 1169,541.5 C1169,541.5 1259.5,541.5 1259.5,551.5 L1259.5,576.9883 C1259.5,586.9883 1169,586.9883 1169,586.9883 C1169,586.9883 1078.5,586.9883 1078.5,576.9883 L1078.5,551.5 " fill="#FEFECE" filter="url(#f11klfzqm9ekrj)" style="stroke:#000000;stroke-width:1.5;"/><path d="M1078.5,551.5 C1078.5,561.5 1169,561.5 1169,561.5 C1169,561.5 1259.5,561.5 1259.5,551.5 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="161" x="1088.5" y="579.0352">SPOT: e.g. Firewall Data</text><!--MD5=[3f1e98a246da3a232c007409707296d1]
+entity ctxops_db_cache--><path d="M1076.5,846 C1076.5,836 1169,836 1169,836 C1169,836 1261.5,836 1261.5,846 L1261.5,912.4648 C1261.5,922.4648 1169,922.4648 1169,922.4648 C1169,922.4648 1076.5,922.4648 1076.5,912.4648 L1076.5,846 " fill="#FEFECE" filter="url(#f11klfzqm9ekrj)" style="stroke:#000000;stroke-width:1.5;"/><path d="M1076.5,846 C1076.5,856 1169,856 1169,856 C1169,856 1261.5,856 1261.5,846 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="1086.5" y="873.5352">json-ld-Cache</text><path d="M1076.5,871.4883 C1076.5,881.4883 1169,881.4883 1169,881.4883 C1169,881.4883 1261.5,881.4883 1261.5,871.4883 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><path d="M1076.5,873.4883 C1076.5,883.4883 1169,883.4883 1169,883.4883 C1169,883.4883 1261.5,883.4883 1261.5,873.4883 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="123" x="1086.5" y="894.0234">standardised data</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="165" x="1086.5" y="910.5117">Linkable with other data</text><!--MD5=[eb14fe0aecc2ed7799afbe9084b1683e]
+entity ctxops_service_conv1--><rect fill="#FEFECE" filter="url(#f11klfzqm9ekrj)" height="36.4883" style="stroke:#A80036;stroke-width:1.5;" width="212" x="1063" y="740"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="192" x="1073" y="763.5352">e.g. Firewall Rule-Converter</text><!--MD5=[988b21eb30e78be5e9187911e717ad7a]
+link ctxframe_knowhow to ctxframe_d4--><path d="M309,177.28 C309,196.53 309,217.95 309,237.34 " fill="none" id="ctxframe_knowhow-to-ctxframe_d4" style="stroke:#808080;stroke-width:2.0;"/><polygon fill="#808080" points="309,242.75,313,233.75,309,237.75,305,233.75,309,242.75" style="stroke:#808080;stroke-width:2.0;"/><!--MD5=[f8acbbe3a0e6c7e542eed4e0fbfc1ce9]
+link ctxframe_actor1 to ctxframe_knowhow--><path d="M118.88,117.5 C128.79,117.5 138.69,117.5 148.6,117.5 " fill="none" id="ctxframe_actor1-to-ctxframe_knowhow" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="153.78,117.5,144.78,113.5,148.78,117.5,144.78,121.5,153.78,117.5" style="stroke:#808080;stroke-width:3.0;"/><!--MD5=[a522ea0e7180add6370d8a61409d49f3]
+link ctxframe_actor1 to ctxframe_d4--><path d="M113.71,158.28 C121.02,164.69 128.63,171.14 136,177 C162.96,198.43 193.44,220.43 221.22,239.7 " fill="none" id="ctxframe_actor1-to-ctxframe_d4" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="225.66,242.77,220.5295,234.363,221.5465,239.9277,215.9818,240.9446,225.66,242.77" style="stroke:#808080;stroke-width:3.0;"/><!--MD5=[c8affc62d8e96580c54329b09ae63121]
+link ctxdev_file_1 to ctxdev_toolset1--><path d="M667,354.23 C667,374.11 667,395.22 667,409.56 " fill="none" id="ctxdev_file_1-to-ctxdev_toolset1" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="667,414.89,671,405.89,667,409.89,663,405.89,667,414.89" style="stroke:#808080;stroke-width:3.0;"/><!--MD5=[c8d06bf64178a073aba4a4f86251e425]
+link ctxdev_actor1 to ctxdev_toolset1--><path d="M881.45,339.56 C867.33,353.7 850.08,368.67 832,379 C803.71,395.15 769.54,406.26 739.65,413.69 " fill="none" id="ctxdev_actor1-to-ctxdev_toolset1" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="734.51,414.94,744.2007,416.6981,739.3682,413.7575,742.3087,408.925,734.51,414.94" style="stroke:#808080;stroke-width:3.0;"/><!--MD5=[6a08beea516bb8e94c798b244729bbf1]
+link ctxdev_toolset1 to c1_runtime--><path d="M667.09,441.37 C667.2,455.46 667.38,479.54 667.55,502.57 " fill="none" id="ctxdev_toolset1-to-c1_runtime" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="667.59,507.77,671.5127,498.736,667.5471,502.7702,663.513,498.8046,667.59,507.77" style="stroke:#808080;stroke-width:3.0;"/><!--MD5=[1d4fb9d41bf25ed9e88bfbaf1a47a34b]
+link ctxdev_actor1 to c1_app_logic--><path d="M907.56,339.66 C896.68,390.71 877.96,478.66 867.54,527.57 " fill="none" id="ctxdev_actor1-to-c1_app_logic" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="866.5,532.47,872.2906,524.5033,867.5437,527.5802,864.4669,522.8333,866.5,532.47" style="stroke:#808080;stroke-width:3.0;"/><!--MD5=[16af536a346eef7ee39b6bd7a5453353]
+link c1_runtime to c1_app_logic--><path d="M747.8,564 C755.99,564 764.18,564 772.37,564 " fill="none" id="c1_runtime-c1_app_logic" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="777.47,564,768.47,560,772.47,564,768.47,568,777.47,564" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="742.62,564,751.6314,567.9743,747.62,563.9857,751.6085,559.9743,742.62,564" style="stroke:#808080;stroke-width:3.0;"/><!--MD5=[54cafa742367f264428368fbc3c35067]
+link ctxops_db_spot to ctxops_service_conv1--><path d="M1169,586.65 C1169,623.39 1169,697.55 1169,734.71 " fill="none" id="ctxops_db_spot-to-ctxops_service_conv1" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="1169,739.92,1173,730.92,1169,734.92,1165,730.92,1169,739.92" style="stroke:#808080;stroke-width:3.0;"/><!--MD5=[7831ded53aa1578398ce388e62734e6d]
+link ctxops_service_conv1 to ctxops_db_cache--><path d="M1169,776.05 C1169,790.27 1169,811.23 1169,830.45 " fill="none" id="ctxops_service_conv1-to-ctxops_db_cache" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="1169,835.82,1173,826.82,1169,830.82,1165,826.82,1169,835.82" style="stroke:#808080;stroke-width:3.0;"/><!--MD5=[ac5f3d86f9df0a5a9dff68512e83502a]
+link ctxframe_d4 to ctxdev_toolset1--><path d="M431.04,351.59 C455.07,361.13 480.2,370.7 504,379 C541.28,392.01 584.13,404.53 616.54,413.53 " fill="none" id="ctxframe_d4-to-ctxdev_toolset1" style="stroke:#808080;stroke-width:3.0;"/><polygon fill="#808080" points="621.65,414.94,614.0556,408.669,616.8338,413.5966,611.9062,416.3748,621.65,414.94" style="stroke:#808080;stroke-width:3.0;"/><!--MD5=[ca4b169fb9e9615757d899350bcfa428]
+link ctxdev_package1 to ctxops_service_conv1--><path d="M556.4186,644.3281 C556.5092,644.7307 556.6018,645.1327 556.6967,645.5342 C557.076,647.1401 557.4899,648.7369 557.9408,650.3209 C561.5475,662.9931 567.515,674.8475 577,684 C610.91,716.72 895.89,739.82 1057.76,750.43 " fill="none" id="ctxdev_package1-to-ctxops_service_conv1" style="stroke:#808080;stroke-width:3.0;stroke-dasharray:1.0,3.0;"/><polygon fill="#808080" points="1062.99,750.77,1054.2725,746.1868,1058.0008,750.4412,1053.7464,754.1695,1062.99,750.77" style="stroke:#808080;stroke-width:3.0;"/><rect fill="#DDDDDD" height="20" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="286" x="1033.7659" y="973.9189"/><text fill="#000000" font-family="sans-serif" font-size="8" lengthAdjust="spacing" textLength="191" x="1039.7659" y="986.6532">method_box.puml / 2022-01-27T12:44+0100 /</text><a href="https://plantuml.com" target="_top" title="https://plantuml.com" xlink:actuate="onRequest" xlink:href="https://plantuml.com" xlink:show="new" xlink:title="https://plantuml.com" xlink:type="simple"><text fill="#0000FF" font-family="sans-serif" font-size="8" lengthAdjust="spacing" text-decoration="underline" textLength="80" x="1233.7659" y="986.6532">PlantUML (1.2022.0)</text></a><!--MD5=[104ec3b4d3f27611cf579ba93ea12f75]
+@startuml
+!include include/d4_inc_base.puml
+
+!include include/context_framework.puml
+!include include/context_development.puml
+!include include/context_operation.puml
+
+ctxframe_d4 - -> ctxdev_toolset1
+ctxdev_package1 ~~> ctxops_service_conv1
+
+$d4legend()
+@enduml
+
+@startuml
+
+skinparam LegendFontSize 8
+
+
+
+skinparam {
+    ArrowThickness 3
+    ArrowColor Gray
+}
+
+skinparam rectangle {
+    roundCorner 30
+    backgroundColor<<context framework>> LightSkyBlue
+    backgroundColor<<context development>> Khaki
+    backgroundColor<<context operation>> LightGreen
+}
+
+skinparam cloud {
+    backgroundColor<<context framework>> LightSkyBlue
+    backgroundColor<<context development>> Khaki
+    backgroundColor<<context operation>> LightGreen
+}
+
+
+
+
+rectangle "[[https://github.com/mleist/d4]]" <<context framework>> as aaa {
+    actor ctxframe_actor1 [
+    Developer: d4
+    ]
+
+    database ctxframe_knowhow [
+    d4 - KnowHow
+    ====
+    Knowledge repository with
+    - µServices in python, docker, k8s, FastAPI
+    - Modern development environment
+    - test-driven approaches
+    ]
+
+    node ctxframe_d4 [
+    d4 - Base Project Generator
+    ====
+    template generator
+    - - - -
+    [[https://github.com/mleist/d4]]
+    BSD-Licence (OpenSource)
+    ]
+
+    ctxframe_knowhow -[bold]-> ctxframe_d4
+    ctxframe_actor1 -> ctxframe_knowhow
+    ctxframe_actor1 -> ctxframe_d4
+}
+
+
+rectangle "git: µService Project" <<context development>> as ctxdev {
+    actor ctxdev_actor1 [
+    Developer: µService
+    ]
+
+    file ctxdev_file_1 [
+    [[https://github.com/mleist/d4/blob/main/cookiecutter.json Configuration of the software]]
+    ====
+    {
+        "project_name": "e.g. Firewall Project",
+        ...
+    }
+    ]
+
+    queue ctxdev_toolset1 [
+    produces source code
+    ]
+
+    ctxdev_file_1 - -> ctxdev_toolset1
+    ctxdev_actor1 - -> ctxdev_toolset1
+
+    package "e.g. Firewall Rule-Converter" as ctxdev_package1 {
+        component "PythonModules:\n- runtime\n - testing\n - OpenAPI\n - ..." as c1_runtime
+        component "PythonModules:\n- application logic" as c1_app_logic
+    }
+
+    ctxdev_toolset1 - -> c1_runtime
+    ctxdev_actor1 - -> c1_app_logic
+    c1_runtime <-> c1_app_logic
+}
+
+
+cloud "Services Network" <<context operation>> as ccc4 {
+    database ctxops_db_spot [
+    SPOT: e.g. Firewall Data
+    ]
+
+    database ctxops_db_cache [
+    json-ld-Cache
+    ====
+    standardised data
+    Linkable with other data
+    ]
+
+    node "µService" as ctxops_service {
+    agent "e.g. Firewall Rule-Converter" as ctxops_service_conv1
+    }
+
+    ctxops_db_spot - -> ctxops_service_conv1
+    ctxops_service_conv1 - -> ctxops_db_cache
+}
+
+
+ctxframe_d4 - -> ctxdev_toolset1
+ctxdev_package1 ~~> ctxops_service_conv1
+
+    legend right
+      method_box.puml / 2022-01-27T12:44+0100 / [[https://plantuml.com PlantUML (1.2022.0)]]
+    endlegend
+@enduml
+
+PlantUML version 1.2022.0(Tue Jan 11 17:16:42 CET 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: de
+Country: DE
+--></g></svg>

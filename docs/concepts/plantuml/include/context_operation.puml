@@ -1,0 +1,23 @@
+@startuml
+
+cloud "Services Network" <<context operation>> as ccc4 {
+    database ctxops_db_spot [
+    SPOT: e.g. Firewall Data
+    ]
+
+    database ctxops_db_cache [
+    json-ld-Cache
+    ====
+    standardised data
+    Linkable with other data
+    ]
+
+    node "µService" as ctxops_service {
+    agent "e.g. Firewall Rule-Converter" as ctxops_service_conv1
+    }
+
+    ctxops_db_spot --> ctxops_service_conv1
+    ctxops_service_conv1 --> ctxops_db_cache
+}
+
+@enduml

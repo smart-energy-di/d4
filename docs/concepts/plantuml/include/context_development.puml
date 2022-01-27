@@ -1,0 +1,34 @@
+@startuml
+
+rectangle "git: µService Project" <<context development>> as ctxdev {
+    actor ctxdev_actor1 [
+    Developer: µService
+    ]
+
+    file ctxdev_file_1 [
+    [[https://github.com/mleist/d4/blob/main/cookiecutter.json Configuration of the software]]
+    ====
+    {
+        "project_name": "e.g. Firewall Project",
+        ...
+    }
+    ]
+
+    queue ctxdev_toolset1 [
+    produces source code
+    ]
+
+    ctxdev_file_1 --> ctxdev_toolset1
+    ctxdev_actor1 --> ctxdev_toolset1
+
+    package "e.g. Firewall Rule-Converter" as ctxdev_package1 {
+        component "PythonModules:\n- runtime\n - testing\n - OpenAPI\n - ..." as c1_runtime
+        component "PythonModules:\n- application logic" as c1_app_logic
+    }
+
+    ctxdev_toolset1 --> c1_runtime
+    ctxdev_actor1 --> c1_app_logic
+    c1_runtime <-> c1_app_logic
+}
+
+@enduml

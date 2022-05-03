@@ -45,8 +45,6 @@ services:
 # {% if cookiecutter.enable_adapter == "y" %}
   adapter:
     image: '${DOCKER_IMAGE_ADAPTER?Variable not set}:${TAG-latest}'
-    env_file:
-      - .env
     environment:
       - LOG_LEVEL=debug
       - D4SERVICE_OAUTH2_URI=http://keycloak:8080
@@ -77,8 +75,6 @@ services:
 # {% if cookiecutter.enable_cache == "y" %}
   cache:
     image: '${DOCKER_IMAGE_CACHE?Variable not set}:${TAG-latest}'
-    env_file:
-      - .env
     environment:
       - LOG_LEVEL=debug
       - D4SERVICE_OAUTH2_URI=http://keycloak:8080
@@ -119,7 +115,7 @@ services:
     ports:
       - "5432:5432"
     env_file:
-      - ./.envs/.local/.postgres
+      - envs/local/postgres
 
   spot:
     build:
@@ -133,9 +129,8 @@ services:
     volumes:
       - ./spot/app:/app:z
     env_file:
-      - .env
-      - ./.envs/.local/.spot
-      - ./.envs/.local/.postgres
+      - envs/local/spot
+      - envs/local/postgres
     environment:
       - LOG_LEVEL=debug
       - D4SERVICE_OAUTH2_CLIENT_ID=d4-client

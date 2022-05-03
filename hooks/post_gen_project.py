@@ -21,7 +21,8 @@ DEBUG_VALUE = "debug"
 
 
 def generate_random_string(
-        length, using_digits=False, using_ascii_letters=False, using_punctuation=False
+        length, using_digits=False, using_ascii_letters=False,
+        using_punctuation=False
 ):
     """
     Example:
@@ -120,11 +121,13 @@ def set_postgres_password(file_path, value=None):
 
 
 def set_flags_in_envs(postgres_user, celery_flower_user, debug=False):
-    local_django_envs_path = os.path.join(".envs", ".local", ".spot")
-    production_django_envs_path = os.path.join(".envs", ".production", ".spot")
-    local_postgres_envs_path = os.path.join(".envs", ".local", ".postgres")
-    production_postgres_envs_path = os.path.join(".envs", ".production", ".postgres")
+    local_django_envs_path = os.path.join("envs", "local", "spot")
+    production_django_envs_path = os.path.join("envs", "production", "spot")
+    local_postgres_envs_path = os.path.join("envs", "local", "postgres")
+    production_postgres_envs_path = os.path.join("envs", "production",
+                                                 "postgres")
 
+    set_django_secret_key(local_django_envs_path)
     set_django_secret_key(production_django_envs_path)
     set_django_admin_url(production_django_envs_path)
 
@@ -136,11 +139,6 @@ def set_flags_in_envs(postgres_user, celery_flower_user, debug=False):
     set_postgres_password(
         production_postgres_envs_path, value=DEBUG_VALUE if debug else None
     )
-
-
-def set_flags_in_settings_files():
-    set_django_secret_key(os.path.join("spot", "app", "config", "settings", "local.py"))
-    set_django_secret_key(os.path.join("spot", "app", "config", "settings", "test.py"))
 
 
 def append_to_gitignore_file(s):
@@ -157,10 +155,9 @@ def spot():
         DEBUG_VALUE if debug else generate_random_user(),
         debug=debug,
     )
-    set_flags_in_settings_files()
 
     append_to_gitignore_file(".env")
-    append_to_gitignore_file(".envs/*")
+    append_to_gitignore_file("envs/*")
 
     print(SUCCESS + "Project initialized, keep up the good work!" + TERMINATOR)
 
@@ -172,12 +169,20 @@ def main():
     enable_proxy = '{{cookiecutter.enable_proxy}}' == 'y'
     enable_spot = '{{cookiecutter.enable_spot}}' == 'y'
 
+    def copy_dot_env():
+        shutil.copyfile("dotenv.dist", ".env")
+
+    def copy_container_envs():
+        shutil.copytree("envs.dist", "envs")
+
     def remove(filepath):
         if os.path.isfile(filepath):
             os.remove(filepath)
         elif os.path.isdir(filepath):
             shutil.rmtree(filepath)
 
+    copy_dot_env()
+    copy_container_envs()
     if not enable_adapter:
         remove('./adapter')
         remove('./tests/adapter')

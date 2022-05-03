@@ -1,3 +1,5 @@
+# pylint: disable=E0401,E0602
+
 from .base import *  # noqa
 from .base import env
 

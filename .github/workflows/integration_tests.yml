@@ -32,7 +32,7 @@ jobs:
           pip install cookiecutter
       - name: Create testing-project dir with cookiecutter
         run: |
-          cookiecutter --no-input -f ./ project_name="Testing Project"
+          cookiecutter --no-input -f --config-file ./cookiecutter-test.yaml ./
       - name: Install dependencies 2
         working-directory: ./testing-project
         run: |

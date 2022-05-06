@@ -1,0 +1,47 @@
+default_context:
+  project_name: Testing Project
+  project_slug: "{{ cookiecutter.project_name|lower|replace(' ', '-') }}"
+  enable_adapter: y
+  enable_cache: y
+  enable_ui: n
+  enable_proxy: n
+  enable_spot: y
+  enable_postgres: y
+  enable_test_opa: y
+  enable_test_keycloak: y
+  docker_image_prefix: d4
+  docker_image_adapter: "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_adapter"
+  docker_image_cache: "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_cache"
+  docker_image_proxy: "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_proxy"
+  docker_image_spot: "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_spot"
+  docker_image_ui: "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_ui"
+  d4service_oauth2_auth_realm: "{{cookiecutter.project_slug}}-realm"
+  d4service_oauth2_uri: http://keycloak:8080
+  d4service_oauth2_hostname: keycloak
+  d4service_oauth2_port: 8080
+  d4service_oauth2_client_id: d4-client
+  d4service_oauth2_client_secret: 1f02bb76-eb58-40e2-928d-13f5c35794c1
+  d4service_oauth2_issuer: "{{cookiecutter.d4service_oauth2_uri}}/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}"
+  d4service_oauth2_authorization_endpoint: "{{cookiecutter.d4service_oauth2_uri}}/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/auth"
+  d4service_oauth2_token_endpoint: "{{cookiecutter.d4service_oauth2_uri}}/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/token"
+  d4service_oauth2_jwks_uri: "{{cookiecutter.d4service_oauth2_uri}}/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/certs"
+  d4service_oauth2_userinfo_endpoint: "{{cookiecutter.d4service_oauth2_uri}}/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/userinfo"
+  d4service_opa_uri: http://opa:8181
+  d4service_opa_hostname: opa
+  d4service_opa_port: 8181
+  d4service_adapter_uri: http://adapter:9010
+  d4service_adapter_port: 9010
+  d4service_cache_uri: http://cache:9020
+  d4service_cache_port: 9020
+  d4service_proxy_uri: http://proxy:9030
+  d4service_proxy_port: 9030
+  d4service_spot_uri: http://spot:9040
+  d4service_spot_port: 9040
+  d4service_spot_name: spot_acme
+  d4service_ui_uri: http://ui:9050
+  d4service_ui_port: 9050
+  debug: y
+  docs: n
+  tests: y
+  timezone: UTC
+  prod_domain_name: example.com

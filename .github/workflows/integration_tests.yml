@@ -32,6 +32,10 @@ jobs:
           pip install cookiecutter
       - name: Create testing-project dir with cookiecutter
         run: |
+          echo "pwd"
+          pwd
+          echo "ls -la"
+          ls -la
           cookiecutter --no-input -f --config-file ./cookiecutter-test.yaml ./
       - name: Install dependencies 2
         working-directory: ./testing-project

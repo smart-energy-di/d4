@@ -36,7 +36,7 @@ jobs:
           pwd
           echo "ls -la"
           ls -la
-          cookiecutter --no-input -f --config-file ./cookiecutter-test.yaml ./
+          cookiecutter --no-input -f --config-file ./cookiecutter-tests.yaml ./
       - name: Install dependencies 2
         working-directory: ./testing-project
         run: |

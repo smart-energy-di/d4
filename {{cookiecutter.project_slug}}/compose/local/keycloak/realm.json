@@ -1,6 +1,6 @@
 {
-  "id": "{{cookiecutter.auth_realm}}",
-  "realm": "{{cookiecutter.auth_realm}}",
+  "id": "{{cookiecutter.d4service_oauth2_auth_realm}}",
+  "realm": "{{cookiecutter.d4service_oauth2_auth_realm}}",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -47,7 +47,7 @@
     "realm": [
       {
         "id": "84f5b1d0-dc16-48e4-894c-08bfebd8513d",
-        "name": "default-roles-{{cookiecutter.auth_realm}}",
+        "name": "default-roles-{{cookiecutter.d4service_oauth2_auth_realm}}",
         "description": "${role_default-roles}",
         "composite": true,
         "composites": {
@@ -63,7 +63,7 @@
           }
         },
         "clientRole": false,
-        "containerId": "{{cookiecutter.auth_realm}}",
+        "containerId": "{{cookiecutter.d4service_oauth2_auth_realm}}",
         "attributes": {}
       },
       {
@@ -72,7 +72,7 @@
         "description": "${role_uma_authorization}",
         "composite": false,
         "clientRole": false,
-        "containerId": "{{cookiecutter.auth_realm}}",
+        "containerId": "{{cookiecutter.d4service_oauth2_auth_realm}}",
         "attributes": {}
       },
       {
@@ -81,7 +81,7 @@
         "description": "${role_offline-access}",
         "composite": false,
         "clientRole": false,
-        "containerId": "{{cookiecutter.auth_realm}}",
+        "containerId": "{{cookiecutter.d4service_oauth2_auth_realm}}",
         "attributes": {}
       }
     ],
@@ -397,11 +397,11 @@
   "groups": [],
   "defaultRole": {
     "id": "84f5b1d0-dc16-48e4-894c-08bfebd8513d",
-    "name": "default-roles-{{cookiecutter.auth_realm}}",
+    "name": "default-roles-{{cookiecutter.d4service_oauth2_auth_realm}}",
     "description": "${role_default-roles}",
     "composite": true,
     "clientRole": false,
-    "containerId": "{{cookiecutter.auth_realm}}"
+    "containerId": "{{cookiecutter.d4service_oauth2_auth_realm}}"
   },
   "requiredCredentials": [
     "password"
@@ -475,7 +475,7 @@
       "disableableCredentialTypes": [],
       "requiredActions": [],
       "realmRoles": [
-        "default-roles-{{cookiecutter.auth_realm}}"
+        "default-roles-{{cookiecutter.d4service_oauth2_auth_realm}}"
       ],
       "notBefore": 0,
       "groups": []
@@ -510,7 +510,7 @@
       "disableableCredentialTypes": [],
       "requiredActions": [],
       "realmRoles": [
-        "default-roles-{{cookiecutter.auth_realm}}"
+        "default-roles-{{cookiecutter.d4service_oauth2_auth_realm}}"
       ],
       "notBefore": 0,
       "groups": []
@@ -545,7 +545,7 @@
       "disableableCredentialTypes": [],
       "requiredActions": [],
       "realmRoles": [
-        "default-roles-{{cookiecutter.auth_realm}}"
+        "default-roles-{{cookiecutter.d4service_oauth2_auth_realm}}"
       ],
       "notBefore": 0,
       "groups": []
@@ -580,7 +580,7 @@
       "disableableCredentialTypes": [],
       "requiredActions": [],
       "realmRoles": [
-        "default-roles-{{cookiecutter.auth_realm}}"
+        "default-roles-{{cookiecutter.d4service_oauth2_auth_realm}}"
       ],
       "notBefore": 0,
       "groups": []
@@ -615,7 +615,7 @@
       "disableableCredentialTypes": [],
       "requiredActions": [],
       "realmRoles": [
-        "default-roles-{{cookiecutter.auth_realm}}"
+        "default-roles-{{cookiecutter.d4service_oauth2_auth_realm}}"
       ],
       "notBefore": 0,
       "groups": []
@@ -645,13 +645,13 @@
       "clientId": "account",
       "name": "${client_account}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/{{cookiecutter.auth_realm}}/account/",
+      "baseUrl": "/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/{{cookiecutter.auth_realm}}/account/*"
+        "/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -686,13 +686,13 @@
       "clientId": "account-console",
       "name": "${client_account-console}",
       "rootUrl": "${authBaseUrl}",
-      "baseUrl": "/realms/{{cookiecutter.auth_realm}}/account/",
+      "baseUrl": "/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/account/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/realms/{{cookiecutter.auth_realm}}/account/*"
+        "/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/account/*"
       ],
       "webOrigins": [],
       "notBefore": 0,
@@ -992,13 +992,13 @@
       "clientId": "security-admin-console",
       "name": "${client_security-admin-console}",
       "rootUrl": "${authAdminUrl}",
-      "baseUrl": "/admin/{{cookiecutter.auth_realm}}/console/",
+      "baseUrl": "/admin/{{cookiecutter.d4service_oauth2_auth_realm}}/console/",
       "surrogateAuthRequired": false,
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "/admin/{{cookiecutter.auth_realm}}/console/*"
+        "/admin/{{cookiecutter.d4service_oauth2_auth_realm}}/console/*"
       ],
       "webOrigins": [
         "+"

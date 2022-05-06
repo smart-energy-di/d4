@@ -156,18 +156,21 @@ def spot():
         debug=debug,
     )
 
-    append_to_gitignore_file(".env")
-    append_to_gitignore_file("envs/*")
-
-    print(SUCCESS + "Project initialized, keep up the good work!" + TERMINATOR)
-
 
 def main():
+    # main components
     enable_adapter = '{{cookiecutter.enable_adapter}}' == 'y'
     enable_cache = '{{cookiecutter.enable_cache}}' == 'y'
     enable_ui = '{{cookiecutter.enable_ui}}' == 'y'
     enable_proxy = '{{cookiecutter.enable_proxy}}' == 'y'
     enable_spot = '{{cookiecutter.enable_spot}}' == 'y'
+    # helpers
+    enable_test_opa = '{{cookiecutter.enable_test_opa}}' == 'y'
+    enable_test_keycloak = '{{cookiecutter.enable_test_keycloak}}' == 'y'
+    enable_postgres = '{{cookiecutter.enable_postgres}}' == 'y'
+    # other stuff
+    enable_docs = '{{cookiecutter.enable_docs}}' == 'y'
+    enable_tests = '{{cookiecutter.enable_tests}}' == 'y'
 
     def copy_dot_env():
         shutil.copyfile("dotenv.dist", ".env")
@@ -181,34 +184,74 @@ def main():
         elif os.path.isdir(filepath):
             shutil.rmtree(filepath)
 
-    copy_dot_env()
-    copy_container_envs()
+    # main components
     if not enable_adapter:
         remove('./adapter')
         remove('./tests/adapter')
         remove('./compose/local/adapter')
-
+        remove('./compose/production/adapter')
+        remove('./envs.dist/local/adapter')
+        remove('./envs.dist/production/adapter')
     if not enable_cache:
         remove('./cache')
         remove('./tests/cache')
         remove('./compose/local/cache')
-
+        remove('./compose/production/cache')
+        remove('./envs.dist/local/cache')
+        remove('./envs.dist/production/cache')
     if not enable_ui:
         remove('./ui')
         remove('./tests/ui')
         remove('./compose/local/ui')
-
+        remove('./compose/production/ui')
+        remove('./envs.dist/local/ui')
+        remove('./envs.dist/production/ui')
     if not enable_proxy:
         remove('./proxy')
         remove('./tests/proxy')
         remove('./compose/local/proxy')
-
+        remove('./compose/production/proxy')
+        remove('./envs.dist/local/proxy')
+        remove('./envs.dist/production/proxy')
     if not enable_spot:
         remove('./spot')
         remove('./tests/spot')
         remove('./compose/local/spot')
+        remove('./compose/production/spot')
+        remove('./envs.dist/local/spot')
+        remove('./envs.dist/production/spot')
+
+    # helpers
+    if not enable_test_opa:
+        remove('./compose/local/opa')
+        remove('./compose/production/opa')
+    if not enable_test_keycloak:
+        remove('./compose/local/keycloak')
+        remove('./compose/production/keycloak')
+    if not enable_postgres:
+        remove('./compose/local/postgres')
+        remove('./compose/production/postgres')
+        remove('./envs.dist/local/postgres')
+        remove('./envs.dist/production/postgres')
+
+    # other stuff
+    if not enable_docs:
+        remove('./docs')
+    if not enable_tests:
+        remove('./tests')
+
+    # copy remaining env.dist for
+    copy_dot_env()
+    copy_container_envs()
+
+    if enable_spot:
+        spot()
+
+    append_to_gitignore_file(".env")
+    append_to_gitignore_file("envs/*")
+
+    print(SUCCESS + "Project initialized, keep up the good work!" + TERMINATOR)
 
 
 if __name__ == "__main__":
     main()
-    spot()

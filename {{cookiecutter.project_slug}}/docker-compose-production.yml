@@ -1,6 +1,8 @@
-version: "3.3"
+version: "3.7"
 # created with cookiecutter for project '{{ cookiecutter.project_name }}'
+
 services:
+# {#
 #  backend:
 #    image: '${DOCKER_IMAGE_BACKEND?Variable not set}:${TAG-latest}'
 #    env_file:
@@ -32,6 +34,10 @@ services:
 #        INSTALL_DEV: ${INSTALL_DEV-false}
 #    ports:
 #      - "${DOCKER_IMAGE_FRONTEND_PORT}:80"
+# #}
+
+
+# {% if cookiecutter.enable_test_keycloak == "y" %}
   keycloak:
     image: jboss/keycloak:latest
     ports:
@@ -42,17 +48,23 @@ services:
       - KEYCLOAK_IMPORT=/tmp/realm.json
     volumes:
       - ./realm.json:/tmp/realm.json
-#  opa:
-#    image: openpolicyagent/opa:latest
-#    ports:
-#      - 8181:8181
-#    command:
-#      - "run"
-#      - "--server"
-#      - "--log-level=debug"
-#      - "/policy/auth.rego"
-#    volumes:
-#      - ./policy:/policy
+# {% endif %}
+
+# {% if cookiecutter.enable_test_opa == "y" %}
+  opa:
+    image: openpolicyagent/opa:latest
+    ports:
+      - 8181:8181
+    command:
+      - "run"
+      - "--server"
+      - "--log-level=debug"
+      - "/policy/auth.rego"
+    volumes:
+      - ./policy:/policy
+# {% endif %}
+
+# {% if cookiecutter.enable_spot == "y" %}
   spot:
     image: '${DOCKER_IMAGE_SPOT?Variable not set}:${TAG-latest}'
     env_file:
@@ -68,6 +80,9 @@ services:
         INSTALL_DEV: ${INSTALL_DEV-false}
     ports:
       - "${D4SERVICE_SPOT_PORT}:{{cookiecutter.d4service_spot_port}}"
+# {% endif %}
 
-volumes:
-  app-db-data:
+# {#
+#volumes:
+#  app-db-data:
+# #}

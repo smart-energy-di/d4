@@ -1,7 +1,7 @@
 version: "3.7"
 # created with cookiecutter for project '{{ cookiecutter.project_name }}'
 
-# {% if cookiecutter.enable_spot == "y" %}
+# {% if cookiecutter.enable_postgres == "y" %}
 volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
@@ -9,7 +9,7 @@ volumes:
 
 
 services:
-# {% if cookiecutter._enable_keycloak == "y" %}
+# {% if cookiecutter.enable_test_keycloak == "y" %}
   keycloak:
     image: jboss/keycloak:latest
     ports:
@@ -24,7 +24,7 @@ services:
       - ./compose/local/keycloak/realm.json:/tmp/realm.json
 # {% endif %}
 
-# {% if cookiecutter._enable_opa == "y" %}
+# {% if cookiecutter.enable_test_opa == "y" %}
   opa:
     image: openpolicyagent/opa:latest
     ports:
@@ -41,8 +41,8 @@ services:
       - ./compose/local/opa/policy:/policy
 # {% endif %}
 
-# ADAPTER - docker container
 # {% if cookiecutter.enable_adapter == "y" %}
+# ADAPTER - docker container
   adapter:
     image: '${DOCKER_IMAGE_ADAPTER?Variable not set}:${TAG-latest}'
     environment:
@@ -51,11 +51,11 @@ services:
       - D4SERVICE_OAUTH2_PORT=8080
       - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
       - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
-      - D4SERVICE_OAUTH2_ISSUER=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}
-      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/auth
-      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/token
-      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/certs
-      - D4SERVICE_OAUTH2_USERINFO_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/userinfo
+      - D4SERVICE_OAUTH2_ISSUER=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}
+      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/auth
+      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/token
+      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/certs
+      - D4SERVICE_OAUTH2_USERINFO_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/userinfo
       - D4SERVICE_OPA_URI=http://opa:8181
       - D4SERVICE_OPA_PORT=8181
       - D4SERVICE_ADAPTER_URI=http://127.0.0.1:{{cookiecutter.d4service_adapter_port}}
@@ -71,8 +71,8 @@ services:
       - "${D4SERVICE_ADAPTER_PORT}:${D4SERVICE_ADAPTER_PORT}"
 # {% endif %}
 
-# CACHE - docker container
 # {% if cookiecutter.enable_cache == "y" %}
+# CACHE - docker container
   cache:
     image: '${DOCKER_IMAGE_CACHE?Variable not set}:${TAG-latest}'
     environment:
@@ -81,11 +81,11 @@ services:
       - D4SERVICE_OAUTH2_PORT=8080
       - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
       - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
-      - D4SERVICE_OAUTH2_ISSUER=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}
-      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/auth
-      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/token
-      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/certs
-      - D4SERVICE_OAUTH2_USERINFO_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/userinfo
+      - D4SERVICE_OAUTH2_ISSUER=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}
+      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/auth
+      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/token
+      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/certs
+      - D4SERVICE_OAUTH2_USERINFO_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/userinfo
       - D4SERVICE_OPA_URI=http://opa:8181
       - D4SERVICE_OPA_PORT=8181
       - D4SERVICE_CACHE_URI=http://127.0.0.1:{{cookiecutter.d4service_cache_port}}
@@ -101,8 +101,8 @@ services:
       - "${D4SERVICE_CACHE_PORT}:${D4SERVICE_CACHE_PORT}"
 # {% endif %}
 
-# SPOT - docker container
-# {% if cookiecutter.enable_spot == "y" %}
+# {% if cookiecutter.enable_postgres == "y" %}
+# postgres - docker container
   postgres:
     build:
       context: .
@@ -116,7 +116,9 @@ services:
       - "5432:5432"
     env_file:
       - envs/local/postgres
+# {% endif %}
 
+# {% if cookiecutter.enable_spot == "y" %}
   spot:
     build:
       context: .
@@ -135,9 +137,9 @@ services:
       - LOG_LEVEL=debug
       - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
       - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
-      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/auth
-      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/token
-      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.auth_realm}}/protocol/openid-connect/certs
+      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/auth
+      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/token
+      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/certs
     ports:
       - "${D4SERVICE_SPOT_PORT}:${D4SERVICE_SPOT_PORT}"
     command: /start

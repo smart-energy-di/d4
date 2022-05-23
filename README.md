@@ -6,6 +6,7 @@
 
 ![GitHub](https://img.shields.io/github/license/mleist/d4?color=00998a)
 [![GitHub Repo stars](https://img.shields.io/github/stars/mleist/d4?color=%2300998a&style=flat)](https://github.com/mleist/d4/stargazers)
+[![GitHub Repo stars](https://img.shields.io/github/issues/mleist/d4?color=%2300998a&style=flat)](https://github.com/mleist/d4/issues)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mleist/d4?color=%2300998a&style=flat)](https://github.com/mleist/d4/graphs/commit-activity)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg?color=%2300998a&style=flat)](https://www.python.org/)
 [![GitHub top language](https://img.shields.io/github/languages/top/mleist/d4?color=%2300998a)](https://github.com/mleist/d4/search?l=python)

@@ -9,9 +9,11 @@
 
 !procedure $d4cache($company, $scope)
     card %string($company+"_"+$scope+"_d4_cache") as "d4 cache" {
-        rectangle %string($company+"_"+$scope+"_d4_cache_rest") as "REST-\ninterface"
         storage %string($company+"_"+$scope+"_d4_cache_store") as "volatile\nstorage"
-        %string($company+"_"+$scope+"_d4_cache_store") <-l-> %string($company+"_"+$scope+"_d4_cache_rest") #green
+        rectangle %string($company+"_"+$scope+"_d4_cache_rest") as "REST-\ninterface"
+        %string($company+"_"+$scope+"_d4_cache_rest") <-l-> %string($company+"_"+$scope+"_d4_cache_store") #green
+        rectangle %string($company+"_"+$scope+"_d4_cache_mq") as "Message-\nQueue"
+        %string($company+"_"+$scope+"_d4_cache_rest") <-r-> %string($company+"_"+$scope+"_d4_cache_mq")
     }
 !endprocedure
 
@@ -34,6 +36,8 @@
         storage %string($company+"_"+$scope+"_d4_spot_store") as "reliable\nstorage"
         rectangle %string($company+"_"+$scope+"_d4_spot_webio") as "UI-Form &\nUI-Im-/Export &\nREST-Interface"
         %string($company+"_"+$scope+"_d4_spot_store") <-[#green]> %string($company+"_"+$scope+"_d4_spot_webio")
+        rectangle %string($company+"_"+$scope+"_d4_spot_mq") as "Message-\nQueue"
+        %string($company+"_"+$scope+"_d4_spot_webio") <-r-> %string($company+"_"+$scope+"_d4_spot_mq")
         }
 !endprocedure
 

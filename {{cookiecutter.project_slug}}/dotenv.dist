@@ -1,6 +1,7 @@
 DOMAIN=example.com
 DOCKER_IMAGE_ADAPTER={{cookiecutter.docker_image_adapter}}
 DOCKER_IMAGE_CACHE={{cookiecutter.docker_image_cache}}
+DOCKER_IMAGE_MQ={{cookiecutter.docker_image_mq}}
 DOCKER_IMAGE_PROXY={{cookiecutter.docker_image_proxy}}
 DOCKER_IMAGE_SPOT={{cookiecutter.docker_image_spot}}
 DOCKER_IMAGE_UI={{cookiecutter.docker_image_ui}}
@@ -19,6 +20,9 @@ D4SERVICE_ADAPTER_URI={{cookiecutter.d4service_adapter_uri}}
 D4SERVICE_ADAPTER_PORT={{cookiecutter.d4service_adapter_port}}
 D4SERVICE_CACHE_URI={{cookiecutter.d4service_cache_uri}}
 D4SERVICE_CACHE_PORT={{cookiecutter.d4service_cache_port}}
+D4SERVICE_MQ_URI={{cookiecutter.d4service_mq_uri}}
+D4SERVICE_MQ_PORT={{cookiecutter.d4service_mq_port}}
+D4SERVICE_MQ_ADMIN_PORT={{cookiecutter.d4service_mq_admin_port}}
 D4SERVICE_PROXY_URI={{cookiecutter.d4service_proxy_uri}}
 D4SERVICE_PROXY_PORT={{cookiecutter.d4service_proxy_port}}
 D4SERVICE_SPOT_URI={{cookiecutter.d4service_spot_uri}}

@@ -1,10 +1,14 @@
 version: "3.7"
 # created with cookiecutter for project '{{ cookiecutter.project_name }}'
 
-# {% if cookiecutter.enable_postgres == "y" %}
 volumes:
+# {% if cookiecutter.enable_postgres == "y" %}
   local_postgres_data: {}
   local_postgres_data_backups: {}
+# {% endif %}
+# {% if cookiecutter.enable_mq == "y" %}
+  local_mq_data: {}
+  local_mq_log: {}
 # {% endif %}
 
 
@@ -99,6 +103,24 @@ services:
         INSTALL_DEV: ${INSTALL_DEV-false}
     ports:
       - "${D4SERVICE_CACHE_PORT}:${D4SERVICE_CACHE_PORT}"
+# {% endif %}
+
+# {% if cookiecutter.enable_mq == "y" %}
+# MQ - docker container
+  mq:
+    image: '${DOCKER_IMAGE_MQ?Variable not set}'
+    environment:
+      - LOG_LEVEL=debug
+      - D4SERVICE_MQ_URI=http://127.0.0.1:{{cookiecutter.d4service_mq_port}}
+      - RABBITMQ_DEFAULT_USER=myuser
+      - RABBITMQ_DEFAULT_PASS=mypassword
+      # Allow explicit env var override for tests
+    ports:
+      - "${D4SERVICE_MQ_PORT}:${D4SERVICE_MQ_PORT}"
+      - "${D4SERVICE_MQ_ADMIN_PORT}:${D4SERVICE_MQ_ADMIN_PORT}"
+    volumes:
+      - local_mq_data:/var/lib/rabbitmq
+      - local_mq_log:/var/log/rabbitmq
 # {% endif %}
 
 # {% if cookiecutter.enable_postgres == "y" %}

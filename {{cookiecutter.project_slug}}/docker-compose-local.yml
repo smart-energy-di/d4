@@ -20,7 +20,7 @@ services:
 
 
 
-# {% if cookiecutter.enable_test_keycloak == "y" %}
+# {%- if cookiecutter.enable_test_keycloak == "y" %}
 # ------------------------------------------------------------------------
   keycloak:
     image: jboss/keycloak:latest
@@ -38,7 +38,7 @@ services:
 
 
 
-# {% if cookiecutter.enable_test_opa == "y" %}
+# {%- if cookiecutter.enable_test_opa == "y" %}
 # ------------------------------------------------------------------------
   opa:
     image: openpolicyagent/opa:latest
@@ -58,7 +58,7 @@ services:
 
 
 
-# {% if cookiecutter.enable_adapter == "y" %}
+# {%- if cookiecutter.enable_adapter == "y" %}
 # ---------------------------------------------------------------------------
   adapter:
     image: '${DOCKER_IMAGE_ADAPTER}'
@@ -90,7 +90,7 @@ services:
 
 
 
-# {% if cookiecutter.enable_cache == "y" %}
+# {%- if cookiecutter.enable_cache == "y" %}
 # ---------------------------------------------------------------------------
   cache:
     image: '${DOCKER_IMAGE_CACHE}'
@@ -122,7 +122,7 @@ services:
 
 
 
-# {% if cookiecutter.enable_mq == "y" %}
+# {%- if cookiecutter.enable_mq == "y" %}
 # ---------------------------------------------------------------------------
   mq:
     image: '${DOCKER_IMAGE_MQ}'
@@ -138,7 +138,7 @@ services:
 
 
 
-# {% if cookiecutter.enable_mq_worker == "y" %}
+# {%- if cookiecutter.enable_mq_worker == "y" %}
 # ---------------------------------------------------------------------------
   {{cookiecutter.d4service_mq_worker_slug}}:
     image: '${DOCKER_IMAGE_MQ_WORKER}'
@@ -156,7 +156,7 @@ services:
 
 
 
-# {% if cookiecutter.enable_mq_db == "y" %}
+# {%- if cookiecutter.enable_mq_db == "y" %}
 # ---------------------------------------------------------------------------
   mq_db:
     image: '${DOCKER_IMAGE_MQ_DB}'
@@ -173,7 +173,7 @@ services:
 
 
 
-# {% if cookiecutter.enable_postgres == "y" %}
+# {%- if cookiecutter.enable_postgres == "y" %}
 # ---------------------------------------------------------------------------
   postgres:
     image: {{ cookiecutter.project_slug }}_production_postgres
@@ -191,7 +191,7 @@ services:
 
 
 
-# {% if cookiecutter.enable_proxy == "y" %}
+# {%- if cookiecutter.enable_proxy == "y" %}
 # ---------------------------------------------------------------------------
   proxy:
     image: {{ cookiecutter.docker_image_proxy }}
@@ -209,7 +209,7 @@ services:
 
 
 
-# {% if cookiecutter.enable_spot == "y" %}
+# {%- if cookiecutter.enable_spot == "y" %}
 # ---------------------------------------------------------------------------
   spot:
     image: {{ cookiecutter.project_slug }}_local_django

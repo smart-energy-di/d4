@@ -17,10 +17,7 @@ volumes:
 
 
 services:
-
-
-
-# {%- if cookiecutter.enable_test_keycloak == "y" %}
+# {% if cookiecutter.enable_test_keycloak == "y" %}
 # ------------------------------------------------------------------------
   keycloak:
     image: jboss/keycloak:latest
@@ -34,11 +31,12 @@ services:
       - KEYCLOAK_LOGLEVEL=INFO
     volumes:
       - ./compose/local/keycloak/realm.json:/tmp/realm.json
-# {% endif %}
+# {% endif -%}
 
 
 
-# {%- if cookiecutter.enable_test_opa == "y" %}
+
+# {%- if cookiecutter.enable_test_opa == "y" -%}
 # ------------------------------------------------------------------------
   opa:
     image: openpolicyagent/opa:latest
@@ -54,7 +52,7 @@ services:
       - "/policy/test.rego"
     volumes:
       - ./compose/local/opa/policy:/policy
-# {% endif %}
+# {% endif -%}
 
 
 
@@ -86,7 +84,7 @@ services:
       - opa
     ports:
       - "${D4SERVICE_ADAPTER_PORT}:${D4SERVICE_ADAPTER_PORT}"
-# {% endif %}
+# {% endif -%}
 
 
 
@@ -118,7 +116,7 @@ services:
       - opa
     ports:
       - "${D4SERVICE_CACHE_PORT}:${D4SERVICE_CACHE_PORT}"
-# {% endif %}
+# {% endif -%}
 
 
 
@@ -134,7 +132,7 @@ services:
     volumes:
       - local_mq_data:/var/lib/rabbitmq
       - local_mq_log:/var/log/rabbitmq
-# {% endif %}
+# {% endif -%}
 
 
 
@@ -152,7 +150,7 @@ services:
       - envs/local/{{cookiecutter.d4service_mq_worker_slug}}
     command:
       - celery -A main.celery worker --loglevel=info
-# {% endif %}
+# {% endif -%}
 
 
 
@@ -169,7 +167,7 @@ services:
       - "${D4SERVICE_MQ_DB_PORT}:${D4SERVICE_MQ_DB_PORT}"
     env_file:
       - envs/local/mq_db
-# {% endif %}
+# {% endif -%}
 
 
 
@@ -187,7 +185,7 @@ services:
       - "5432:5432"
     env_file:
       - envs/local/postgres
-# {% endif %}
+# {% endif -%}
 
 
 
@@ -205,7 +203,7 @@ services:
       - "5432:5432"
     env_file:
       - envs/local/proxy
-# {% endif %}
+# {% endif -%}
 
 
 

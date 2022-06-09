@@ -1,6 +1,7 @@
 version: "3.7"
 # created with cookiecutter for project '{{ cookiecutter.project_name }}'
 
+
 volumes:
 # {% if cookiecutter.enable_postgres == "y" %}
   local_postgres_data: {}
@@ -10,14 +11,21 @@ volumes:
   local_mq_data: {}
   local_mq_log: {}
 # {% endif %}
+# {% if cookiecutter.enable_mq_db == "y" %}
+  local_mq_db_data: {}
+# {% endif %}
 
 
 services:
+
+
+
 # {% if cookiecutter.enable_test_keycloak == "y" %}
+# ------------------------------------------------------------------------
   keycloak:
     image: jboss/keycloak:latest
     ports:
-      - 8080:8080
+      - "${D4SERVICE_OAUTH2_PORT}:${D4SERVICE_OAUTH2_PORT}"
     environment:
       - DB_VENDOR=h2
       - KEYCLOAK_USER=admin
@@ -28,11 +36,14 @@ services:
       - ./compose/local/keycloak/realm.json:/tmp/realm.json
 # {% endif %}
 
+
+
 # {% if cookiecutter.enable_test_opa == "y" %}
+# ------------------------------------------------------------------------
   opa:
     image: openpolicyagent/opa:latest
     ports:
-      - 8181:8181
+      - "${D4SERVICE_OPA_PORT}:${D4SERVICE_OPA_PORT}"
     depends_on:
       - keycloak
     command:
@@ -45,10 +56,17 @@ services:
       - ./compose/local/opa/policy:/policy
 # {% endif %}
 
+
+
 # {% if cookiecutter.enable_adapter == "y" %}
-# ADAPTER - docker container
+# ---------------------------------------------------------------------------
   adapter:
-    image: '${DOCKER_IMAGE_ADAPTER?Variable not set}:${TAG-latest}'
+    image: '${DOCKER_IMAGE_ADAPTER}'
+    build:
+      context: ./adapter
+      dockerfile: ../compose/local/adapter/python3.9-slim.dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
     environment:
       - LOG_LEVEL=debug
       - D4SERVICE_OAUTH2_URI=http://keycloak:8080
@@ -66,19 +84,21 @@ services:
       # Allow explicit env var override for tests
     depends_on:
       - opa
-    build:
-      context: ./adapter
-      dockerfile: ../compose/local/adapter/python3.9-slim.dockerfile
-      args:
-        INSTALL_DEV: ${INSTALL_DEV-false}
     ports:
       - "${D4SERVICE_ADAPTER_PORT}:${D4SERVICE_ADAPTER_PORT}"
 # {% endif %}
 
+
+
 # {% if cookiecutter.enable_cache == "y" %}
-# CACHE - docker container
+# ---------------------------------------------------------------------------
   cache:
-    image: '${DOCKER_IMAGE_CACHE?Variable not set}:${TAG-latest}'
+    image: '${DOCKER_IMAGE_CACHE}'
+    build:
+      context: ./cache
+      dockerfile: ../compose/local/cache/python3.9-slim.dockerfile
+      args:
+        INSTALL_DEV: ${INSTALL_DEV-false}
     environment:
       - LOG_LEVEL=debug
       - D4SERVICE_OAUTH2_URI=http://keycloak:8080
@@ -96,25 +116,18 @@ services:
       # Allow explicit env var override for tests
     depends_on:
       - opa
-    build:
-      context: ./cache
-      dockerfile: ../compose/local/cache/python3.9-slim.dockerfile
-      args:
-        INSTALL_DEV: ${INSTALL_DEV-false}
     ports:
       - "${D4SERVICE_CACHE_PORT}:${D4SERVICE_CACHE_PORT}"
 # {% endif %}
 
+
+
 # {% if cookiecutter.enable_mq == "y" %}
-# MQ - docker container
+# ---------------------------------------------------------------------------
   mq:
-    image: '${DOCKER_IMAGE_MQ?Variable not set}'
-    environment:
-      - LOG_LEVEL=debug
-      - D4SERVICE_MQ_URI=http://127.0.0.1:{{cookiecutter.d4service_mq_port}}
-      - RABBITMQ_DEFAULT_USER=myuser
-      - RABBITMQ_DEFAULT_PASS=mypassword
-      # Allow explicit env var override for tests
+    image: '${DOCKER_IMAGE_MQ}'
+    env_file:
+      - envs/local/mq
     ports:
       - "${D4SERVICE_MQ_PORT}:${D4SERVICE_MQ_PORT}"
       - "${D4SERVICE_MQ_ADMIN_PORT}:${D4SERVICE_MQ_ADMIN_PORT}"
@@ -123,25 +136,50 @@ services:
       - local_mq_log:/var/log/rabbitmq
 # {% endif %}
 
+
+
 # {% if cookiecutter.enable_mq_worker == "y" %}
-# MQ worker - docker container
+# ---------------------------------------------------------------------------
   {{cookiecutter.d4service_mq_worker_slug}}:
+    image: '${DOCKER_IMAGE_MQ_WORKER}'
     build:
-      context: .
-      dockerfile: ./Dockerfile.Worker
+      context: ./{{cookiecutter.d4service_mq_worker_slug}}
+      dockerfile: ../compose/local/{{cookiecutter.d4service_mq_worker_slug}}/python3.9-slim.dockerfile
+    DOCKER_IMAGE_MQ_WORKER={{cookiecutter.docker_image_mq_worker}}
+    environment:
+      - LOG_LEVEL=debug
+    env_file:
+      - envs/local/{{cookiecutter.d4service_mq_worker_slug}}
     command:
       - celery -A main.celery worker --loglevel=info
 # {% endif %}
 
 
+
+# {% if cookiecutter.enable_mq_db == "y" %}
+# ---------------------------------------------------------------------------
+  mq_db:
+    image: '${DOCKER_IMAGE_MQ_DB}'
+    build:
+      context: .
+      dockerfile: ./compose/local/mq_db/Dockerfile
+    volumes:
+      - local_mq_db_data:/var/lib/postgresql/data/
+    ports:
+      - "${D4SERVICE_MQ_DB_PORT}:${D4SERVICE_MQ_DB_PORT}"
+    env_file:
+      - envs/local/mq_db
+# {% endif %}
+
+
+
 # {% if cookiecutter.enable_postgres == "y" %}
-# postgres - docker container
+# ---------------------------------------------------------------------------
   postgres:
+    image: {{ cookiecutter.project_slug }}_production_postgres
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
-    image: {{ cookiecutter.project_slug }}_production_postgres
-#    container_name: postgres
     volumes:
       - local_postgres_data:/var/lib/postgresql/data:Z
       - local_postgres_data_backups:/backups:z
@@ -151,13 +189,33 @@ services:
       - envs/local/postgres
 # {% endif %}
 
+
+
+# {% if cookiecutter.enable_proxy == "y" %}
+# ---------------------------------------------------------------------------
+  proxy:
+    image: {{ cookiecutter.docker_image_proxy }}
+    build:
+      context: .
+      dockerfile: ./compose/production/proxy/Dockerfile
+    volumes:
+      - local_proxy_data:/var/lib/proxyql/data:Z
+      - local_proxy_data_backups:/backups:z
+    ports:
+      - "5432:5432"
+    env_file:
+      - envs/local/proxy
+# {% endif %}
+
+
+
 # {% if cookiecutter.enable_spot == "y" %}
+# ---------------------------------------------------------------------------
   spot:
+    image: {{ cookiecutter.project_slug }}_local_django
     build:
       context: .
       dockerfile: ./compose/local/spot/Dockerfile
-    image: {{ cookiecutter.project_slug }}_local_django
-#    container_name: django
     depends_on:
       - postgres
       - keycloak

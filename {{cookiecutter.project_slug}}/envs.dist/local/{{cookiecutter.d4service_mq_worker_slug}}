@@ -1,0 +1,2 @@
+D4SERVICE_MQ_URI={{cookiecutter.d4service_mq_uri}}
+D4SERVICE_MQ_DB_URI={{cookiecutter.d4service_mq_db_uri}}

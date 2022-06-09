@@ -123,6 +123,17 @@ services:
       - local_mq_log:/var/log/rabbitmq
 # {% endif %}
 
+# {% if cookiecutter.enable_mq_worker == "y" %}
+# MQ worker - docker container
+  {{cookiecutter.d4service_mq_worker_slug}}:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.Worker
+    command:
+      - celery -A main.celery worker --loglevel=info
+# {% endif %}
+
+
 # {% if cookiecutter.enable_postgres == "y" %}
 # postgres - docker container
   postgres:

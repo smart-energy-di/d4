@@ -1,14 +1,35 @@
 DOMAIN=example.com
+{%- if cookiecutter.enable_adapter == "y" -%}
 DOCKER_IMAGE_ADAPTER={{cookiecutter.docker_image_adapter}}
+{%- endif %}
+{%- if cookiecutter.enable_cache == "y" -%}
 DOCKER_IMAGE_CACHE={{cookiecutter.docker_image_cache}}
+{%- endif %}
+{%- if cookiecutter.enable_mq == "y" %}
 DOCKER_IMAGE_MQ={{cookiecutter.docker_image_mq}}
+{%- endif %}
+{%- if cookiecutter.enable_mq_db == "y" %}
 DOCKER_IMAGE_MQ_DB={{cookiecutter.docker_image_mq_db}}
+{%- endif %}
+{%- if cookiecutter.enable_mq_worker == "y" %}
 DOCKER_IMAGE_{{cookiecutter.d4service_mq_worker_name|upper|replace(' ', '_') }}={{ cookiecutter.d4service_mq_worker_name|lower|replace(' ', '_') }}
+{%- endif %}
+{%- if cookiecutter.enable_proxy == "y" %}
 DOCKER_IMAGE_PROXY={{cookiecutter.docker_image_proxy}}
+{%- endif %}
+{%- if cookiecutter.enable_spot == "y" %}
 DOCKER_IMAGE_SPOT={{cookiecutter.docker_image_spot}}
+{%- endif %}
+{%- if cookiecutter.enable_ui == "y" %}
 DOCKER_IMAGE_UI={{cookiecutter.docker_image_ui}}
+{%- endif %}
+{%- if cookiecutter.enable_test_keycloak == "y" %}
 DOCKER_TEST_IMAGE_KEYCLOAK={{cookiecutter.docker_test_image_keycloak}}
+{%- endif %}
+{%- if cookiecutter.enable_test_opa == "y" %}
 DOCKER_TEST_IMAGE_OPA={{cookiecutter.docker_test_image_opa}}
+{%- endif %}
+{%- if cookiecutter.enable_test_keycloak == "y" %}
 D4SERVICE_OAUTH2_URI={{cookiecutter.d4service_oauth2_uri}}
 D4SERVICE_OAUTH2_PORT={{cookiecutter.d4service_oauth2_port}}
 D4SERVICE_OAUTH2_CLIENT_ID={{cookiecutter.d4service_oauth2_client_id}}
@@ -18,20 +39,37 @@ D4SERVICE_OAUTH2_AUTH_ENDPOINT={{cookiecutter.d4service_oauth2_authorization_end
 D4SERVICE_OAUTH2_TOKEN_ENDPOINT={{cookiecutter.d4service_oauth2_token_endpoint}}
 D4SERVICE_OAUTH2_JWKS_URI={{cookiecutter.d4service_oauth2_jwks_uri}}
 D4SERVICE_OAUTH2_USERINFO_ENDPOINT={{cookiecutter.d4service_oauth2_userinfo_endpoint}}
+{%- endif %}
+{%- if cookiecutter.enable_test_opa == "y" %}
 D4SERVICE_OPA_URI={{cookiecutter.d4service_opa_uri}}
 D4SERVICE_OPA_PORT={{cookiecutter.d4service_opa_port}}
+{%- endif %}
+{%- if cookiecutter.enable_adapter == "y" %}
 D4SERVICE_ADAPTER_URI={{cookiecutter.d4service_adapter_uri}}
 D4SERVICE_ADAPTER_PORT={{cookiecutter.d4service_adapter_port}}
+{%- endif %}
+{%- if cookiecutter.enable_cache == "y" %}
 D4SERVICE_CACHE_URI={{cookiecutter.d4service_cache_uri}}
 D4SERVICE_CACHE_PORT={{cookiecutter.d4service_cache_port}}
+{%- endif %}
+{%- if cookiecutter.enable_mq == "y" %}
 D4SERVICE_MQ_URI={{cookiecutter.d4service_mq_uri}}
 D4SERVICE_MQ_PORT={{cookiecutter.d4service_mq_port}}
 D4SERVICE_MQ_ADMIN_PORT={{cookiecutter.d4service_mq_admin_port}}
+{%- endif %}
+{%- if cookiecutter.enable_mq_db == "y" %}
 D4SERVICE_MQ_DB_URI={{cookiecutter.d4service_mq_db_uri}}
 D4SERVICE_MQ_DB_PORT={{cookiecutter.d4service_mq_db_port}}
+{%- endif %}
+{%- if cookiecutter.enable_proxy == "y" %}
 D4SERVICE_PROXY_URI={{cookiecutter.d4service_proxy_uri}}
 D4SERVICE_PROXY_PORT={{cookiecutter.d4service_proxy_port}}
+{%- endif %}
+{%- if cookiecutter.enable_spot == "y" %}
 D4SERVICE_SPOT_URI={{cookiecutter.d4service_spot_uri}}
 D4SERVICE_SPOT_PORT={{cookiecutter.d4service_spot_port}}
+{%- endif %}
+{%- if cookiecutter.enable_ui == "y" %}
 D4SERVICE_UI_URI={{cookiecutter.d4service_ui_uri}}
 D4SERVICE_UI_PORT={{cookiecutter.d4service_ui_port}}
+{%- endif %}

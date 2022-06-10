@@ -143,7 +143,6 @@ services:
     build:
       context: ./{{cookiecutter.d4service_mq_worker_slug}}
       dockerfile: ../compose/local/{{cookiecutter.d4service_mq_worker_slug}}/python3.9-slim.dockerfile
-    DOCKER_IMAGE_MQ_WORKER={{cookiecutter.docker_image_mq_worker}}
     environment:
       - LOG_LEVEL=debug
     env_file:

@@ -55,7 +55,7 @@
   "docker_image_tag": "latest",
   "docker_image_adapter": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_adapter:{{cookiecutter.docker_image_tag}}",
   "docker_image_cache": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_cache:{{cookiecutter.docker_image_tag}}",
-  "docker_image_mq": "rabbitmq:3-management-alpine:latest",
+  "docker_image_mq": "rabbitmq:3-management-alpine",
   "docker_image_mq_worker": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_{{cookiecutter.d4service_mq_worker_slug}}:{{cookiecutter.docker_image_tag}}",
   "docker_image_mq_db": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_mq_db:{{cookiecutter.docker_image_tag}}",
   "docker_image_postgres": "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_postgres:{{cookiecutter.docker_image_tag}}",

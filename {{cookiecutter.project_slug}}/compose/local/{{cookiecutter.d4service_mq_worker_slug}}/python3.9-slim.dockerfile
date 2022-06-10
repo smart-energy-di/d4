@@ -9,10 +9,10 @@ COPY ./requirements_prd.txt /tmp/requirements_prd.txt
 RUN pip install --no-cache-dir -r /tmp/requirements_prd.txt
 
 FROM p39template
-COPY ./app /app
-WORKDIR /app/
+COPY ./worker /worker
+WORKDIR /worker/
 
-ENV PYTHONPATH=/app
+ENV PYTHONPATH=/worker
 
 #RUN mkdir /Worker
 #COPY ./Worker /Worker

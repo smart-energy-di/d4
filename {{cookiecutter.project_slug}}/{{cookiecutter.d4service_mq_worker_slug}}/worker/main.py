@@ -8,6 +8,11 @@ celery = Celery(
 )
 
 
+@celery.on_after_configure.connect
+def add_periodic(**kwargs):
+    celery.add_periodic_task(30.0, worker.s('hello123'), name='add every 30')
+
+
 @celery.task
 def worker(mytext):
     import time

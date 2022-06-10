@@ -147,8 +147,7 @@ services:
       - LOG_LEVEL=debug
     env_file:
       - envs/local/{{cookiecutter.d4service_mq_worker_slug}}
-    command:
-      - celery -A main.celery worker --loglevel=info
+    command: celery -A main.celery worker -B --loglevel=info
 # {% endif -%}
 
 

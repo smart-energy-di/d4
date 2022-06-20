@@ -1,6 +1,6 @@
 # PostgreSQL
 # ------------------------------------------------------------------------------
-POSTGRES_HOST=postgres
+POSTGRES_HOST=mq_db
 POSTGRES_PORT={{cookiecutter.d4service_mq_db_port}}
 POSTGRES_DB={{cookiecutter.d4service_mq_db_name}}
 POSTGRES_USER={{cookiecutter.d4service_mq_db_user}}

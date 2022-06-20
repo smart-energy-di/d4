@@ -1,0 +1,2 @@
+LOG_LEVEL=debug
+CELERY_BROKER_URL=pyamqp://{{cookiecutter.d4service_mq_user}}:{{cookiecutter.d4service_mq_password}}@mq:{{cookiecutter.d4service_mq_port}}//

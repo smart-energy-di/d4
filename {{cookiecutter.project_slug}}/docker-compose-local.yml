@@ -146,11 +146,12 @@ services:
     env_file:
       - envs/local/mq_ui
     ports:
-      - "${D4SERVICE_MQ_UI_PORT}:${D4SERVICE_MQ_UI_PORT}"
-    command: celery -A tasks flower
+      - "${D4SERVICE_MQ_UI_PORT}:5555"
+    command: celery -A main.celery flower
     volumes:
-      - ./{{cookiecutter.d4service_mq_worker_slug}}/worker:/worker
+      - ./{{cookiecutter.d4service_mq_worker_slug}}/worker:/data
     depends_on:
+      - mq
       - mq_db
       - {{cookiecutter.d4service_mq_worker_slug}}
 # {% endif -%}
@@ -171,6 +172,9 @@ services:
     volumes:
       - ./{{cookiecutter.d4service_mq_worker_slug}}/worker:/worker:w
     command: celery -A main.celery worker -B --loglevel=info
+    depends_on:
+      - mq
+      - mq_db
 # {% endif -%}
 
 

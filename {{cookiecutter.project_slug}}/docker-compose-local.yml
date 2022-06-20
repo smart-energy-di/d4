@@ -143,15 +143,13 @@ services:
     build:
       context: ./{{cookiecutter.d4service_mq_worker_slug}}
       dockerfile: ../compose/local/mq_ui/Dockerfile
-    environment:
-      - LOG_LEVEL=debug
-      - CELERY_BROKER_URL=pyamqp://guest@mq:${D4SERVICE_MQ_PORT}//
-      - FLOWER_PORT=${D4SERVICE_MQ_UI_PORT}
     env_file:
       - envs/local/mq_ui
     ports:
       - "${D4SERVICE_MQ_UI_PORT}:${D4SERVICE_MQ_UI_PORT}"
     command: celery -A tasks flower
+    volumes:
+      - ./{{cookiecutter.d4service_mq_worker_slug}}/worker:/worker
     depends_on:
       - mq_db
       - {{cookiecutter.d4service_mq_worker_slug}}
@@ -170,6 +168,8 @@ services:
       - LOG_LEVEL=debug
     env_file:
       - envs/local/{{cookiecutter.d4service_mq_worker_slug}}
+    volumes:
+      - ./{{cookiecutter.d4service_mq_worker_slug}}/worker:/worker:w
     command: celery -A main.celery worker -B --loglevel=info
 # {% endif -%}
 

@@ -136,6 +136,27 @@ services:
 
 
 
+# {%- if cookiecutter.enable_mq_ui == "y" %}
+# ---------------------------------------------------------------------------
+  mq_ui:
+    image: '${DOCKER_IMAGE_MQ_UI}'
+    build:
+      context: .
+      dockerfile: ./compose/local/mq_ui/Dockerfile
+    environment:
+      - LOG_LEVEL=debug
+    env_file:
+      - envs/local/mq_ui
+    ports:
+      - "${D4SERVICE_MQ_UI_PORT}:${D4SERVICE_MQ_UI_PORT}"
+#    command: celery -A tasks flower
+#    environment:
+#      CELERY_BROKER_URL: redis://redis
+#      CELERY_RESULT_BACKEND: redis://redis
+# {% endif -%}
+
+
+
 # {%- if cookiecutter.enable_mq_worker == "y" %}
 # ---------------------------------------------------------------------------
   {{cookiecutter.d4service_mq_worker_slug}}:

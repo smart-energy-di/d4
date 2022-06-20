@@ -8,6 +8,9 @@ DOCKER_IMAGE_CACHE={{cookiecutter.docker_image_cache}}
 {%- if cookiecutter.enable_mq == "y" %}
 DOCKER_IMAGE_MQ={{cookiecutter.docker_image_mq}}
 {%- endif %}
+{%- if cookiecutter.enable_mq_ui == "y" %}
+DOCKER_IMAGE_MQ_UI={{cookiecutter.docker_image_mq_ui}}
+{%- endif %}
 {%- if cookiecutter.enable_mq_db == "y" %}
 DOCKER_IMAGE_MQ_DB={{cookiecutter.docker_image_mq_db}}
 {%- endif %}
@@ -56,6 +59,9 @@ D4SERVICE_CACHE_PORT={{cookiecutter.d4service_cache_port}}
 D4SERVICE_MQ_URI={{cookiecutter.d4service_mq_uri}}
 D4SERVICE_MQ_PORT={{cookiecutter.d4service_mq_port}}
 D4SERVICE_MQ_ADMIN_PORT={{cookiecutter.d4service_mq_admin_port}}
+{%- endif %}
+{%- if cookiecutter.enable_mq_ui == "y" %}
+D4SERVICE_MQ_UI_PORT={{cookiecutter.d4service_mq_ui_port}}
 {%- endif %}
 {%- if cookiecutter.enable_mq_db == "y" %}
 D4SERVICE_MQ_DB_URI={{cookiecutter.d4service_mq_db_uri}}

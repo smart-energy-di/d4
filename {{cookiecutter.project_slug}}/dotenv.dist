@@ -1,8 +1,8 @@
 DOMAIN=example.com
-{%- if cookiecutter.enable_adapter == "y" -%}
+{%- if cookiecutter.enable_adapter == "y" %}
 DOCKER_IMAGE_ADAPTER={{cookiecutter.docker_image_adapter}}
 {%- endif %}
-{%- if cookiecutter.enable_cache == "y" -%}
+{%- if cookiecutter.enable_cache == "y" %}
 DOCKER_IMAGE_CACHE={{cookiecutter.docker_image_cache}}
 {%- endif %}
 {%- if cookiecutter.enable_mq == "y" %}

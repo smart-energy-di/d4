@@ -3,18 +3,16 @@ default_context:
   project_slug: "{{ cookiecutter.project_name|lower|replace(' ', '-') }}"
   enable_adapter: y
   enable_cache: y
-  enable_ui: n
+  enable_mq: n
+  enable_mq_ui: n
+  enable_mq_worker: n
+  enable_mq_db: n
+  enable_postgres: y
   enable_proxy: n
   enable_spot: y
-  enable_postgres: y
+  enable_ui: n
   enable_test_opa: y
   enable_test_keycloak: y
-  docker_image_prefix: d4
-  docker_image_adapter: "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_adapter"
-  docker_image_cache: "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_cache"
-  docker_image_proxy: "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_proxy"
-  docker_image_spot: "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_spot"
-  docker_image_ui: "{{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_ui"
   d4service_oauth2_auth_realm: "{{cookiecutter.project_slug}}-realm"
   d4service_oauth2_uri: http://keycloak:8080
   d4service_oauth2_hostname: keycloak
@@ -26,6 +24,20 @@ default_context:
   d4service_oauth2_token_endpoint: "{{cookiecutter.d4service_oauth2_uri}}/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/token"
   d4service_oauth2_jwks_uri: "{{cookiecutter.d4service_oauth2_uri}}/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/certs"
   d4service_oauth2_userinfo_endpoint: "{{cookiecutter.d4service_oauth2_uri}}/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/userinfo"
+  docker_image_prefix: d4
+  docker_image_tag: latest
+  docker_image_adapter: {{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_adapter:{{cookiecutter.docker_image_tag}}
+  docker_image_cache: {{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_cache:{{cookiecutter.docker_image_tag}}
+  docker_image_mq: rabbitmq:3-management-alpine
+  docker_image_mq_ui: {{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_mq_ui:{{cookiecutter.docker_image_tag}}
+  docker_image_mq_worker: {{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_{{cookiecutter.d4service_mq_worker_slug}}:{{cookiecutter.docker_image_tag}}
+  docker_image_mq_db: {{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_mq_db:{{cookiecutter.docker_image_tag}}
+  docker_image_postgres: {{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_postgres:{{cookiecutter.docker_image_tag}}
+  docker_image_proxy: {{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_proxy:{{cookiecutter.docker_image_tag}}
+  docker_image_spot: {{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_spot:{{cookiecutter.docker_image_tag}}
+  docker_image_ui: {{cookiecutter.docker_image_prefix}}_{{cookiecutter.project_slug}}_ui:{{cookiecutter.docker_image_tag}}
+  docker_test_image_keycloak: jboss/keycloak:latest
+  docker_test_image_opa: openpolicyagent/opa:latest
   d4service_opa_uri: http://opa:8181
   d4service_opa_hostname: opa
   d4service_opa_port: 8181
@@ -33,6 +45,21 @@ default_context:
   d4service_adapter_port: 9010
   d4service_cache_uri: http://cache:9020
   d4service_cache_port: 9020
+  d4service_mq_name: mq_name
+  d4service_mq_user: mq_worker_user
+  d4service_mq_password: mq_worker_password
+  d4service_mq_port: 5672,
+  d4service_mq_uri: amqp://{{cookiecutter.d4service_mq_user}}:{{cookiecutter.d4service_mq_password}}@mq:{{cookiecutter.d4service_mq_port}}//
+  d4service_mq_ui_port: 9070,
+  d4service_mq_admin_port: 15672,
+  d4service_mq_worker_name: MQ Worker
+  d4service_mq_worker_slug: {{ cookiecutter.d4service_mq_worker_name|lower|replace(' ', '_') }}
+  d4service_mq_db_name: {{cookiecutter.d4service_mq_worker_slug}}
+  d4service_mq_db_user: mq_worker_user
+  d4service_mq_db_password: mq_worker_password
+  d4service_mq_db_port: 9060,
+  d4service_mq_db_uri: db+postgresql+psycopg2://{{cookiecutter.d4service_mq_db_user}}:{{cookiecutter.d4service_mq_db_password}}@mq_db/{{cookiecutter.d4service_mq_db_name}}
+  d4service_postgres_port: 5432,
   d4service_proxy_uri: http://proxy:9030
   d4service_proxy_port: 9030
   d4service_spot_uri: http://spot:9040
@@ -41,7 +68,7 @@ default_context:
   d4service_ui_uri: http://ui:9050
   d4service_ui_port: 9050
   debug: y
-  docs: n
-  tests: y
+  enable_docs: n
+  enable_tests: y
   timezone: UTC
   prod_domain_name: example.com

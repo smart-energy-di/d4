@@ -54,7 +54,7 @@ default_context:
   d4service_mq_admin_port: 15672,
   d4service_mq_worker_name: MQ Worker
   d4service_mq_worker_slug: "{{ cookiecutter.d4service_mq_worker_name|lower|replace(' ', '_') }}"
-  d4service_mq_db_name: {{cookiecutter.d4service_mq_worker_slug}}
+  d4service_mq_db_name: "{{cookiecutter.d4service_mq_worker_slug}}"
   d4service_mq_db_user: mq_worker_user
   d4service_mq_db_password: mq_worker_password
   d4service_mq_db_port: 9060,

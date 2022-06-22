@@ -99,6 +99,8 @@ services:
       dockerfile: ../compose/local/cache/python3.9-slim.dockerfile
       args:
         INSTALL_DEV: ${INSTALL_DEV-false}
+    env_file:
+      - envs/local/cache
     environment:
       - LOG_LEVEL=debug
       - D4SERVICE_OAUTH2_URI=http://keycloak:8080

@@ -157,6 +157,12 @@ def spot():
     )
 
 
+def remove_empty_folders(path_abs):
+    walk = list(os.walk(path_abs))
+    for path, _, _ in walk[::-1]:
+        if len(os.listdir(path)) == 0:
+            os.rmdir(path)
+
 def main():
     # main components
     enable_adapter = '{{cookiecutter.enable_adapter}}' == 'y'
@@ -281,6 +287,8 @@ def main():
 
     append_to_gitignore_file(".env")
     append_to_gitignore_file("envs/*")
+
+    remove_empty_folders(".")
 
     print(SUCCESS + "Project initialized, keep up the good work!" + TERMINATOR)
 

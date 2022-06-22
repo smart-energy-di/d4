@@ -7,15 +7,15 @@ volumes:
 #   {%- if cookiecutter.enable_postgres == "y" %}
   local_postgres_data: {}
   local_postgres_data_backups: {}
-#   {% endif -%}
+#   {% endif %}
 #   {%- if cookiecutter.enable_mq == "y" %}
   local_mq_data: {}
   local_mq_log: {}
-#   {% endif -%}
+#   {% endif %}
 #   {%- if cookiecutter.enable_mq_db == "y" %}
   local_mq_db_data: {}
-#   {% endif -%}
-# {% endif -%}
+#   {% endif %}
+# {% endif %}
 
 
 services:

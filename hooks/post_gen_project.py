@@ -161,13 +161,17 @@ def main():
     # main components
     enable_adapter = '{{cookiecutter.enable_adapter}}' == 'y'
     enable_cache = '{{cookiecutter.enable_cache}}' == 'y'
-    enable_ui = '{{cookiecutter.enable_ui}}' == 'y'
+    enable_mq = '{{cookiecutter.enable_mq}}' == 'y'
+    enable_mq_ui = '{{cookiecutter.enable_mq_ui}}' == 'y'
+    enable_mq_worker = '{{cookiecutter.enable_mq_worker}}' == 'y'
+    enable_mq_db = '{{cookiecutter.enable_mq_db}}' == 'y'
+    enable_postgres = '{{cookiecutter.enable_postgres}}' == 'y'
     enable_proxy = '{{cookiecutter.enable_proxy}}' == 'y'
     enable_spot = '{{cookiecutter.enable_spot}}' == 'y'
+    enable_ui = '{{cookiecutter.enable_ui}}' == 'y'
     # helpers
     enable_test_opa = '{{cookiecutter.enable_test_opa}}' == 'y'
     enable_test_keycloak = '{{cookiecutter.enable_test_keycloak}}' == 'y'
-    enable_postgres = '{{cookiecutter.enable_postgres}}' == 'y'
     # other stuff
     enable_docs = '{{cookiecutter.enable_docs}}' == 'y'
     enable_tests = '{{cookiecutter.enable_tests}}' == 'y'
@@ -199,13 +203,39 @@ def main():
         remove('./compose/production/cache')
         remove('./envs.dist/local/cache')
         remove('./envs.dist/production/cache')
-    if not enable_ui:
-        remove('./ui')
-        remove('./tests/ui')
-        remove('./compose/local/ui')
-        remove('./compose/production/ui')
-        remove('./envs.dist/local/ui')
-        remove('./envs.dist/production/ui')
+    if not enable_mq:
+        remove('./mq')
+        remove('./tests/mq')
+        remove('./compose/local/mq')
+        remove('./compose/production/mq')
+        remove('./envs.dist/local/mq')
+        remove('./envs.dist/production/mq')
+    if not enable_mq_ui:
+        remove('./mq_ui')
+        remove('./tests/mq_ui')
+        remove('./compose/local/mq_ui')
+        remove('./compose/production/mq_ui')
+        remove('./envs.dist/local/mq_ui')
+        remove('./envs.dist/production/mq_ui')
+    if not enable_mq_worker:
+        remove('./mq_worker')
+        remove('./tests/mq_worker')
+        remove('./compose/local/mq_worker')
+        remove('./compose/production/mq_worker')
+        remove('./envs.dist/local/mq_worker')
+        remove('./envs.dist/production/mq_worker')
+    if not enable_mq_db:
+        remove('./mq_db')
+        remove('./tests/mq_db')
+        remove('./compose/local/mq_db')
+        remove('./compose/production/mq_db')
+        remove('./envs.dist/local/mq_db')
+        remove('./envs.dist/production/mq_db')
+    if not enable_postgres:
+        remove('./compose/local/postgres')
+        remove('./compose/production/postgres')
+        remove('./envs.dist/local/postgres')
+        remove('./envs.dist/production/postgres')
     if not enable_proxy:
         remove('./proxy')
         remove('./tests/proxy')
@@ -220,6 +250,13 @@ def main():
         remove('./compose/production/spot')
         remove('./envs.dist/local/spot')
         remove('./envs.dist/production/spot')
+    if not enable_ui:
+        remove('./ui')
+        remove('./tests/ui')
+        remove('./compose/local/ui')
+        remove('./compose/production/ui')
+        remove('./envs.dist/local/ui')
+        remove('./envs.dist/production/ui')
 
     # helpers
     if not enable_test_opa:
@@ -228,11 +265,6 @@ def main():
     if not enable_test_keycloak:
         remove('./compose/local/keycloak')
         remove('./compose/production/keycloak')
-    if not enable_postgres:
-        remove('./compose/local/postgres')
-        remove('./compose/production/postgres')
-        remove('./envs.dist/local/postgres')
-        remove('./envs.dist/production/postgres')
 
     # other stuff
     if not enable_docs:

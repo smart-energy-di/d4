@@ -2,18 +2,20 @@ version: "3.7"
 # created with cookiecutter for project '{{ cookiecutter.project_name }}'
 
 
+# {%- if ( (cookiecutter.enable_postgres == "y") or (cookiecutter.enable_mq == "y") or (cookiecutter.enable_mq_db == "y") ) %}
 volumes:
-# {% if cookiecutter.enable_postgres == "y" %}
+#   {%- if cookiecutter.enable_postgres == "y" %}
   local_postgres_data: {}
   local_postgres_data_backups: {}
-# {% endif %}
-# {% if cookiecutter.enable_mq == "y" %}
+#   {% endif -%}
+#   {%- if cookiecutter.enable_mq == "y" %}
   local_mq_data: {}
   local_mq_log: {}
-# {% endif %}
-# {% if cookiecutter.enable_mq_db == "y" %}
+#   {% endif -%}
+#   {%- if cookiecutter.enable_mq_db == "y" %}
   local_mq_db_data: {}
-# {% endif %}
+#   {% endif -%}
+# {% endif -%}
 
 
 services:

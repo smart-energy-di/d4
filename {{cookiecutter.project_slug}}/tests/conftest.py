@@ -53,7 +53,7 @@ def docker_cache(docker_services):
 @pytest.fixture(scope='session')
 def docker_proxy(docker_services):
     docker_services.start('proxy')
-    public_port = docker_services.wait_for_service("proxy", {{cookiecutter.d4service_proxy_port}})
+    public_port = docker_services.wait_for_service("proxy", {{cookiecutter.d4service_proxy_http_port}})
     url = "http://{docker_services.docker_ip}:{public_port}".format(**locals())
     return url
 

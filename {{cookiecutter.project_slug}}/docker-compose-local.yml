@@ -223,11 +223,12 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/proxy/Dockerfile
-    volumes:
-      - local_proxy_data:/var/lib/proxyql/data:Z
-      - local_proxy_data_backups:/backups:z
+#    volumes:
+#      - local_proxy_data:/var/lib/proxyql/data:Z
+#      - local_proxy_data_backups:/backups:z
     ports:
-      - "5432:5432"
+      - "${D4SERVICE_PROXY_HTTP_PORT}:80"
+      - "${D4SERVICE_PROXY_HTTPS_PORT}:443"
     env_file:
       - envs/local/proxy
 # {% endif -%}

@@ -68,8 +68,8 @@ D4SERVICE_MQ_DB_URI={{cookiecutter.d4service_mq_db_uri}}
 D4SERVICE_MQ_DB_PORT={{cookiecutter.d4service_mq_db_port}}
 {%- endif %}
 {%- if cookiecutter.enable_proxy == "y" %}
-D4SERVICE_PROXY_URI={{cookiecutter.d4service_proxy_uri}}
-D4SERVICE_PROXY_PORT={{cookiecutter.d4service_proxy_port}}
+D4SERVICE_PROXY_HTTP_PORT={{cookiecutter.d4service_proxy_http_port}}
+D4SERVICE_PROXY_HTTPS_PORT={{cookiecutter.d4service_proxy_https_port}}
 {%- endif %}
 {%- if cookiecutter.enable_spot == "y" %}
 D4SERVICE_SPOT_URI={{cookiecutter.d4service_spot_uri}}

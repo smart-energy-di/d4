@@ -223,6 +223,13 @@ services:
     build:
       context: .
       dockerfile: ./compose/local/proxy/Dockerfile
+    restart: always
+    volumes:
+      - ./proxy/config/conf.d/local:/etc/nginx/conf.d/:ro
+      - ./proxy/certbot/www:/var/www/certbot/:ro
+#      - ./proxy/config/nginx.conf:/etc/nginx/nginx.conf
+#      - /tmp/logs/nginx:/var/log/nginx
+#      - ./proxy/html:/var/www/public/content
 #    volumes:
 #      - local_proxy_data:/var/lib/proxyql/data:Z
 #      - local_proxy_data_backups:/backups:z
@@ -231,6 +238,12 @@ services:
       - "${D4SERVICE_PROXY_HTTPS_PORT}:443"
     env_file:
       - envs/local/proxy
+
+  certbot:
+      image: certbot/certbot:latest
+      volumes:
+        - ./proxy/certbot/www/:/var/www/certbot/:rw
+        - ./proxy/certbot/conf/:/etc/letsencrypt/:rw
 # {% endif -%}
 
 

@@ -1,11 +1,12 @@
 #!/bin/bash
 
-if ! [ -x "$(command -v docker-compose -f docker-compose.production.yml)" ]; then
-  echo 'Error: docker-compose -f docker-compose.production.yml is not installed.' >&2
+if ! [ -x "$(command -v docker-compose -f docker-compose-production.yml)" ]; then
+  echo 'Error: docker-compose -f docker-compose-production.yml is not installed.' >&2
   exit 1
 fi
 
-. .env # get variable from .env file
+source .env # get variable from .env file
+source envs/production/proxy
 
 domain=${DOMAIN} # www.${DOMAIN})
 rsa_key_size=4096
@@ -33,23 +34,23 @@ staging=${LETS_ENC_STAGING} # Set to 1 if you're testing your setup to avoid hit
 echo "### Creating dummy certificate for $domain ..."
 path="/etc/letsencrypt/live/$domain"
 mkdir -p "$cert_path/conf/live/$domain"
-docker-compose -f docker-compose.production.yml run --rm --entrypoint "\
+docker-compose -f docker-compose-production.yml run --rm --entrypoint "\
   openssl req -x509 -nodes -newkey rsa:$rsa_key_size -days 1\
     -keyout '$path/privkey.pem' \
     -out '$path/fullchain.pem' \
-    -subj '/CN=localhost'" certbot
+    -subj '/CN=localhost'" cert_manager
 echo
 
 
 echo "### Starting nginx ..."
-docker-compose -f docker-compose.production.yml up --force-recreate -d nginx
+docker-compose -f docker-compose-production.yml up --force-recreate -d proxy
 echo
 
 echo "### Deleting dummy certificate for $domain ..."
-docker-compose -f docker-compose.production.yml run --rm --entrypoint "\
+docker-compose -f docker-compose-production.yml run --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/live/$domain && \
   rm -Rf /etc/letsencrypt/archive/$domain && \
-  rm -Rf /etc/letsencrypt/renewal/$domain.conf" certbot
+  rm -Rf /etc/letsencrypt/renewal/$domain.conf" cert_manager
 echo
 
 
@@ -69,17 +70,18 @@ esac
 # Enable staging mode if needed
 if [ $staging != "0" ]; then staging_arg="--staging"; fi
 
-docker-compose -f docker-compose.production.yml run --rm --entrypoint "\
+docker-compose -f docker-compose-production.yml run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
     $staging_arg \
     $email_arg \
     $domain_args \
     --rsa-key-size $rsa_key_size \
     --agree-tos \
-    --force-renewal" certbot
+    --noninteractive \
+    --force-renewal" cert_manager
 echo
 
 echo "### Reloading nginx ..."
-docker-compose -f docker-compose.production.yml exec nginx nginx -s reload
-docker-compose -f docker-compose.production.yml build certbot
-docker-compose -f docker-compose.production.yml up -d
+docker-compose -f docker-compose-production.yml exec proxy nginx -s reload
+docker-compose -f docker-compose-production.yml build cert_manager
+docker-compose -f docker-compose-production.yml up -d

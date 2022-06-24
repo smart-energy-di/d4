@@ -226,7 +226,7 @@ services:
     restart: always
     volumes:
       - ./proxy/config/conf.d/local:/etc/nginx/conf.d/:rw
-      - ./proxy/certbot/www:/var/www/certbot/:rw
+      - ./proxy/certbot/www:/var/www/certbot/:ro
 #      - ./proxy/config/nginx.conf:/etc/nginx/nginx.conf
 #      - /tmp/logs/nginx:/var/log/nginx
 #      - ./proxy/html:/var/www/public/content

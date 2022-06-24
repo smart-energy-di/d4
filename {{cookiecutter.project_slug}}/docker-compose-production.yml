@@ -130,6 +130,7 @@ services:
       - "${D4SERVICE_PROXY_HTTPS_PORT}:443"
     env_file:
       - envs/production/proxy
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
 # {% endif -%}
 
 
@@ -145,6 +146,7 @@ services:
     volumes:
         - ./proxy/certbot/www/:/var/www/certbot/:rw
         - ./proxy/certbot/conf/:/etc/letsencrypt/:rw
+    entrypoint: "/bin/sh -c 'trap exit TERM; crond -f'"
 # {% endif -%}
 
 

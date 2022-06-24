@@ -2,7 +2,6 @@
 # ------------------------------------------------------------------------------
 # DOMAIN such as example.com or local development 192.168.1.2
 DOMAIN={{cookiecutter.prod_domain_name}}
-# PORT=5006
 EMAIL={{cookiecutter.d4service_proxy_cert_email}}
 
 CERT_PATH=./proxy/certbot

@@ -1,88 +1,176 @@
 version: "3.7"
 # created with cookiecutter for project '{{ cookiecutter.project_name }}'
 
+# {%- if ( (cookiecutter.enable_postgres == "y") or (cookiecutter.enable_mq == "y") or (cookiecutter.enable_mq_db == "y") ) %}
+volumes:
+#   {%- if cookiecutter.enable_postgres == "y" %}
+  production_postgres_data: {}
+  production_postgres_data_backups: {}
+#   {% endif %}
+#   {%- if cookiecutter.enable_mq == "y" %}
+  production_mq_data: {}
+  production_mq_log: {}
+#   {% endif %}
+#   {%- if cookiecutter.enable_mq_db == "y" %}
+  production_mq_db_data: {}
+#   {% endif %}
+# {% endif %}
+
+
 services:
-# {#
-#  backend:
-#    image: '${DOCKER_IMAGE_BACKEND?Variable not set}:${TAG-latest}'
-#    env_file:
-#      - .env
-#    environment:
-#      - SERVER_NAME=${DOMAIN?Variable not set}
-#      - SERVER_HOST=https://${DOMAIN?Variable not set}
-#      # Allow explicit env var override for tests
-#    build:
-#      context: ./backend
-#      dockerfile: python3.9-slim.dockerfile
-#      args:
-#        INSTALL_DEV: ${INSTALL_DEV-false}
-#    ports:
-#      - "${DOCKER_IMAGE_BACKEND_PORT}:80"
-#
-#  frontend:
-#    image: '${DOCKER_IMAGE_FRONTEND?Variable not set}:${TAG-latest}'
-#    env_file:
-#      - .env
-#    environment:
-#      - SERVER_NAME=${DOMAIN?Variable not set}
-#      - SERVER_HOST=https://${DOMAIN?Variable not set}
-#      # Allow explicit env var override for tests
-#    build:
-#      context: ./frontend
-#      dockerfile: python3.9-slim.dockerfile
-#      args:
-#        INSTALL_DEV: ${INSTALL_DEV-false}
-#    ports:
-#      - "${DOCKER_IMAGE_FRONTEND_PORT}:80"
-# #}
 
-
-# {% if cookiecutter.enable_test_keycloak == "y" %}
-  keycloak:
-    image: jboss/keycloak:latest
-    ports:
-      - 8080:8080
-    environment:
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=admin
-      - KEYCLOAK_IMPORT=/tmp/realm.json
-    volumes:
-      - ./realm.json:/tmp/realm.json
-# {% endif %}
-
-# {% if cookiecutter.enable_test_opa == "y" %}
-  opa:
-    image: openpolicyagent/opa:latest
-    ports:
-      - 8181:8181
-    command:
-      - "run"
-      - "--server"
-      - "--log-level=debug"
-      - "/policy/auth.rego"
-    volumes:
-      - ./policy:/policy
-# {% endif %}
-
-# {% if cookiecutter.enable_spot == "y" %}
-  spot:
-    image: '${DOCKER_IMAGE_SPOT?Variable not set}:${TAG-latest}'
+# {%- if cookiecutter.enable_mq == "y" %}
+# ---------------------------------------------------------------------------
+  mq:
+    image: '${DOCKER_IMAGE_MQ}'
     env_file:
-      - .env
-    environment:
-      - SERVER_NAME=${DOMAIN?Variable not set}
-      - SERVER_HOST=https://${DOMAIN?Variable not set}
-      # Allow explicit env var override for tests
-    build:
-      context: ./spot
-      dockerfile: compose/tests/spot/python3.9-slim.dockerfile
-      args:
-        INSTALL_DEV: ${INSTALL_DEV-false}
+      - envs/production/mq
     ports:
-      - "${D4SERVICE_SPOT_PORT}:{{cookiecutter.d4service_spot_port}}"
-# {% endif %}
+      - "${D4SERVICE_MQ_PORT}:${D4SERVICE_MQ_PORT}"
+      - "${D4SERVICE_MQ_ADMIN_PORT}:${D4SERVICE_MQ_ADMIN_PORT}"
+    volumes:
+      - production_mq_data:/var/lib/rabbitmq
+      - production_mq_log:/var/log/rabbitmq
+# {% endif -%}
 
-# {#
-#volumes:
-#  app-db-data:
-# #}
+
+
+# {%- if cookiecutter.enable_mq_ui == "y" %}
+# ---------------------------------------------------------------------------
+  mq_ui:
+    image: '${DOCKER_IMAGE_MQ_UI}'
+    build:
+      context: ./{{cookiecutter.d4service_mq_worker_slug}}
+      dockerfile: ../compose/production/mq_ui/Dockerfile
+    env_file:
+      - envs/production/mq_ui
+    ports:
+      - "${D4SERVICE_MQ_UI_PORT}:5555"
+    command: celery -A main.celery flower
+    volumes:
+      - ./{{cookiecutter.d4service_mq_worker_slug}}/worker:/data
+    depends_on:
+      - mq
+      - mq_db
+      - {{cookiecutter.d4service_mq_worker_slug}}
+# {% endif -%}
+
+
+
+# {%- if cookiecutter.enable_mq_worker == "y" %}
+# ---------------------------------------------------------------------------
+  {{cookiecutter.d4service_mq_worker_slug}}:
+    image: '${DOCKER_IMAGE_MQ_WORKER}'
+    build:
+      context: ./{{cookiecutter.d4service_mq_worker_slug}}
+      dockerfile: ../compose/production/{{cookiecutter.d4service_mq_worker_slug}}/python3.9-slim.dockerfile
+    environment:
+      - LOG_LEVEL=debug
+    env_file:
+      - envs/production/{{cookiecutter.d4service_mq_worker_slug}}
+    volumes:
+      - ./{{cookiecutter.d4service_mq_worker_slug}}/worker:/worker:w
+    command: celery -A main.celery worker -B --loglevel=info
+    depends_on:
+      - mq
+      - mq_db
+# {% endif -%}
+
+
+
+# {%- if cookiecutter.enable_mq_db == "y" %}
+# ---------------------------------------------------------------------------
+  mq_db:
+    image: '${DOCKER_IMAGE_MQ_DB}'
+    build:
+      context: .
+      dockerfile: ./compose/production/mq_db/Dockerfile
+    volumes:
+      - production_mq_db_data:/var/lib/postgresql/data/
+    ports:
+      - "${D4SERVICE_MQ_DB_PORT}:${D4SERVICE_MQ_DB_PORT}"
+    env_file:
+      - envs/production/mq_db
+# {% endif -%}
+
+
+
+# {%- if cookiecutter.enable_postgres == "y" %}
+# ---------------------------------------------------------------------------
+  postgres:
+    image: {{ cookiecutter.project_slug }}_production_postgres
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    volumes:
+      - production_postgres_data:/var/lib/postgresql/data:Z
+      - production_postgres_data_backups:/backups:z
+    ports:
+      - "5432:5432"
+    env_file:
+      - envs/production/postgres
+# {% endif -%}
+
+
+
+# {%- if cookiecutter.enable_proxy == "y" %}
+# ---------------------------------------------------------------------------
+  proxy:
+    image: {{ cookiecutter.docker_image_proxy }}
+    build:
+      context: .
+      dockerfile: ./compose/production/proxy/nginx.dockerfile
+    restart: always
+    volumes:
+      - ./proxy/config/conf.d/production:/etc/nginx/conf.d/:rw
+      - ./proxy/certbot/www:/var/www/certbot/:ro
+    ports:
+      - "${D4SERVICE_PROXY_HTTP_PORT}:80"
+      - "${D4SERVICE_PROXY_HTTPS_PORT}:443"
+    env_file:
+      - envs/production/proxy
+# {% endif -%}
+
+
+
+# {%- if cookiecutter.enable_proxy_cert_manager == "y" %}
+# ---------------------------------------------------------------------------
+  cert_manager:
+    image: {{ cookiecutter.docker_image_proxy_cert_manager }}
+    build:
+      context: .
+      dockerfile: ./compose/production/proxy/certbot.dockerfile
+    restart: always
+    volumes:
+        - ./proxy/certbot/www/:/var/www/certbot/:rw
+        - ./proxy/certbot/conf/:/etc/letsencrypt/:rw
+# {% endif -%}
+
+
+
+# {%- if cookiecutter.enable_spot == "y" %}
+# ---------------------------------------------------------------------------
+  spot:
+    image: {{ cookiecutter.project_slug }}_production_django
+    build:
+      context: .
+      dockerfile: ./compose/production/spot/Dockerfile
+    depends_on:
+      - postgres
+      - keycloak
+    volumes:
+      - ./spot/app:/app:z
+    env_file:
+      - envs/production/spot
+      - envs/production/postgres
+    environment:
+      - LOG_LEVEL=debug
+      - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
+      - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
+      - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/auth
+      - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/token
+      - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/certs
+    ports:
+      - "${D4SERVICE_SPOT_PORT}:${D4SERVICE_SPOT_PORT}"
+    command: /start
+# {% endif %}

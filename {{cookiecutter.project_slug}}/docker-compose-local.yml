@@ -222,26 +222,29 @@ services:
     image: {{ cookiecutter.docker_image_proxy }}
     build:
       context: .
-      dockerfile: ./compose/local/proxy/Dockerfile
+      dockerfile: ./compose/local/proxy/nginx.dockerfile
     restart: always
     volumes:
       - ./proxy/config/conf.d/local:/etc/nginx/conf.d/:rw
       - ./proxy/certbot/www:/var/www/certbot/:ro
-#      - ./proxy/config/nginx.conf:/etc/nginx/nginx.conf
-#      - /tmp/logs/nginx:/var/log/nginx
-#      - ./proxy/html:/var/www/public/content
-#    volumes:
-#      - local_proxy_data:/var/lib/proxyql/data:Z
-#      - local_proxy_data_backups:/backups:z
     ports:
       - "${D4SERVICE_PROXY_HTTP_PORT}:80"
       - "${D4SERVICE_PROXY_HTTPS_PORT}:443"
     env_file:
       - envs/local/proxy
+# {% endif -%}
 
-  certbot:
-      image: certbot/certbot:latest
-      volumes:
+
+
+# {%- if cookiecutter.enable_proxy_cert_manager == "y" %}
+# ---------------------------------------------------------------------------
+  cert_manager:
+    image: {{ cookiecutter.docker_image_proxy_cert_manager }}
+    build:
+      context: .
+      dockerfile: ./compose/local/proxy/certbot.dockerfile
+    restart: always
+    volumes:
         - ./proxy/certbot/www/:/var/www/certbot/:rw
         - ./proxy/certbot/conf/:/etc/letsencrypt/:rw
 # {% endif -%}

@@ -1,6 +1,6 @@
 server {
-    listen 80;
-    listen [::]:80;
+    listen {{cookiecutter.d4service_proxy_http_port}};
+    listen [::]:{{cookiecutter.d4service_proxy_http_port}};
 
     server_name {{cookiecutter.prod_domain_name}} www.{{cookiecutter.prod_domain_name}};
     server_tokens off;
@@ -16,8 +16,8 @@ server {
 
 
 server {
-    listen 443 default_server ssl http2;
-    listen [::]:443 ssl http2;
+    listen {{cookiecutter.d4service_proxy_https_port}} default_server ssl http2;
+    listen [::]:{{cookiecutter.d4service_proxy_https_port}} ssl http2;
 
     server_name {{cookiecutter.prod_domain_name}};
 

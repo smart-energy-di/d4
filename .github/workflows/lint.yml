@@ -39,5 +39,5 @@ jobs:
           pip install -r ./cache/requirements_prd.txt
           pip install -r ./spot/requirements/base.txt
           echo "start pylint"
-          pylint --rcfile=.pylintrc --errors-only adapter cache proxy spot ui
+          pylint --rcfile=.pylintrc --errors-only adapter cache spot ui
           echo "end pylint"

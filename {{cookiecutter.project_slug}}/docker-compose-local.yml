@@ -222,7 +222,7 @@ services:
     image: {{ cookiecutter.docker_image_proxy }}
     build:
       context: .
-      dockerfile: ./compose/production/proxy/Dockerfile
+      dockerfile: ./compose/local/proxy/Dockerfile
 #    volumes:
 #      - local_proxy_data:/var/lib/proxyql/data:Z
 #      - local_proxy_data_backups:/backups:z

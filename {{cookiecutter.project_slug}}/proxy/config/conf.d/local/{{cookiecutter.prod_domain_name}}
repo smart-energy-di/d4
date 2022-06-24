@@ -6,7 +6,8 @@ server {
     server_tokens off;
 
     location /.well-known/acme-challenge/ {
-        root /var/www/certbot;
+         default_type "text/plain";
+         root /var/www/certbot/;
     }
 
     location / {

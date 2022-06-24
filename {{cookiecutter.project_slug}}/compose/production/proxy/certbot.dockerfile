@@ -1,2 +1,2 @@
 FROM certbot/certbot
-ADD letsencrypt-renew /var/spool/cron/crontabs/root
+ADD ./compose/production/proxy/letsencrypt-renew /var/spool/cron/crontabs/root

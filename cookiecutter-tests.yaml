@@ -65,6 +65,7 @@ default_context:
   d4service_spot_uri: http://spot:9040
   d4service_spot_port: 9040
   d4service_spot_name: spot_acme
+  d4service_spot_admin_mail: "admin@example.com"
   d4service_ui_uri: http://ui:9050
   d4service_ui_port: 9050
   debug: y

@@ -51,6 +51,7 @@
   "d4service_proxy_https_port": 9443,
   "d4service_proxy_cert_email": "me@example.com",
   "d4service_spot_uri": "http://spot:9040",
+  "d4service_spot_admin_mail": "admin@example.com",
   "d4service_spot_port": 9040,
   "d4service_spot_name": "spot_{{cookiecutter.project_slug}}",
   "d4service_ui_uri": "http://ui:9050",

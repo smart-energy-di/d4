@@ -120,6 +120,20 @@ def set_postgres_password(file_path, value=None):
     return postgres_password
 
 
+
+def set_django_admin_password(file_path, value=None):
+    postgres_password = set_flag(
+        file_path,
+        "!!!SET SPOT_ADMIN_PASSWORD!!!",
+        value=value,
+        length=64,
+        using_digits=True,
+        using_ascii_letters=True,
+    )
+    return postgres_password
+
+
+
 def set_flags_in_envs(postgres_user, celery_flower_user, debug=False):
     local_django_envs_path = os.path.join("envs", "local", "spot")
     production_django_envs_path = os.path.join("envs", "production", "spot")
@@ -130,6 +144,8 @@ def set_flags_in_envs(postgres_user, celery_flower_user, debug=False):
     set_django_secret_key(local_django_envs_path)
     set_django_secret_key(production_django_envs_path)
     set_django_admin_url(production_django_envs_path)
+    set_django_admin_password(local_django_envs_path)
+    set_django_admin_password(production_django_envs_path)
 
     set_postgres_user(local_postgres_envs_path, value=postgres_user)
     set_postgres_password(

@@ -126,7 +126,7 @@ def set_django_admin_password(file_path, value=None):
         file_path,
         "!!!SET SPOT_ADMIN_PASSWORD!!!",
         value=value,
-        length=64,
+        length=16,
         using_digits=True,
         using_ascii_letters=True,
     )

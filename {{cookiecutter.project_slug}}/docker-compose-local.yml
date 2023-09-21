@@ -263,7 +263,9 @@ services:
       dockerfile: ./compose/local/spot/Dockerfile
     depends_on:
       - postgres
+# {% if cookiecutter.enable_test_keycloak == "y" %}
       - keycloak
+# {% endif %}
     volumes:
       - ./spot/app:/app:z
     env_file:

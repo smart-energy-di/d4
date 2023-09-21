@@ -3,5 +3,6 @@
 USE_DOCKER=yes
 IPYTHONDIR=/app/.ipython
 DJANGO_SECRET_KEY=!!!SET DJANGO_SECRET_KEY!!!
+DJANGO_SUPERUSER_USERNAME={{cookiecutter.d4service_spot_admin_username}}
 DJANGO_SUPERUSER_EMAIL={{cookiecutter.d4service_spot_admin_mail}}
 DJANGO_SUPERUSER_PASSWORD=!!!SET SPOT_ADMIN_PASSWORD!!!

@@ -13,7 +13,7 @@ jobs:
       working-directory: .
     strategy:
       matrix:
-        python-version: [ "3.9" ]
+        python-version: [ "3.11" ]
         pytest-version: [ 6 ]
     steps:
       - name: Checkout

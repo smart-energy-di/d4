@@ -6,7 +6,7 @@ rectangle "git: µService Project" <<context development>> as ctxdev {
     ]
 
     file ctxdev_file_1 [
-    [[https://github.com/mleist/d4/blob/main/cookiecutter.json Configuration of the software]]
+    [[https://github.com/smart-energy-di/d4/blob/main/cookiecutter.json Configuration of the software]]
     ====
     {
         "project_name": "e.g. Firewall Project",

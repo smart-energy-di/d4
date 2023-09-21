@@ -1,6 +1,6 @@
 @startuml
 
-rectangle "[[https://github.com/mleist/d4]]" <<context framework>> as aaa {
+rectangle "[[https://github.com/smart-energy-di/d4]]" <<context framework>> as aaa {
     actor ctxframe_actor1 [
     Developer: d4
     ]
@@ -19,7 +19,7 @@ rectangle "[[https://github.com/mleist/d4]]" <<context framework>> as aaa {
     ====
     template generator
     ----
-    [[https://github.com/mleist/d4]]
+    [[https://github.com/smart-energy-di/d4]]
     BSD-Licence (OpenSource)
     ]
 

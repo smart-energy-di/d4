@@ -158,7 +158,7 @@ services:
 # ---------------------------------------------------------------------------
   spot:
     hostname: spot
-    image: {{ cookiecutter.project_slug }}_prod_django
+    image: {{ cookiecutter.project_slug }}_prod_spot
     build:
       context: .
       dockerfile: ./compose/production/spot/Dockerfile
@@ -189,7 +189,7 @@ services:
     command: /start
 # ---------------------------------------------------------------------------
   spot_nginx:
-    image: {{ cookiecutter.project_slug }}_prod_django_spot
+    image: {{ cookiecutter.project_slug }}_prod_spot_nginx
     build:
       context: .
       dockerfile: ./compose/production/spot_nginx/Dockerfile

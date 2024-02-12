@@ -77,5 +77,8 @@
   "enable_docs": "y",
   "enable_tests": "y",
   "timezone": "UTC",
-  "prod_domain_name": "example.com"
+  "prod_domain_name": "example.com",
+  "_copy_without_render": [
+        "{{cookiecutter.project_slug}}/spot/app/static/{{cookiecutter.project_slug}}/cytoscape*"
+    ]
 }

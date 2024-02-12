@@ -192,7 +192,7 @@ services:
     image: {{ cookiecutter.project_slug }}_prod_django_spot
     build:
       context: .
-      dockerfile: ./compose/production/spot/Dockerfile_nginx
+      dockerfile: ./compose/production/spot_nginx/Dockerfile
     container_name: spot_nginx
     volumes:
       - prod_django_static_volume:/app/config/staticfiles

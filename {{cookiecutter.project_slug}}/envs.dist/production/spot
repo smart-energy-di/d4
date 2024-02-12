@@ -8,7 +8,7 @@ DJANGO_SUPERUSER_EMAIL={{cookiecutter.d4service_spot_admin_mail}}
 DJANGO_SUPERUSER_PASSWORD=!!!SET SPOT_ADMIN_PASSWORD!!!
 DJANGO_ADMIN_URL=!!!SET DJANGO_ADMIN_URL!!!
 DJANGO_ALLOWED_HOSTS={{ cookiecutter.prod_domain_name }}
-DJANGO_CSRF_TRUSTED_ORIGINS={{ cookiecutter.prod_domain_name }}
+DJANGO_CSRF_TRUSTED_ORIGINS=http://localhost:{{ cookiecutter.d4service_spot_port }}
 
 # Security
 # ------------------------------------------------------------------------------

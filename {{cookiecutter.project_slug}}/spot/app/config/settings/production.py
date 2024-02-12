@@ -36,6 +36,11 @@ CSRF_TRUSTED_ORIGINS = os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", default="")
 
 IMPORT_EXPORT_FORMATS = [XLSX, CSV, JSON]
 
+# ADMIN
+# --------------------------------------------------------------------------
+# Django Admin URL regex.
+ADMIN_URL = os.environ.get("DJANGO_ADMIN_URL")
+
 # Application definition
 
 INSTALLED_APPS = [

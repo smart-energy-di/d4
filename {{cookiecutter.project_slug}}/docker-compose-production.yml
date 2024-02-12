@@ -4,16 +4,20 @@ version: "3.7"
 # {%- if ( (cookiecutter.enable_postgres == "y") or (cookiecutter.enable_mq == "y") or (cookiecutter.enable_mq_db == "y") ) %}
 volumes:
 #   {%- if cookiecutter.enable_postgres == "y" %}
-  production_postgres_data: {}
-  production_postgres_data_backups: {}
+  prod_postgres_data: {}
+  prod_postgres_data_backups: {}
 #   {% endif %}
 #   {%- if cookiecutter.enable_mq == "y" %}
-  production_mq_data: {}
-  production_mq_log: {}
+  prod_mq_data: {}
+  prod_mq_log: {}
 #   {% endif %}
 #   {%- if cookiecutter.enable_mq_db == "y" %}
-  production_mq_db_data: {}
+  prod_mq_db_data: {}
 #   {% endif %}
+#   {%- if cookiecutter.enable_spot == "y" %}
+  prod_django_static_volume: {}
+#   {% endif %}
+
 # {% endif %}
 
 
@@ -29,8 +33,8 @@ services:
       - "${D4SERVICE_MQ_PORT}:${D4SERVICE_MQ_PORT}"
       - "${D4SERVICE_MQ_ADMIN_PORT}:${D4SERVICE_MQ_ADMIN_PORT}"
     volumes:
-      - production_mq_data:/var/lib/rabbitmq
-      - production_mq_log:/var/log/rabbitmq
+      - prod_mq_data:/var/lib/rabbitmq
+      - prod_mq_log:/var/log/rabbitmq
 # {% endif -%}
 
 
@@ -86,7 +90,7 @@ services:
       context: .
       dockerfile: ./compose/production/mq_db/Dockerfile
     volumes:
-      - production_mq_db_data:/var/lib/postgresql/data/
+      - prod_mq_db_data:/var/lib/postgresql/data/
     ports:
       - "${D4SERVICE_MQ_DB_PORT}:${D4SERVICE_MQ_DB_PORT}"
     env_file:
@@ -98,13 +102,13 @@ services:
 # {%- if cookiecutter.enable_postgres == "y" %}
 # ---------------------------------------------------------------------------
   postgres:
-    image: {{ cookiecutter.project_slug }}_production_postgres
+    image: {{ cookiecutter.project_slug }}_prod_postgres
     build:
       context: .
       dockerfile: ./compose/production/postgres/Dockerfile
     volumes:
-      - production_postgres_data:/var/lib/postgresql/data:Z
-      - production_postgres_data_backups:/backups:z
+      - prod_postgres_data:/var/lib/postgresql/data:Z
+      - prod_postgres_data_backups:/backups:z
     ports:
       - "5432:5432"
     env_file:
@@ -154,26 +158,45 @@ services:
 # {%- if cookiecutter.enable_spot == "y" %}
 # ---------------------------------------------------------------------------
   spot:
-    image: {{ cookiecutter.project_slug }}_production_django
+    image: {{ cookiecutter.project_slug }}_prod_django
     build:
       context: .
       dockerfile: ./compose/production/spot/Dockerfile
     depends_on:
       - postgres
+# {%- if cookiecutter.enable_test_keycloak == "y" %}
       - keycloak
+# {% endif %}
     volumes:
       - ./spot/app:/app:z
+      - prod_django_static_volume:/app/config/staticfiles
     env_file:
       - envs/production/spot
       - envs/production/postgres
     environment:
       - LOG_LEVEL=debug
+# {%- if cookiecutter.enable_test_keycloak == "y" %}
       - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
       - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
       - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/auth
       - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/token
       - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/certs
+# {% endif %}
     ports:
       - "${D4SERVICE_SPOT_PORT}:${D4SERVICE_SPOT_PORT}"
     command: /start
+
+  spot_nginx:
+    image: {{ cookiecutter.project_slug }}_prod_django_spot
+    build:
+      context: .
+      dockerfile: ./compose/production/spot/Dockerfile_nginx
+    container_name: spot_nginx
+    volumes:
+      - prod_django_static_volume:/app/config/staticfiles
+    ports:
+      - 1337:80
+    depends_on:
+      - spot
+
 # {% endif %}

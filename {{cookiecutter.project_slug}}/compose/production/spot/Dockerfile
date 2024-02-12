@@ -1,4 +1,4 @@
-ARG PYTHON_VERSION=3.11-slim-bookworm
+ARG PYTHON_VERSION=3.11.4-slim-bookworm
 
 # define an alias for the specfic python version used in this file.
 FROM python:${PYTHON_VERSION} as python
@@ -12,11 +12,11 @@ ARG BUILD_ENVIRONMENT=production
 RUN apt-get update && apt-get install --no-install-recommends -y \
   # dependencies for building Python packages
   build-essential \
-  # psycopg dependencies
+  # psycopg2 dependencies
   libpq-dev
 
 # Requirements are installed here to ensure they will be cached.
-COPY ./requirements .
+COPY ./spot/requirements .
 
 # Create Python Dependency and Sub-Dependency Wheels.
 RUN pip wheel --wheel-dir /usr/src/app/wheels  \
@@ -35,13 +35,9 @@ ENV BUILD_ENV ${BUILD_ENVIRONMENT}
 
 WORKDIR ${APP_HOME}
 
-RUN addgroup --system django \
-    && adduser --system --ingroup django django
-
-
 # Install required system dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
-  # psycopg dependencies
+  # psycopg2 dependencies
   libpq-dev \
   # Translations dependencies
   gettext \
@@ -55,24 +51,20 @@ COPY --from=python-build-stage /usr/src/app/wheels  /wheels/
 
 # use wheels to install python dependencies
 RUN pip install --no-cache-dir --no-index --find-links=/wheels/ /wheels/* \
-  && rm -rf /wheels/
+	&& rm -rf /wheels/
 
-
-COPY --chown=django:django ./compose/production/spot/entrypoint /entrypoint
+COPY ./compose/production/spot/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
 RUN chmod +x /entrypoint
 
-
-COPY --chown=django:django ./compose/production/spot/start /start
+COPY ./compose/production/spot/start /start
 RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
 # copy application code to WORKDIR
-COPY --chown=django:django . ${APP_HOME}
+COPY ./spot/* ${APP_HOME}/
 
-# make django owner of the WORKDIR directory as well.
-RUN chown django:django ${APP_HOME}
+RUN mkdir ${APP_HOME}/staticfiles
 
-USER django
 
 ENTRYPOINT ["/entrypoint"]

@@ -1,3 +1,6 @@
+# pylint: disable=E0501
+# flake8: noqa: E501
+
 """
 Django settings for '{{ cookiecutter.project_name }}' project.
 

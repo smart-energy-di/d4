@@ -163,9 +163,9 @@ services:
       dockerfile: ./compose/production/spot/Dockerfile
     depends_on:
       - postgres
-      {% if cookiecutter.enable_test_keycloak == "y" -%}
+      {%+ if cookiecutter.enable_test_keycloak == "y" -%}
       - keycloak
-      {% endif -%}
+      {%- endif +%}
     volumes:
       - ./spot/app:/app:z
       - prod_django_static_volume:/app/config/staticfiles
@@ -174,13 +174,13 @@ services:
       - envs/production/postgres
     environment:
       - LOG_LEVEL=debug
-      {% if cookiecutter.enable_test_keycloak == "y" -%}
+      {%- if cookiecutter.enable_test_keycloak == "y" +%}
       - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
       - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
       - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/auth
       - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/token
       - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/certs
-      {% endif -%}
+      {%+ endif -%}
     ports:
       - "${D4SERVICE_SPOT_PORT}:${D4SERVICE_SPOT_PORT}"
     command: /start

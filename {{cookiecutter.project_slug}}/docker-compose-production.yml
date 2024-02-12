@@ -1,29 +1,28 @@
 version: "3.7"
 # created with cookiecutter for project '{{ cookiecutter.project_name }}'
 
-# {%- if ( (cookiecutter.enable_postgres == "y") or (cookiecutter.enable_mq == "y") or (cookiecutter.enable_mq_db == "y") ) %}
+{%- if ( (cookiecutter.enable_postgres == "y") or (cookiecutter.enable_mq == "y") or (cookiecutter.enable_mq_db == "y") ) %}
 volumes:
-#   {%- if cookiecutter.enable_postgres == "y" %}
+  {%- if cookiecutter.enable_postgres == "y" %}
   prod_postgres_data: {}
   prod_postgres_data_backups: {}
-#   {% endif %}
-#   {%- if cookiecutter.enable_mq == "y" %}
+  {% endif %}
+  {%- if cookiecutter.enable_mq == "y" %}
   prod_mq_data: {}
   prod_mq_log: {}
-#   {% endif %}
-#   {%- if cookiecutter.enable_mq_db == "y" %}
+  {% endif %}
+  {%- if cookiecutter.enable_mq_db == "y" %}
   prod_mq_db_data: {}
-#   {% endif %}
-#   {%- if cookiecutter.enable_spot == "y" %}
+  {% endif %}
+  {%- if cookiecutter.enable_spot == "y" %}
   prod_django_static_volume: {}
-#   {% endif %}
-
-# {% endif %}
+  {% endif %}
+{% endif %}
 
 
 services:
 
-# {%- if cookiecutter.enable_mq == "y" %}
+{%- if cookiecutter.enable_mq == "y" %}
 # ---------------------------------------------------------------------------
   mq:
     image: '${DOCKER_IMAGE_MQ}'
@@ -35,11 +34,11 @@ services:
     volumes:
       - prod_mq_data:/var/lib/rabbitmq
       - prod_mq_log:/var/log/rabbitmq
-# {% endif -%}
+{% endif -%}
 
 
 
-# {%- if cookiecutter.enable_mq_ui == "y" %}
+{%- if cookiecutter.enable_mq_ui == "y" %}
 # ---------------------------------------------------------------------------
   mq_ui:
     image: '${DOCKER_IMAGE_MQ_UI}'
@@ -57,11 +56,11 @@ services:
       - mq
       - mq_db
       - {{cookiecutter.d4service_mq_worker_slug}}
-# {% endif -%}
+{% endif -%}
 
 
 
-# {%- if cookiecutter.enable_mq_worker == "y" %}
+{%- if cookiecutter.enable_mq_worker == "y" %}
 # ---------------------------------------------------------------------------
   {{cookiecutter.d4service_mq_worker_slug}}:
     image: '${DOCKER_IMAGE_MQ_WORKER}'
@@ -78,11 +77,11 @@ services:
     depends_on:
       - mq
       - mq_db
-# {% endif -%}
+{% endif -%}
 
 
 
-# {%- if cookiecutter.enable_mq_db == "y" %}
+{%- if cookiecutter.enable_mq_db == "y" %}
 # ---------------------------------------------------------------------------
   mq_db:
     image: '${DOCKER_IMAGE_MQ_DB}'
@@ -95,11 +94,11 @@ services:
       - "${D4SERVICE_MQ_DB_PORT}:${D4SERVICE_MQ_DB_PORT}"
     env_file:
       - envs/production/mq_db
-# {% endif -%}
+{% endif -%}
 
 
 
-# {%- if cookiecutter.enable_postgres == "y" %}
+{%- if cookiecutter.enable_postgres == "y" %}
 # ---------------------------------------------------------------------------
   postgres:
     image: {{ cookiecutter.project_slug }}_prod_postgres
@@ -113,11 +112,11 @@ services:
       - "5432:5432"
     env_file:
       - envs/production/postgres
-# {% endif -%}
+{% endif -%}
 
 
 
-# {%- if cookiecutter.enable_proxy == "y" %}
+{%- if cookiecutter.enable_proxy == "y" %}
 # ---------------------------------------------------------------------------
   proxy:
     image: {{ cookiecutter.docker_image_proxy }}
@@ -135,11 +134,11 @@ services:
     env_file:
       - envs/production/proxy
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-# {% endif -%}
+{% endif -%}
 
 
 
-# {%- if cookiecutter.enable_proxy_cert_manager == "y" %}
+{%- if cookiecutter.enable_proxy_cert_manager == "y" %}
 # ---------------------------------------------------------------------------
   cert_manager:
     image: {{ cookiecutter.docker_image_proxy_cert_manager }}
@@ -151,11 +150,11 @@ services:
         - ./proxy/certbot/www/:/var/www/certbot/:rw
         - ./proxy/certbot/conf/:/etc/letsencrypt/:rw
     entrypoint: "/bin/sh -c 'trap exit TERM; crond -f'"
-# {% endif -%}
+{% endif -%}
 
 
 
-# {%- if cookiecutter.enable_spot == "y" %}
+{% if cookiecutter.enable_spot == "y" %}
 # ---------------------------------------------------------------------------
   spot:
     image: {{ cookiecutter.project_slug }}_prod_django
@@ -164,9 +163,9 @@ services:
       dockerfile: ./compose/production/spot/Dockerfile
     depends_on:
       - postgres
-# {%- if cookiecutter.enable_test_keycloak == "y" %}
+      {%- if cookiecutter.enable_test_keycloak == "y" -%}
       - keycloak
-# {%- endif %}
+      {%- endif -%}
     volumes:
       - ./spot/app:/app:z
       - prod_django_static_volume:/app/config/staticfiles
@@ -175,13 +174,13 @@ services:
       - envs/production/postgres
     environment:
       - LOG_LEVEL=debug
-# {%- if cookiecutter.enable_test_keycloak == "y" %}
+      {% if cookiecutter.enable_test_keycloak == "y" %}
       - D4SERVICE_OAUTH2_CLIENT_ID=d4-client
       - D4SERVICE_OAUTH2_CLIENT_SECRET=1f02bb76-eb58-40e2-928d-13f5c35794c1
       - D4SERVICE_OAUTH2_AUTH_ENDPOINT=http://127.0.0.1:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/auth
       - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/token
       - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/certs
-# {%- endif %}
+      {% endif %}
     ports:
       - "${D4SERVICE_SPOT_PORT}:${D4SERVICE_SPOT_PORT}"
     command: /start
@@ -198,5 +197,4 @@ services:
       - 1337:80
     depends_on:
       - spot
-
-# {%- endif %}
+{% endif %}

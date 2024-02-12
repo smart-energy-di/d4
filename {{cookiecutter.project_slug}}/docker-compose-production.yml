@@ -163,7 +163,7 @@ services:
       context: .
       dockerfile: ./compose/production/spot/Dockerfile
     depends_on:
-      { %- if cookiecutter.enable_postgres == "y" % }
+      {%- if cookiecutter.enable_postgres == "y" %}
       - postgres
       {%- endif +%}
       {%- if cookiecutter.enable_test_keycloak == "y" %}

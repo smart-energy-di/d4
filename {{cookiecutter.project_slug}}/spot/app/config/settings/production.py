@@ -14,7 +14,6 @@ from pathlib import Path
 
 from import_export.formats.base_formats import XLSX, CSV, JSON
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -67,8 +66,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,7 +97,6 @@ POSTGRES_DB = os.environ.get("POSTGRES_DB")
 POSTGRES_USER = os.environ.get("POSTGRES_USER")
 POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -113,7 +110,6 @@ DATABASES = {
 
 DATABASES["default"]["ATOMIC_REQUESTS"] = True  # noqa F405
 DATABASES["default"]["CONN_MAX_AGE"] = 60  # noqa F405
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -189,7 +185,7 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'Title ddd',
     'DESCRIPTION': 'Desc ddd',
     'VERSION': '0.0.1',
-    "SWAGGER_UI_FAVICON_HREF": STATIC_URL + "/ava_spot/amp2.ico",
+    "SWAGGER_UI_FAVICON_HREF": STATIC_URL + "/{{ cookiecutter.project_slug }}/favicon.ico",
 }
 
 DJANGO_TABLES2_TABLE_ATTRS = {

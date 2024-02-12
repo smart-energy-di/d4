@@ -4,7 +4,12 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
+#python /app/manage.py collectstatic --noinput
+python manage.py migrate --noinput
+python manage.py collectstatic --no-input --clear
 
-python /app/manage.py collectstatic --noinput
-python /app/manage.py createsuperuser --no-input
-/usr/local/bin/gunicorn config.asgi --bind 0.0.0.0:5000 --chdir=/app -k uvicorn.workers.UvicornWorker
+#/usr/local/bin/gunicorn config.asgi --bind 0.0.0.0:8000 --chdir=/app -k uvicorn.workers.UvicornWorker
+/usr/local/bin/gunicorn config.asgi:application --bind 0.0.0.0:{{ cookiecutter.d4service_spot_port }} --chdir=/app -k uvicorn.workers.UvicornWorker
+
+#python manage.py migrate
+#uvicorn config.asgi:application --host 0.0.0.0 --port 8000 --reload

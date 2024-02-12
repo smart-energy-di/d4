@@ -157,12 +157,15 @@ services:
 {%- if cookiecutter.enable_spot == "y" %}
 # ---------------------------------------------------------------------------
   spot:
+    hostname: spot
     image: {{ cookiecutter.project_slug }}_prod_django
     build:
       context: .
       dockerfile: ./compose/production/spot/Dockerfile
     depends_on:
+      { %- if cookiecutter.enable_postgres == "y" % }
       - postgres
+      {%- endif +%}
       {%- if cookiecutter.enable_test_keycloak == "y" %}
       - keycloak
       {%- endif +%}
@@ -181,10 +184,10 @@ services:
       - D4SERVICE_OAUTH2_TOKEN_ENDPOINT=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/token
       - D4SERVICE_OAUTH2_JWKS_URI=http://keycloak:8080/auth/realms/{{cookiecutter.d4service_oauth2_auth_realm}}/protocol/openid-connect/certs
       {%- endif %}
-    ports:
-      - "${D4SERVICE_SPOT_PORT}:${D4SERVICE_SPOT_PORT}"
+    expose:
+      - ${D4SERVICE_SPOT_PORT}
     command: /start
-
+# ---------------------------------------------------------------------------
   spot_nginx:
     image: {{ cookiecutter.project_slug }}_prod_django_spot
     build:
@@ -194,7 +197,7 @@ services:
     volumes:
       - prod_django_static_volume:/app/config/staticfiles
     ports:
-      - 1337:80
+      - ${D4SERVICE_SPOT_NGINX_PORT}:80
     depends_on:
       - spot
 {%- endif %}

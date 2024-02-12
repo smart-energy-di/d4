@@ -74,6 +74,7 @@ D4SERVICE_PROXY_HTTPS_PORT={{cookiecutter.d4service_proxy_https_port}}
 {%- if cookiecutter.enable_spot == "y" %}
 D4SERVICE_SPOT_URI={{cookiecutter.d4service_spot_uri}}
 D4SERVICE_SPOT_PORT={{cookiecutter.d4service_spot_port}}
+D4SERVICE_SPOT_NGINX_PORT={{cookiecutter.d4service_spot_nginx_port}}
 {%- endif %}
 {%- if cookiecutter.enable_ui == "y" %}
 D4SERVICE_UI_URI={{cookiecutter.d4service_ui_uri}}

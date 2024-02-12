@@ -131,3 +131,4 @@ dmypy.json
 /acme/
 /oceanic-airlines/
 /testing-project
+.DS_Store

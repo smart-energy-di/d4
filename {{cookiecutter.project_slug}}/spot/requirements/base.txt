@@ -1,23 +1,26 @@
-# see https://github.com/cookiecutter/cookiecutter-django/tree/master/%7B%7Bcookiecutter.project_slug%7D%7D/requirements
-
-pytz==2021.3  # https://github.com/stub42/pytz
-python-slugify==8.0.1  # https://github.com/un33k/python-slugify
-Pillow==10.0.1  # https://github.com/python-pillow/Pillow
+pytz==2024.1  # https://github.com/stub42/pytz
+python-slugify==8.0.4  # https://github.com/un33k/python-slugify
+Pillow==10.2.0  # https://github.com/python-pillow/Pillow
 argon2-cffi==23.1.0  # https://github.com/hynek/argon2_cffi
-whitenoise==6.5.0  # https://github.com/evansd/whitenoise
-uvicorn[standard]==0.23.2  # https://github.com/encode/uvicorn
+whitenoise==6.6.0  # https://github.com/evansd/whitenoise
+uvicorn[standard]==0.27.0  # https://github.com/encode/uvicorn
 
 # Django
-django==4.2.5  # pyup: < 5.0  # https://www.djangoproject.com/
+Django==5.0.2  # https://www.djangoproject.com/
+django-bootstrap5==23.4  # https://github.com/zostera/django-bootstrap5
+django-filter==23.5  # https://github.com/carltongibson/django-filter
+django-import-export==4.0.0b2  # https://github.com/django-import-export/django-import-export
+djangorestframework==3.14.0  # https://github.com/encode/django-rest-framework
+django-tables2==2.7.0  # https://github.com/jieter/django-tables2
+django-filter==23.5  # https://github.com/carltongibson/django-filter
 django-environ==0.11.2  # https://github.com/joke2k/django-environ
 django-model-utils==4.3.1  # https://github.com/jazzband/django-model-utils
 django-allauth==0.56.1  # https://github.com/pennersr/django-allauth
-django-crispy-forms==2.0  # https://github.com/django-crispy-forms/django-crispy-forms
-crispy-bootstrap5==0.7  # https://github.com/django-crispy-forms/crispy-bootstrap5
 
 # Django REST Framework
 djangorestframework==3.14.0  # https://github.com/encode/django-rest-framework
-django-cors-headers==4.2.0  # https://github.com/adamchainz/django-cors-headers
+django-cors-headers==4.3.1  # https://github.com/adamchainz/django-cors-headers
+drf-spectacular==0.27.1  # https://github.com/tfranzel/drf-spectacular
 
 # Auth
-authlib==1.2.1  # https://authlib.org
+authlib==1.3.0  # https://github.com/lepture/authlib

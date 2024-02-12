@@ -109,7 +109,7 @@ services:
       - prod_postgres_data:/var/lib/postgresql/data:Z
       - prod_postgres_data_backups:/backups:z
     ports:
-      - "5432:5432"
+      - "${D4SERVICE_POSTGRES_PORT}:5432"
     env_file:
       - envs/production/postgres
 {%- endif -%}

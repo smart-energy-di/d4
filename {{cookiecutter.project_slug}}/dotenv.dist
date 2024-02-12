@@ -43,6 +43,9 @@ D4SERVICE_OAUTH2_TOKEN_ENDPOINT={{cookiecutter.d4service_oauth2_token_endpoint}}
 D4SERVICE_OAUTH2_JWKS_URI={{cookiecutter.d4service_oauth2_jwks_uri}}
 D4SERVICE_OAUTH2_USERINFO_ENDPOINT={{cookiecutter.d4service_oauth2_userinfo_endpoint}}
 {%- endif %}
+{%- if cookiecutter.enable_postgres == "y" %}
+D4SERVICE_POSTGRES_PORT={{cookiecutter.d4service_postgres_port}}
+{%- endif %}
 {%- if cookiecutter.enable_test_opa == "y" %}
 D4SERVICE_OPA_URI={{cookiecutter.d4service_opa_uri}}
 D4SERVICE_OPA_PORT={{cookiecutter.d4service_opa_port}}

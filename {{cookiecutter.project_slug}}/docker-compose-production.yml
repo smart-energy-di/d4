@@ -19,7 +19,6 @@ volumes:
   {%- endif %}
 {%- endif %}
 
-
 services:
 
 {%- if cookiecutter.enable_mq == "y" %}

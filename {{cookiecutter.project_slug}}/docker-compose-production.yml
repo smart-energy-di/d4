@@ -1,28 +1,28 @@
 version: "3.7"
 # created with cookiecutter for project '{{ cookiecutter.project_name }}'
 
-{% if ( (cookiecutter.enable_postgres == "y") or (cookiecutter.enable_mq == "y") or (cookiecutter.enable_mq_db == "y") ) %}
+{%- if ( (cookiecutter.enable_postgres == "y") or (cookiecutter.enable_mq == "y") or (cookiecutter.enable_mq_db == "y") ) %}
 volumes:
-  {% if cookiecutter.enable_postgres == "y" %}
+  {%- if cookiecutter.enable_postgres == "y" %}
   prod_postgres_data: {}
   prod_postgres_data_backups: {}
-  {% endif %}
-  {% if cookiecutter.enable_mq == "y" %}
+  {%- endif %}
+  {%- if cookiecutter.enable_mq == "y" %}
   prod_mq_data: {}
   prod_mq_log: {}
-  {% endif %}
-  {% if cookiecutter.enable_mq_db == "y" %}
+  {%- endif %}
+  {%- if cookiecutter.enable_mq_db == "y" %}
   prod_mq_db_data: {}
-  {% endif %}
-  {% if cookiecutter.enable_spot == "y" %}
+  {%- endif %}
+  {%- if cookiecutter.enable_spot == "y" %}
   prod_django_static_volume: {}
-  {% endif %}
-{% endif %}
+  {%- endif %}
+{%- endif %}
 
 
 services:
 
-{% if cookiecutter.enable_mq == "y" %}
+{%- if cookiecutter.enable_mq == "y" %}
 # ---------------------------------------------------------------------------
   mq:
     image: '${DOCKER_IMAGE_MQ}'
@@ -34,7 +34,7 @@ services:
     volumes:
       - prod_mq_data:/var/lib/rabbitmq
       - prod_mq_log:/var/log/rabbitmq
-{% endif -%}
+{%- endif -%}
 
 
 
@@ -56,7 +56,7 @@ services:
       - mq
       - mq_db
       - {{cookiecutter.d4service_mq_worker_slug}}
-{% endif -%}
+{%- endif -%}
 
 
 
@@ -77,7 +77,7 @@ services:
     depends_on:
       - mq
       - mq_db
-{% endif -%}
+{%- endif -%}
 
 
 
@@ -94,7 +94,7 @@ services:
       - "${D4SERVICE_MQ_DB_PORT}:${D4SERVICE_MQ_DB_PORT}"
     env_file:
       - envs/production/mq_db
-{% endif -%}
+{%- endif -%}
 
 
 
@@ -112,7 +112,7 @@ services:
       - "5432:5432"
     env_file:
       - envs/production/postgres
-{% endif -%}
+{%- endif -%}
 
 
 
@@ -134,7 +134,7 @@ services:
     env_file:
       - envs/production/proxy
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-{% endif -%}
+{%- endif -%}
 
 
 
@@ -150,7 +150,7 @@ services:
         - ./proxy/certbot/www/:/var/www/certbot/:rw
         - ./proxy/certbot/conf/:/etc/letsencrypt/:rw
     entrypoint: "/bin/sh -c 'trap exit TERM; crond -f'"
-{% endif -%}
+{%- endif -%}
 
 
 

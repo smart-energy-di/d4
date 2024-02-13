@@ -2,24 +2,25 @@ version: "3.7"
 # created with cookiecutter for project '{{ cookiecutter.project_name }}'
 
 
-# {%- if ( (cookiecutter.enable_postgres == "y") or (cookiecutter.enable_mq == "y") or (cookiecutter.enable_mq_db == "y") ) %}
+{%- if ( (cookiecutter.enable_postgres == "y") or (cookiecutter.enable_mq == "y") or (cookiecutter.enable_mq_db == "y") ) %}
 volumes:
-#   {%- if cookiecutter.enable_postgres == "y" %}
+  {%- if cookiecutter.enable_postgres == "y" %}
   local_postgres_data: {}
   local_postgres_data_backups: {}
-#   {% endif %}
-#   {%- if cookiecutter.enable_mq == "y" %}
+  {%- endif %}
+  {%- if cookiecutter.enable_mq == "y" %}
   local_mq_data: {}
   local_mq_log: {}
-#   {% endif %}
-#   {%- if cookiecutter.enable_mq_db == "y" %}
+  {%- endif %}
+  {%- if cookiecutter.enable_mq_db == "y" %}
   local_mq_db_data: {}
-#   {% endif %}
-# {% endif %}
+  {%- endif %}
+{%- endif %}
 
 
 services:
-# {% if cookiecutter.enable_test_keycloak == "y" %}
+
+{%- if cookiecutter.enable_test_keycloak == "y" %}
 # ------------------------------------------------------------------------
   keycloak:
     image: jboss/keycloak:latest
@@ -33,12 +34,13 @@ services:
       - KEYCLOAK_LOGLEVEL=INFO
     volumes:
       - ./compose/local/keycloak/realm.json:/tmp/realm.json
-# {% endif -%}
+
+{%- endif %}
 
 
 
 
-# {%- if cookiecutter.enable_test_opa == "y" -%}
+{%- if cookiecutter.enable_test_opa == "y" %}
 # ------------------------------------------------------------------------
   opa:
     image: openpolicyagent/opa:latest
@@ -54,11 +56,11 @@ services:
       - "/policy/test.rego"
     volumes:
       - ./compose/local/opa/policy:/policy
-# {% endif -%}
+{%- endif %}
 
 
 
-# {%- if cookiecutter.enable_adapter == "y" %}
+{%- if cookiecutter.enable_adapter == "y" %}
 # ---------------------------------------------------------------------------
   adapter:
     image: '${DOCKER_IMAGE_ADAPTER}'
@@ -86,11 +88,11 @@ services:
       - opa
     ports:
       - "${D4SERVICE_ADAPTER_PORT}:${D4SERVICE_ADAPTER_PORT}"
-# {% endif -%}
+{%- endif %}
 
 
 
-# {%- if cookiecutter.enable_cache == "y" %}
+{%- if cookiecutter.enable_cache == "y" %}
 # ---------------------------------------------------------------------------
   cache:
     image: '${DOCKER_IMAGE_CACHE}'
@@ -118,11 +120,11 @@ services:
       # Allow explicit env var override for tests
     ports:
       - "${D4SERVICE_CACHE_PORT}:${D4SERVICE_CACHE_PORT}"
-# {% endif -%}
+{%- endif %}
 
 
 
-# {%- if cookiecutter.enable_mq == "y" %}
+{%- if cookiecutter.enable_mq == "y" %}
 # ---------------------------------------------------------------------------
   mq:
     image: '${DOCKER_IMAGE_MQ}'
@@ -134,11 +136,11 @@ services:
     volumes:
       - local_mq_data:/var/lib/rabbitmq
       - local_mq_log:/var/log/rabbitmq
-# {% endif -%}
+{%- endif %}
 
 
 
-# {%- if cookiecutter.enable_mq_ui == "y" %}
+{%- if cookiecutter.enable_mq_ui == "y" %}
 # ---------------------------------------------------------------------------
   mq_ui:
     image: '${DOCKER_IMAGE_MQ_UI}'
@@ -156,11 +158,11 @@ services:
       - mq
       - mq_db
       - {{cookiecutter.d4service_mq_worker_slug}}
-# {% endif -%}
+{%- endif %}
 
 
 
-# {%- if cookiecutter.enable_mq_worker == "y" %}
+{%- if cookiecutter.enable_mq_worker == "y" %}
 # ---------------------------------------------------------------------------
   {{cookiecutter.d4service_mq_worker_slug}}:
     image: '${DOCKER_IMAGE_MQ_WORKER}'
@@ -177,11 +179,11 @@ services:
     depends_on:
       - mq
       - mq_db
-# {% endif -%}
+{%- endif %}
 
 
 
-# {%- if cookiecutter.enable_mq_db == "y" %}
+{%- if cookiecutter.enable_mq_db == "y" %}
 # ---------------------------------------------------------------------------
   mq_db:
     image: '${DOCKER_IMAGE_MQ_DB}'
@@ -194,11 +196,11 @@ services:
       - "${D4SERVICE_MQ_DB_PORT}:${D4SERVICE_MQ_DB_PORT}"
     env_file:
       - envs/local/mq_db
-# {% endif -%}
+{%- endif %}
 
 
 
-# {%- if cookiecutter.enable_postgres == "y" %}
+{%- if cookiecutter.enable_postgres == "y" %}
 # ---------------------------------------------------------------------------
   postgres:
     image: {{ cookiecutter.project_slug }}_production_postgres
@@ -212,11 +214,11 @@ services:
       - "5432:5432"
     env_file:
       - envs/local/postgres
-# {% endif -%}
+{%- endif %}
 
 
 
-# {%- if cookiecutter.enable_proxy == "y" %}
+{%- if cookiecutter.enable_proxy == "y" %}
 # ---------------------------------------------------------------------------
   proxy:
     image: {{ cookiecutter.docker_image_proxy }}
@@ -234,11 +236,11 @@ services:
     env_file:
       - envs/local/proxy
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
-# {% endif -%}
+{%- endif %}
 
 
 
-# {%- if cookiecutter.enable_proxy_cert_manager == "y" %}
+{%- if cookiecutter.enable_proxy_cert_manager == "y" %}
 # ---------------------------------------------------------------------------
   cert_manager:
     image: {{ cookiecutter.docker_image_proxy_cert_manager }}
@@ -250,11 +252,11 @@ services:
         - ./proxy/certbot/www/:/var/www/certbot/:rw
         - ./proxy/certbot/conf/:/etc/letsencrypt/:rw
     entrypoint: "/bin/sh -c 'trap exit TERM; crond -f'"
-# {% endif -%}
+{%- endif %}
 
 
 
-# {%- if cookiecutter.enable_spot == "y" %}
+{%- if cookiecutter.enable_spot == "y" %}
 # ---------------------------------------------------------------------------
   spot:
     image: {{ cookiecutter.project_slug }}_local_django
@@ -262,10 +264,12 @@ services:
       context: .
       dockerfile: ./compose/local/spot/Dockerfile
     depends_on:
+      {%- if cookiecutter.enable_postgres == "y" %}
       - postgres
-# {% if cookiecutter.enable_test_keycloak == "y" %}
+      {%- endif +%}
+      {%- if cookiecutter.enable_test_keycloak == "y" %}
       - keycloak
-# {% endif %}
+      {%- endif +%}
     volumes:
       - ./spot/app:/app:z
     env_file:
@@ -281,4 +285,4 @@ services:
     ports:
       - "${D4SERVICE_SPOT_PORT}:${D4SERVICE_SPOT_PORT}"
     command: /start
-# {% endif %}
+{%- endif %}

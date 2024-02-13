@@ -37,6 +37,8 @@ jobs:
           echo "ls -la"
           ls -la
           cookiecutter --no-input -f --config-file ./cookiecutter-tests.yaml ./
+          echo "ls -la"
+          ls -la
       - name: Install dependencies 2
         working-directory: ./testing-project
         run: |
@@ -51,6 +53,10 @@ jobs:
       - name: Run tests
         working-directory: ./testing-project
         run: |
+          echo "pwd"
+          pwd
+          echo "ls -la"
+          ls -la
           pytest tests
       - name: Stop Docker compose
         working-directory: ./testing-project
